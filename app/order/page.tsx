@@ -1,113 +1,76 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { usePlaceOrder } from "@/hooks/usePlaceOrder";
-import { useToast } from "@/hooks/use-toast";
-import { useAuth } from "@/features/firebase/auth";
-import { useRouter } from "next/navigation";
-import { Switch } from "@/components/ui/switch";
-import { Label } from "@/components/ui/label";
+import { useState } from "react"
 
-export default function PlaceOrderPage() {
-  const { user } = useAuth();
-  const router = useRouter();
-  const { toast } = useToast();
-  const { placeOrder, uploading } = usePlaceOrder();
+export default function Order() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  })
 
-  const [subject, setSubject] = useState("");
-  const [description, setDescription] = useState("");
-  const [isPickup, setIsPickup] = useState(false);
-  const [files, setFiles] = useState<File[]>([]);
-
-  if (!user?.uid) {
-    return (
-      <div className="max-w-2xl mx-auto px-4 md:px-6 lg:px-8 py-10">
-        <h1 className="text-2xl font-semibold">Bestilling</h1>
-        <p className="text-gray-600 mt-2">
-          Du må være innlogget for å legge inn bestilling.
-        </p>
-        <div className="mt-6">
-          <Button onClick={() => router.push("/account?tab=login")}>
-            Logg inn
-          </Button>
-        </div>
-      </div>
-    );
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    // Here you would typically send the form data to your server
+    // which would then send an email to bestilling@potleverk.no
+    console.log("Form submitted:", formData)
+    alert("Thank you for your order! We will contact you soon.")
   }
 
-  async function onSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    await placeOrder({
-      subject,
-      description,
-      is_pickup: isPickup,
-      attachments: files,
-    });
-    toast({ title: "Bestilling sendt" });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
   return (
-    <div className="max-w-3xl mx-auto px-4 md:px-6 lg:px-8 py-8">
-      <h1 className="text-2xl font-bold">Bestilling</h1>
-      <Card className="p-6 mt-6">
-        <form className="space-y-5" onSubmit={onSubmit}>
-          <div className="space-y-2">
-            <label className="text-sm font-medium">Emne</label>
-            <Input
-              value={subject}
-              onChange={(e) => setSubject(e.target.value)}
-              required
-              placeholder="Hva ønsker du?"
-            />
-          </div>
-          <div className="space-y-2">
-            <label className="text-sm font-medium">Beskrivelse</label>
-            <Textarea
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              placeholder="Beskriv bestillingen"
-              rows={5}
-            />
-          </div>
-          <div className="space-y-2">
-            <label className="text-sm font-medium">Vedlegg</label>
-            <Input
-              type="file"
-              multiple
-              onChange={(e) => setFiles(Array.from(e.target.files || []))}
-            />
-            {files?.length ? (
-              <p className="text-xs text-gray-500">
-                {files.length} fil(er) valgt
-              </p>
-            ) : null}
-          </div>
-          <div className="flex items-center gap-3">
-            <Switch
-              title="Henter selv"
-              id="pickup"
-              className="text-sm"
-              checked={isPickup}
-              onCheckedChange={setIsPickup}
-            />
-            <Label>Henter selv</Label>
-          </div>
-          <div>
-            <Button
-              type="submit"
-              size="lg"
-              className="w-full text-lg"
-              disabled={uploading}
-            >
-              {uploading ? "Sender…" : "Send bestilling"}
-            </Button>
-          </div>
-        </form>
-      </Card>
+    <div className="max-w-4xl mx-auto">
+      <h1 className="text-4xl font-bold mb-6">Place an Order</h1>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div>
+          <label htmlFor="name" className="block mb-2">
+            Name
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            className="w-full p-2 border rounded"
+          />
+        </div>
+        <div>
+          <label htmlFor="email" className="block mb-2">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            className="w-full p-2 border rounded"
+          />
+        </div>
+        <div>
+          <label htmlFor="message" className="block mb-2">
+            Message
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            required
+            className="w-full p-2 border rounded h-32"
+          ></textarea>
+        </div>
+        <button type="submit" className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition">
+          Submit Order
+        </button>
+      </form>
     </div>
-  );
+  )
 }
+
