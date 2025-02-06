@@ -7,18 +7,16 @@ export default function Home() {
       {/* Hero Section */}
       <section className="grid md:grid-cols-2 gap-8 py-12">
         <div className="space-y-6">
-          <h1 className="text-4xl font-bold text-primary">Potleverk</h1>
           <p className="text-gray-600">
-            Vi er en allsidig bedrift innen spesialprodukter og skjæretjenester hvor laseren profilering, design, trykk
-            og CNC -arbeid. Vi hjelper bedrifter med å synliggjøre sin merkevare gjennom kreative og presisise
-            løsninger. Du står til ferdig produkt, uansett om du trenger å utbedre, øke eller drive design lenger. Vi er
-            og står til svaret med høy kvalitet og presisjon som behov.
+          Vi er et allsidig byrå som spesialiserer oss på skreddersydde løsninger innen profilering, design, trykk og CNC-arbeid. 
+          Vi hjelper bedrifter med å synliggjøre sin merkevare gjennom kreative og praktiske løsninger, fra idé til ferdig produkt. 
+          Uansett om du trenger trykksaker, skilt eller unike design, sørger vi for at alt blir levert med høy kvalitet og tilpasset dine behov.
           </p>
-          <Button className="bg-secondary hover:bg-secondary/90 text-white w-full md:w-auto">Text</Button>
+          <Button className="bg-secondary hover:bg-secondary/90 text-white w-full md:w-auto">Bestill her</Button>
         </div>
         <div className="relative h-[400px]">
           <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Desktop%20-%20Homepage%20(no%20auto%20layout).jpg-UfcNKCJ8ain3mcVsqpIZwg5wPfQoyS.jpeg"
+            src="/product-images/stickers-vinyl.jpg"
             alt="CNC Machine"
             fill
             className="object-cover rounded-lg"
@@ -86,21 +84,14 @@ export default function Home() {
 
         {/* Trykk */}
         <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="relative h-[400px]">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Desktop%20-%20Homepage%20(no%20auto%20layout).jpg-UfcNKCJ8ain3mcVsqpIZwg5wPfQoyS.jpeg"
+              src="/product-images/print-collection.jpg"
               alt="Print Samples"
-              width={300}
-              height={300}
+              fill
               className="rounded-lg"
             />
-            <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Desktop%20-%20Homepage%20(no%20auto%20layout).jpg-UfcNKCJ8ain3mcVsqpIZwg5wPfQoyS.jpeg"
-              alt="Print Process"
-              width={300}
-              height={300}
-              className="rounded-lg"
-            />
+
           </div>
           <div className="space-y-4">
             <h2 className="text-3xl font-bold">Trykk</h2>

@@ -8,11 +8,11 @@ export default function Header() {
       <nav className="max-w-7xl mx-auto flex justify-between items-center">
         <Link href="/" className="flex-shrink-0">
           <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Desktop%20-%20Homepage%20(no%20auto%20layout).jpg-UfcNKCJ8ain3mcVsqpIZwg5wPfQoyS.jpeg"
+            src="/potleverk-logo-dark.svg"
             alt="Potleverk Logo"
             width={180}
-            height={60}
-            className="h-12 w-auto"
+            height={128}
+            className="h-32 w-auto"
           />
         </Link>
         <div className="flex items-center gap-6">
@@ -28,7 +28,6 @@ export default function Header() {
           <Link href="/order" className="text-gray-700 hover:text-primary hidden md:block">
             Bestilling
           </Link>
-          <Button className="bg-secondary hover:bg-secondary/90 text-white">Logg Inn</Button>
         </div>
       </nav>
     </header>
