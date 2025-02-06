@@ -7,7 +7,7 @@ Website for Potleverk AS
 - Tailwind
 
 ## TODO
-[ ] Fix logo
-[ ] Fix background grapics
-[ ] Ensure contact form works as expected
-[ ] ...
+- [ ] Fix logo
+- [ ] Fix background grapics
+- [ ] Ensure contact form works as expected
+- [ ] ...
