@@ -2,9 +2,9 @@ import Image from "next/image"
 
 export default function Products() {
   const products = [
-    { id: 1, name: "Product 1", description: "Description of Product 1" },
-    { id: 2, name: "Product 2", description: "Description of Product 2" },
-    { id: 3, name: "Product 3", description: "Description of Product 3" },
+    { id: 1, name: "CNC", description: "Vi lager alt fra skilt og dørdekor til gravering på kontorskilt og bordskånere. Skreddersydd design merket med navn og logo.", image: "/product-images/cnc-sign.jpg" },
+    { id: 2, name: "Design", description: "Sammen finner vi de beste løsningene for din bedrift, uansett om du har en klar visjon eller trenger veiledning.", image: "/product-images/ideas-bulb.jpg" },
+    { id: 3, name: "Print", description: "Uansett behov, sørger vi for at deres trykksaker skiller seg ut og fanger oppmerksomhet.", image: "/product-images/print-collection.jpg" },
   ]
 
   return (
@@ -14,7 +14,7 @@ export default function Products() {
         {products.map((product) => (
           <div key={product.id} className="border rounded-lg p-4">
             <Image
-              src="/placeholder.svg"
+              src={product.image}
               alt={product.name}
               width={300}
               height={200}

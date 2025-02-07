@@ -12,14 +12,14 @@ export default function Home() {
           Vi hjelper bedrifter med å synliggjøre sin merkevare gjennom kreative og praktiske løsninger, fra idé til ferdig produkt. 
           Uansett om du trenger trykksaker, skilt eller unike design, sørger vi for at alt blir levert med høy kvalitet og tilpasset dine behov.
           </p>
-          <Button className="bg-secondary hover:bg-secondary/90 text-white w-full md:w-auto">Bestill her</Button>
+          <Button className="bg-secondary hover:bg-secondary/90 text-white w-full md:w-full text-center">Bestill her</Button>
         </div>
         <div className="relative h-[400px]">
           <Image
-            src="/product-images/stickers-vinyl.jpg"
+            src="/product-images/ideas-bulb.jpg"
             alt="CNC Machine"
             fill
-            className="object-cover rounded-lg"
+            className="rounded-lg object-cover"
           />
         </div>
       </section>
@@ -30,10 +30,10 @@ export default function Home() {
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="relative h-[400px]">
             <Image
-              src="/product-images/print-collection.jpg"
+              src="/product-images/stickers-vinyl.jpg"
               alt="Design Software"
               fill
-              className="rounded-lg"
+              className="rounded-lg object-cover"
             />
           </div>
           <div className="space-y-4">
@@ -57,10 +57,10 @@ export default function Home() {
           </div>
           <div className="relative h-[400px]">
             <Image
-              src="/product-images/print-collection.jpg"
+              src="/product-images/cnc-sign.jpg"
               alt="CNC Machine Work"
               fill
-              className="rounded-lg"
+              className="rounded-lg object-cover"
             />
           </div>
         </div>
@@ -72,7 +72,7 @@ export default function Home() {
               src="/product-images/print-collection.jpg"
               alt="Print Samples"
               fill
-              className="rounded-lg"
+              className="rounded-lg object-cover"
             />
 
           </div>
@@ -102,7 +102,7 @@ export default function Home() {
               src="/product-images/print-collection.jpg"
               alt="Design Process"
               fill
-              className="rounded-lg"
+              className="rounded-lg object-cover"
             />
           </div>
         </div>

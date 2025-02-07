@@ -7,9 +7,10 @@ Website for Potleverk AS
 - Tailwind
 
 ## TODO
-- [ ] Fix logo
-- [ ] Fix images of products
+- [x] Fix logo
+- [-] Fix images of products (Placeholder images added for now on front)
 - [ ] Fix tekst in header
+- [ ] Biutton under tekst to be sentered
 - [ ] Fix tekst in various places
 - [ ] Fix background grapics
 - [ ] Remove login button
