@@ -28,19 +28,11 @@ export default function Home() {
       <section className="py-12 space-y-20">
         {/* Tilpasset profilering */}
         <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="relative h-[400px]">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Desktop%20-%20Homepage%20(no%20auto%20layout).jpg-UfcNKCJ8ain3mcVsqpIZwg5wPfQoyS.jpeg"
+              src="/product-images/print-collection.jpg"
               alt="Design Software"
-              width={300}
-              height={300}
-              className="rounded-lg"
-            />
-            <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Desktop%20-%20Homepage%20(no%20auto%20layout).jpg-UfcNKCJ8ain3mcVsqpIZwg5wPfQoyS.jpeg"
-              alt="Team Meeting"
-              width={300}
-              height={300}
+              fill
               className="rounded-lg"
             />
           </div>
@@ -54,7 +46,6 @@ export default function Home() {
             </p>
           </div>
         </div>
-
         {/* CNC */}
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="space-y-4">
@@ -64,19 +55,11 @@ export default function Home() {
               presisjonsmaskiner sikrer nøyaktig utførelse av dine prosjekter, uansett størrelse eller kompleksitet.
             </p>
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="relative h-[400px]">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Desktop%20-%20Homepage%20(no%20auto%20layout).jpg-UfcNKCJ8ain3mcVsqpIZwg5wPfQoyS.jpeg"
+              src="/product-images/print-collection.jpg"
               alt="CNC Machine Work"
-              width={300}
-              height={300}
-              className="rounded-lg"
-            />
-            <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Desktop%20-%20Homepage%20(no%20auto%20layout).jpg-UfcNKCJ8ain3mcVsqpIZwg5wPfQoyS.jpeg"
-              alt="CNC Result"
-              width={300}
-              height={300}
+              fill
               className="rounded-lg"
             />
           </div>
@@ -114,19 +97,11 @@ export default function Home() {
               effektivt. Uansett prosjektets størrelse, sørger vi for at designet kommuniserer klart og definitivt.
             </p>
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="relative h-[400px]">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Desktop%20-%20Homepage%20(no%20auto%20layout).jpg-UfcNKCJ8ain3mcVsqpIZwg5wPfQoyS.jpeg"
+              src="/product-images/print-collection.jpg"
               alt="Design Process"
-              width={300}
-              height={300}
-              className="rounded-lg"
-            />
-            <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Desktop%20-%20Homepage%20(no%20auto%20layout).jpg-UfcNKCJ8ain3mcVsqpIZwg5wPfQoyS.jpeg"
-              alt="Design Examples"
-              width={300}
-              height={300}
+              fill
               className="rounded-lg"
             />
           </div>
