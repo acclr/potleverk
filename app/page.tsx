@@ -10,7 +10,7 @@ export default function Home() {
           <p className="text-gray-600">
           Vi er et allsidig byrå som spesialiserer oss på skreddersydde løsninger innen profilering, design, trykk og CNC-arbeid. 
           Vi hjelper bedrifter med å synliggjøre sin merkevare gjennom kreative og praktiske løsninger, fra idé til ferdig produkt. 
-          Uansett om du trenger trykksaker, skilt eller unike design, sørger vi for at alt blir levert med høy kvalitet og tilpasset dine behov.
+          Fra utforming av profil til trykksaker, skilt eller unike design, sørger vi for at alt blir levert med høy kvalitet og tilpasset dine behov.
           </p>
           <Button className="bg-secondary hover:bg-secondary/90 text-white w-full md:w-full text-center">Bestill her</Button>
         </div>
@@ -39,10 +39,9 @@ export default function Home() {
           <div className="space-y-4">
             <h2 className="text-3xl font-bold">Tilpasset profilering</h2>
             <p className="text-gray-600">
-              Vi spesialiserer oss på å finne de beste løsningene for din bedrift, uansett om du har en klar visjon
-              eller trenger veiledning. Vår helhetlige tilnærming betyr at du får trenger å være designer – vi sørger
-              det for deg. Fra idé til ferdig produkt, vi er her for å hjelpe deg med å skape profileringsprosessen som
-              passer dine behov.
+            Vi spesialiserer oss på å skape optimale løsninger for din bedrift, enten du har en klar visjon eller trenger veiledning. 
+            Med vår helhetlige tilnærming trenger du ikke bekymre deg for design – vi tar hånd om hele prosessen. 
+            Fra idé til ferdig produkt står vi klare til å utvikle en profilering som matcher dine behov perfekt
             </p>
           </div>
         </div>
@@ -51,8 +50,8 @@ export default function Home() {
           <div className="space-y-4">
             <h2 className="text-3xl font-bold">CNC</h2>
             <p className="text-gray-600">
-              Med vår CNC-fres kan vi lage alt fra små og detaljerte til gravering og konturskjæring på bordplater. Våre
-              presisjonsmaskiner sikrer nøyaktig utførelse av dine prosjekter, uansett størrelse eller kompleksitet.
+              Med vår CNC-fres kan vi lage alt fra små og detaljerte graveringer til konturskjæring på bordplater. Enten du vil ha skreddesydde kontorartikkler eller unike gaveartikler. 
+              Vi sikrer nøyaktig utførelse av dine prosjekter. Sammen kan vi komme fram til minneverdige og unike løsninger.
             </p>
           </div>
           <div className="relative h-[400px]">
@@ -80,9 +79,9 @@ export default function Home() {
             <h2 className="text-3xl font-bold">Trykk</h2>
             <p className="text-gray-600">
               Vi leverer et bredt spekter av trykkprodukter som gir din bedrift et profesjonelt og synlig uttrykk. Enten
-              dere trenger plakater, rollups, foliering, klistermerker eller bannere, sørger vi hos kvalitet på alle
+              dere trenger plakater, rollups, foliering, klistermerker eller bannere, sørger vi for kvalitet på alle
               produkter. Vi tilbyr også rådgivning for å finne de trykkproduktene som best tilfredsstiller dine behov,
-              sørger vi for at dine trykksaker skiller seg ut og fanger oppmerksomheten.
+              vi vil at dine trykksaker skal skille seg ut og fange oppmerksomhet.
             </p>
           </div>
         </div>
@@ -92,9 +91,9 @@ export default function Home() {
           <div className="space-y-4">
             <h2 className="text-3xl font-bold">Design</h2>
             <p className="text-gray-600">
-              Vårt designteam tilbyr kreative og profesjonelle løsninger tilpasset dine behov. Vi tar hånd om hele
-              prosessen fra idé til ferdig produkt. Fra å være på den kreative, visuelle uttrykk er både spennende og
-              effektivt. Uansett prosjektets størrelse, sørger vi for at designet kommuniserer klart og definitivt.
+            Vårt designteam tilbyr kreative og profesjonelle løsninger skreddersydd for dine behov. 
+            Vi tar hånd om hele prosessen fra idé til ferdig produkt, og sikrer at det visuelle uttrykket blir både spennende og effektivt. 
+            Uansett prosjektets størrelse, sørger vi for at designet kommuniserer ditt budskap klart og tydelig.
             </p>
           </div>
           <div className="relative h-[400px]">

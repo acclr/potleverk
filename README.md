@@ -9,9 +9,15 @@ Website for Potleverk AS
 ## TODO
 - [x] Fix logo
 - [-] Fix images of products (Placeholder images added for now on front)
-- [ ] Fix tekst in header
-- [ ] Biutton under tekst to be sentered
-- [ ] Fix tekst in various places
+- [ ] Fix tekst in header - make headder more "buttony"
+- [x] Button under tekst to be sentered
+- [ ] Fix tekst on home page
+- [ ] Remove tjenester page
+- [ ] Change produkter page to tjenester og produkter page
+- [ ] Add more examples to produkter og tjenester
+- [ ] Fix tekst on produkter og tjenester
+- [ ] Fix tekst on contact page
+- [ ] Fix tekst on order page
 - [ ] Fix background grapics
 - [ ] Remove login button
 - [ ] Ensure contact form works as expected
@@ -19,7 +25,7 @@ Website for Potleverk AS
 
 ## Notes
 - Learn about:
-  - [ ] Best practices for markdown
+  - [x] Best practices for markdown
   - [ ] Best practices for React
   - [ ] Best practices for Tailwind
   - [ ] Best practices for NextJs

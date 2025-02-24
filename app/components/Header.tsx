@@ -17,10 +17,7 @@ export default function Header() {
         </Link>
         <div className="flex items-center gap-6">
           <Link href="/products" className="text-gray-700 hover:text-primary hidden md:block">
-            Produkter
-          </Link>
-          <Link href="/services" className="text-gray-700 hover:text-primary hidden md:block">
-            Tjenester
+            Produkter og tjenester
           </Link>
           <Link href="/contact" className="text-gray-700 hover:text-primary hidden md:block">
             Kontakt

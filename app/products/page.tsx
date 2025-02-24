@@ -1,8 +1,8 @@
 import Image from "next/image"
-
+import cncImage from "/product-images/cnc-sign.jpg"
 export default function Products() {
   const products = [
-    { id: 1, name: "CNC", description: "Vi lager alt fra skilt og dørdekor til gravering på kontorskilt og bordskånere. Skreddersydd design merket med navn og logo.", image: "/product-images/cnc-sign.jpg" },
+    { id: 1, name: "CNC", description: "Vi lager alt fra skilt og dørdekor til gravering på kontorskilt og bordskånere. Skreddersydd design merket med navn og logo.", image: cncImage },
     { id: 2, name: "Design", description: "Sammen finner vi de beste løsningene for din bedrift, uansett om du har en klar visjon eller trenger veiledning.", image: "/product-images/ideas-bulb.jpg" },
     { id: 3, name: "Print", description: "Uansett behov, sørger vi for at deres trykksaker skiller seg ut og fanger oppmerksomhet.", image: "/product-images/print-collection.jpg" },
   ]
