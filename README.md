@@ -12,7 +12,7 @@ Website for Potleverk AS
 - [ ] Fix tekst in header - make headder more "buttony"
 - [x] Button under tekst to be sentered
 - [ ] Fix tekst on home page
-- [ ] Remove tjenester page
+- [x] Remove tjenester page
 - [ ] Change produkter page to tjenester og produkter page
 - [ ] Add more examples to produkter og tjenester
 - [ ] Fix tekst on produkter og tjenester

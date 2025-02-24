@@ -1,10 +1,12 @@
 import Image from "next/image"
-import cncImage from "/product-images/cnc-sign.jpg"
+import cncImage from "../../public/product-images/cnc-sign.jpg"
+import ideaImage from "../../public/product-images/ideas-bulb.jpg"
+import printImage from "../../public/product-images/print-collection.jpg"
 export default function Products() {
   const products = [
     { id: 1, name: "CNC", description: "Vi lager alt fra skilt og dørdekor til gravering på kontorskilt og bordskånere. Skreddersydd design merket med navn og logo.", image: cncImage },
-    { id: 2, name: "Design", description: "Sammen finner vi de beste løsningene for din bedrift, uansett om du har en klar visjon eller trenger veiledning.", image: "/product-images/ideas-bulb.jpg" },
-    { id: 3, name: "Print", description: "Uansett behov, sørger vi for at deres trykksaker skiller seg ut og fanger oppmerksomhet.", image: "/product-images/print-collection.jpg" },
+    { id: 2, name: "Design", description: "Sammen finner vi de beste løsningene for din bedrift, uansett om du har en klar visjon eller trenger veiledning.", image: ideaImage },
+    { id: 3, name: "Print", description: "Uansett behov, sørger vi for at deres trykksaker skiller seg ut og fanger oppmerksomhet.", image: printImage },
   ]
 
   return (
@@ -16,8 +18,6 @@ export default function Products() {
             <Image
               src={product.image}
               alt={product.name}
-              width={300}
-              height={200}
               className="w-full h-40 object-cover mb-4 rounded"
             />
             <h2 className="text-xl font-semibold mb-2">{product.name}</h2>
