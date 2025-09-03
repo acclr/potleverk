@@ -23,6 +23,8 @@ const primary = Poppins({
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
+  title: "Potleverk",
+  description: "CNC, design og trykkeri-tjenester",
   icons: "favicon.ico",
 };
 
