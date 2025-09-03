@@ -1,0 +1,178 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "heading": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "heading1",
+            "content": {
+                          "text": "Choose Your Path"
+                        }
+                      }
+                    ]
+                  },
+                  "background": {
+                    "__TYPE__": "FieldContent",
+                    "value": "Light Blue",
+                    "type": "Select"
+                  },
+                  "spacing_top": {
+                    "__TYPE__": "FieldContent",
+                    "value": "Large",
+                    "type": "Select"
+                  },
+                  "spacing_bottom": {
+                    "__TYPE__": "FieldContent",
+                    "value": "None",
+                    "type": "Select"
+                  }
+                },
+                "items": [
+                  {
+                    "__TYPE__": "GroupItemContent",
+                    "value": [
+                      [
+                        "image",
+                        {
+                          "origin": {
+                            "id": "main",
+                            "url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6",
+                            "width": 3212,
+                            "height": 3880
+                          },
+                          "url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?rect=0%2C1064%2C3212%2C1752&w=2200&h=1200",
+                          "width": 2200,
+                          "height": 1200,
+                          "edit": {
+                            "zoom": 1,
+                            "crop": {
+                              "x": 0,
+                              "y": 1064
+                            },
+                            "background": "transparent"
+                          },
+                          "credits": "Photo by Brooke Lark on Unsplash",
+                          "alt": "Modern office workspace with desks and chairs",
+                          "__TYPE__": "ImageContent",
+                          "thumbnails": {}
+                        }
+                      ],
+                      [
+                        "text",
+                        {
+                          "__TYPE__": "StructuredTextContent",
+                          "value": [
+                            {
+                              "type": "paragraph",
+                              "content": {
+                                "text": "Explore our range of professional services designed to help your business thrive in a competitive market."
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      [
+                        "buttonLink",
+                        {
+                          "__TYPE__": "LinkContent",
+                          "value": {
+                            "__TYPE__": "ExternalLink",
+                            "url": "https://example.com/services/business-growth"
+                          }
+                        }
+                      ],
+                      [
+                        "buttonText",
+                        {
+                          "__TYPE__": "FieldContent",
+                          "value": "Learn More",
+                          "type": "Text"
+                        }
+                      ],
+                      [
+                        "title",
+                        {
+                          "__TYPE__": "FieldContent",
+                          "value": "Business Growth",
+                          "type": "Text"
+                        }
+                      ]
+                    ]
+                  },
+                  {
+                    "__TYPE__": "GroupItemContent",
+                    "value": [
+                      [
+                        "image",
+                        {
+                          "origin": {
+                            "id": "main",
+                            "url": "https://images.unsplash.com/photo-1521791136064-7986c2920216",
+                            "width": 6000,
+                            "height": 4000
+                          },
+                          "url": "https://images.unsplash.com/photo-1521791136064-7986c2920216?rect=0%2C800%2C6000%2C3200&w=2200&h=1200",
+                          "width": 2200,
+                          "height": 1200,
+                          "edit": {
+                            "zoom": 1,
+                            "crop": {
+                              "x": 0,
+                              "y": 800
+                            },
+                            "background": "transparent"
+                          },
+                          "credits": "Photo by Tyler Smith on Unsplash",
+                          "alt": "Hands shaking in agreement",
+                          "__TYPE__": "ImageContent",
+                          "thumbnails": {}
+                        }
+                      ],
+                      [
+                        "text",
+                        {
+                          "__TYPE__": "StructuredTextContent",
+                          "value": [
+                            {
+                              "type": "paragraph",
+                              "content": {
+                                      "text": "Partner with us to leverage our expertise and drive your projects to success."
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              "buttonLink",
+                              {
+                                "__TYPE__": "LinkContent",
+                                "value": {
+                                  "__TYPE__": "ExternalLink",
+                              "url": "https://example.com/services/partnership"
+                            }
+                          }
+                        ],
+                        [
+                          "buttonText",
+                          {
+                            "__TYPE__": "FieldContent",
+                          "value": "Partner Now",
+                          "type": "Text"
+                        }
+                      ],
+                      [
+                        "title",
+                        {
+                          "__TYPE__": "FieldContent",
+                          "value": "Partnership",
+                          "type": "Text"
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              }
+]

@@ -1,0 +1,119 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "title": {
+        "__TYPE__": "FieldContent",
+        "value": "Frequently Asked Questions?",
+        "type": "Text"
+      },
+      "text": {
+        "__TYPE__": "FieldContent",
+        "value": "Find answers to the most common questions about our services.",
+        "type": "Text"
+      },
+      "background": {
+        "__TYPE__": "FieldContent",
+        "value": "White",
+        "type": "Select"
+      },
+      "spacing_top": {
+        "__TYPE__": "FieldContent",
+        "value": "Large",
+        "type": "Select"
+      },
+      "spacing_bottom": {
+        "__TYPE__": "FieldContent",
+        "value": "Large",
+        "type": "Select"
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "question",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "What services do you offer?",
+              "type": "Text"
+            }
+          ],
+          [
+            "answer",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "We offer a wide range of services including web development, mobile app development, and digital marketing to help your business thrive online.",
+              "type": "Text"
+            }
+          ]
+        ]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "question",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "How can I contact support?",
+              "type": "Text"
+            }
+          ],
+          [
+            "answer",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "You can contact our support team via email at support@example.com or call us at (123) 456-7890 between 9 AM and 5 PM, Monday through Friday.",
+              "type": "Text"
+            }
+          ]
+        ]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "question",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "What is your refund policy?",
+              "type": "Text"
+            }
+          ],
+          [
+            "answer",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "We offer a 30-day money-back guarantee on all our services. If you're not satisfied, please contact us within 30 days for a full refund.",
+              "type": "Text"
+            }
+          ]
+        ]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "question",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "Do you offer custom solutions?",
+              "type": "Text"
+            }
+          ],
+          [
+            "answer",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "Absolutely! We tailor our services to meet your specific business needs. Contact us to discuss your requirements in detail.",
+              "type": "Text"
+            }
+          ]
+        ]
+      }
+    ]
+  }
+]

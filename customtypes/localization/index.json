@@ -1,0 +1,33 @@
+{
+  "id": "localization",
+  "label": "Localization",
+  "format": "custom",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "resources": {
+        "type": "Group",
+        "config": {
+          "label": "Resources",
+          "fields": {
+            "key": {
+              "type": "Text",
+              "config": {
+                "label": "Key",
+                "placeholder": ""
+              }
+            },
+            "value": {
+              "type": "Text",
+              "config": {
+                "label": "Value",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"label": {
+				"__TYPE__": "FieldContent",
+				"value": "porch",
+				"type": "Text"
+			},
+			"name": {
+				"__TYPE__": "FieldContent",
+				"value": "popular",
+				"type": "Text"
+			},
+			"required": {
+				"__TYPE__": "FieldContent",
+				"value": "slabs",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

@@ -1,0 +1,286 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "title": {
+        "__TYPE__": "FieldContent",
+        "value": "Find Your Inspiration",
+        "type": "Text"
+      },
+      "text": {
+        "__TYPE__": "FieldContent",
+        "value": "Explore new perspectives and challenge your creativity.",
+        "type": "Text"
+      },
+      "eyebrow_text": {
+        "__TYPE__": "FieldContent",
+        "value": "Discover",
+        "type": "Text"
+      },
+      "cards": {
+        "__TYPE__": "GroupContentType",
+        "value": [
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "eyebrow_text",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Focus & Growth",
+                  "type": "Text"
+                }
+              ],
+              [
+                "title",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Stay Committed",
+                  "type": "Text"
+                }
+              ],
+              [
+                "text",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Success is built through consistent effort and dedication.",
+                  "type": "Text"
+                }
+              ],
+              [
+                "image",
+                {
+                  "origin": {
+                    "id": "focus",
+                    "url": "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0",
+                    "width": 4000,
+                    "height": 2667
+                  },
+                  "url": "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0",
+                  "width": 4000,
+                  "height": 2667,
+                  "edit": {
+                    "zoom": 1,
+                    "crop": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "background": "transparent"
+                  },
+                  "credits": null,
+                  "alt": "Person hiking up a mountain trail",
+                  "__TYPE__": "ImageContent",
+                  "thumbnails": {}
+                }
+              ],
+              [
+                "button_text",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Learn More",
+                  "type": "Text"
+                }
+              ]
+            ]
+          },
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "eyebrow_text",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Innovation",
+                  "type": "Text"
+                }
+              ],
+              [
+                "title",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Think Outside the Box",
+                  "type": "Text"
+                }
+              ],
+              [
+                "text",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Creativity flourishes when you break free from limitations.",
+                  "type": "Text"
+                }
+              ],
+              [
+                "image",
+                {
+                  "origin": {
+                    "id": "creativity",
+                    "url": "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0",
+                    "width": 3000,
+                    "height": 2000
+                  },
+                  "url": "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0",
+                  "width": 3000,
+                  "height": 2000,
+                  "edit": {
+                    "zoom": 1,
+                    "crop": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "background": "transparent"
+                  },
+                  "credits": null,
+                  "alt": "Lightbulb glowing in darkness",
+                  "__TYPE__": "ImageContent",
+                  "thumbnails": {}
+                }
+              ],
+              [
+                "button_text",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Explore Ideas",
+                  "type": "Text"
+                }
+              ]
+            ]
+          },
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "eyebrow_text",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Adventure",
+                  "type": "Text"
+                }
+              ],
+              [
+                "title",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Step Into the Unknown",
+                  "type": "Text"
+                }
+              ],
+              [
+                "text",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "New experiences broaden your horizon and redefine possibilities.",
+                  "type": "Text"
+                }
+              ],
+              [
+                "image",
+                {
+                  "origin": {
+                    "id": "adventure",
+                    "url": "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0",
+                    "width": 4000,
+                    "height": 2667
+                  },
+                  "url": "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0",
+                  "width": 4000,
+                  "height": 2667,
+                  "edit": {
+                    "zoom": 1,
+                    "crop": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "background": "transparent"
+                  },
+                  "credits": null,
+                  "alt": "Person standing on a rock looking at mountains",
+                  "__TYPE__": "ImageContent",
+                  "thumbnails": {}
+                }
+              ],
+              [
+                "button_text",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Start Exploring",
+                  "type": "Text"
+                }
+              ]
+            ]
+          },
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "eyebrow_text",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Wellness",
+                  "type": "Text"
+                }
+              ],
+              [
+                "title",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Balance Your Life",
+                  "type": "Text"
+                }
+              ],
+              [
+                "text",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Taking care of your mind and body leads to true fulfillment.",
+                  "type": "Text"
+                }
+              ],
+              [
+                "image",
+                {
+                  "origin": {
+                    "id": "wellness",
+                    "url": "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0",
+                    "width": 4000,
+                    "height": 2667
+                  },
+                  "url": "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0",
+                  "width": 4000,
+                  "height": 2667,
+                  "edit": {
+                    "zoom": 1,
+                    "crop": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "background": "transparent"
+                  },
+                  "credits": null,
+                  "alt": "Yoga pose at sunrise",
+                  "__TYPE__": "ImageContent",
+                  "thumbnails": {}
+                }
+              ],
+              [
+                "button_text",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Find Balance",
+                  "type": "Text"
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      "card_type": {
+        "__TYPE__": "FieldContent",
+        "value": "Horizontal",
+        "type": "Select"
+      }
+    },
+    "items": []
+  }
+]

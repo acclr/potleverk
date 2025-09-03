@@ -1,0 +1,212 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "items": {
+        "__TYPE__": "GroupContentType",
+        "value": [
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "title",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Sustainable Energy Solutions",
+                  "type": "Text"
+                }
+              ],
+              [
+                "text",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Harness the power of renewable resources with our cutting-edge sustainable energy solutions.",
+                  "type": "Text"
+                }
+              ],
+              [
+                "vector_icon",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "<svg class='lucide lucide-earth'fill=none height=24 stroke=currentColor stroke-linecap=round stroke-linejoin=round stroke-width=1 viewBox='0 0 24 24'width=24 xmlns=http://www.w3.org/2000/svg><path d='M21.54 15H17a2 2 0 0 0-2 2v4.54'></path><path d='M7 3.34V5a3 3 0 0 0 3 3a2 2 0 0 1 2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.1.9-2 2-2h3.17'></path><path d='M11 21.95V18a2 2 0 0 0-2-2a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05'></path><circle cx=12 cy=12 r=10></circle></svg>",
+                  "type": "Select"
+                }
+              ]
+            ]
+          },
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "title",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Eco-Friendly Materials",
+                  "type": "Text"
+                }
+              ],
+              [
+                "text",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Our products are crafted using environmentally responsible materials.",
+                  "type": "Text"
+                }
+              ],
+              [
+                "vector_icon",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "<svg class='lucide lucide-rainbow'fill=none height=24 stroke=currentColor stroke-linecap=round stroke-linejoin=round stroke-width=2 viewBox='0 0 24 24'width=24 xmlns=http://www.w3.org/2000/svg><path d='M22 17a10 10 0 0 0-20 0'/><path d='M6 17a6 6 0 0 1 12 0'/><path d='M10 17a2 2 0 0 1 4 0'/></svg>",
+                  "type": "Text"
+                }
+              ]
+            ]
+          },
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "title",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Green Technologies",
+                  "type": "Text"
+                }
+              ],
+              [
+                "text",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Stay ahead with our innovative green technologies that drive efficiency and reduce pollution.",
+                  "type": "Text"
+                }
+              ],
+              [
+                "vector_icon",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "<svg class='lucide lucide-leafy-green'fill=none height=24 stroke=currentColor stroke-linecap=round stroke-linejoin=round stroke-width=2 viewBox='0 0 24 24'width=24 xmlns=http://www.w3.org/2000/svg><path d='M2 22c1.25-.987 2.27-1.975 3.9-2.2a5.56 5.56 0 0 1 3.8 1.5 4 4 0 0 0 6.187-2.353 3.5 3.5 0 0 0 3.69-5.116A3.5 3.5 0 0 0 20.95 8 3.5 3.5 0 1 0 16 3.05a3.5 3.5 0 0 0-5.831 1.373 3.5 3.5 0 0 0-5.116 3.69 4 4 0 0 0-2.348 6.155C3.499 15.42 4.409 16.712 4.2 18.1 3.926 19.743 3.014 20.732 2 22'/><path d='M2 22 17 7'/></svg>",
+                  "type": "Text"
+                }
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "items": []
+  },
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "fullWidth",
+    "primary": {
+      "section_title": {
+        "__TYPE__": "FieldContent",
+        "value": "Sustainability Initiatives",
+        "type": "Text"
+      },
+      "section_description": {
+        "__TYPE__": "FieldContent",
+        "value": "Our commitment to a greener future.",
+        "type": "Text"
+      },
+      "title": {
+        "__TYPE__": "FieldContent",
+        "value": "Eco-Friendly Practices",
+        "type": "Text"
+      },
+      "eyebrow_text": {
+        "__TYPE__": "FieldContent",
+        "value": "Our Body",
+        "type": "Text"
+      },
+      "rich_text": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "We prioritize sustainability in all aspects of our operations, ensuring that our products are not only stylish but also environmentally responsible."
+            }
+          }
+        ]
+      },
+      "image": {
+        "origin": {
+          "id": "main",
+          "url": "https://images.unsplash.com/photo-1587905069134-008460d7a636",
+          "width": 3935,
+          "height": 5894
+        },
+        "url": "https://images.unsplash.com/photo-1587905069134-008460d7a636?rect=0%2C0%2C3935%2C5894&w=2200&h=3300",
+        "width": 2200,
+        "height": 3300,
+        "edit": {
+          "zoom": 1,
+          "crop": {
+            "x": 0,
+            "y": 0
+          },
+          "background": "transparent"
+        },
+        "credits": "Photo by Daniel Smith on Unsplash",
+        "alt": "Lush green plants in an eco-friendly workspace",
+        "__TYPE__": "ImageContent",
+        "thumbnails": {}
+      },
+      "direction": {
+        "__TYPE__": "FieldContent",
+        "value": "reverse",
+        "type": "Select"
+      },
+      "background": {
+        "__TYPE__": "FieldContent",
+        "value": "White",
+        "type": "Select"
+      },
+      "spacing_top": {
+        "__TYPE__": "FieldContent",
+        "value": "Large",
+        "type": "Select"
+      },
+      "spacing_bottom": {
+        "__TYPE__": "FieldContent",
+        "value": "Large",
+        "type": "Select"
+      },
+      "buttons": {
+        "__TYPE__": "GroupContentType",
+        "value": [
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "link",
+                {
+                  "key": "0bef4fce-579e-4b15-9f11-0c415d78ee4b",
+                  "__TYPE__": "LinkContent",
+                  "value": {
+                    "__TYPE__": "ExternalLink",
+                    "url": "https://google.com/our-initiatives",
+                    "text": "Learn About Our Initiatives"
+                  }
+                }
+              ],
+              [
+                "type",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "primary",
+                  "type": "Select"
+                }
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "items": []
+  }
+]

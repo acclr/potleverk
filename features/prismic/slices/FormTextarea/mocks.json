@@ -1,0 +1,24 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"label": {
+				"__TYPE__": "FieldContent",
+				"value": "cent",
+				"type": "Text"
+			},
+			"name": {
+				"__TYPE__": "FieldContent",
+				"value": "fourth",
+				"type": "Text"
+			},
+			"placeholder": {
+				"__TYPE__": "FieldContent",
+				"value": "bowl",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

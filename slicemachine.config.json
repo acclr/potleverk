@@ -1,0 +1,13 @@
+{
+  "libraries": [
+    "./features/prismic/slices"
+  ],
+  "adapter": {
+    "resolve": "@slicemachine/adapter-next",
+    "options": {
+      "lazyLoadSlices": false
+    }
+  },
+  "repositoryName": "potleverk",
+  "localSliceSimulatorURL": "http://localhost:3000/slice-simulator"
+}

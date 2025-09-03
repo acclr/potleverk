@@ -1,0 +1,125 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1519326882834-04c334752f58?q=80&w=2604&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+					"width": 3560,
+					"height": 5340
+				},
+				"url": "https://images.unsplash.com/photo-1519326882834-04c334752f58?q=80&w=2604&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+				"width": 3560,
+				"height": 5340,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {
+					"portrait": {
+						"origin": {
+							"id": "portrait",
+							"url": "https://images.unsplash.com/photo-1511140973288-19bf21d7e771?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+							"width": 3810,
+							"height": 5715
+						},
+						"url": "https://images.unsplash.com/photo-1511140973288-19bf21d7e771?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+						"width": 1366,
+						"height": 1366,
+						"edit": {
+							"zoom": 1,
+							"crop": {
+								"x": 0,
+								"y": 953
+							},
+							"background": "transparent"
+						},
+						"credits": null,
+						"alt": null
+					}
+				}
+			},
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "Do it with passion, or lorem ipsum",
+				"type": "Text"
+			},
+			"rich_text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Excepteur anim amet proident pariatur. Excepteur proident minim eiusmod id laboris ad. Esse tempor dolore dolore."
+						}
+					}
+				]
+			},
+			"buttons": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"label",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "copy",
+									"type": "Text"
+								}
+							],
+							[
+								"type",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "primary",
+									"type": "Select"
+								}
+							],
+							[
+								"link",
+								{
+									"key": "ff550a32-36c2-4477-8e0a-51ef60b8332c",
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://twitter.com",
+										"text": "Läs mer här"
+									}
+								}
+							]
+						]
+					}
+				]
+			},
+			"eyebrow_text": {
+				"__TYPE__": "FieldContent",
+				"value": "Get Growth today",
+				"type": "Text"
+			},
+			"boxed": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"background_overlay": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"centered": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			}
+		},
+		"items": []
+	}
+]

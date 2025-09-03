@@ -1,0 +1,32 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "trouble",
+				"type": "Text"
+			},
+			"show_all": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"text": {
+				"__TYPE__": "FieldContent",
+				"value": "equally",
+				"type": "Text"
+			},
+			"show_all_link": {
+				"__TYPE__": "LinkContent",
+				"key": "c6b840df-1b48-4301-80ad-09dab2e4037e",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://prismic.io",
+					"text": "sets"
+				}
+			}
+		},
+		"items": []
+	}
+]

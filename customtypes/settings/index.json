@@ -1,0 +1,71 @@
+{
+  "format": "custom",
+  "id": "settings",
+  "label": "Settings",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "site_title": {
+        "type": "Text",
+        "config": {
+          "label": "Site Title",
+          "placeholder": ""
+        }
+      },
+      "company_email": {
+        "type": "Text",
+        "config": {
+          "label": "Company Email",
+          "placeholder": ""
+        }
+      },
+      "company_phone_number": {
+        "type": "Text",
+        "config": {
+          "label": "Company Phone Number",
+          "placeholder": ""
+        }
+      },
+      "footer_text": {
+        "type": "Text",
+        "config": {
+          "label": "Footer Text",
+          "placeholder": ""
+        }
+      },
+      "blog_listing_page": {
+        "type": "Link",
+        "config": {
+          "label": "Blog Listing Page",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": false,
+          "allowText": false,
+          "repeat": false
+        }
+      },
+      "seo_title": {
+        "type": "Text",
+        "config": {
+          "label": "SEO Title",
+          "placeholder": ""
+        }
+      },
+      "seo_description": {
+        "type": "Text",
+        "config": {
+          "label": "SEO Description",
+          "placeholder": ""
+        }
+      },
+      "seo_keywords": {
+        "type": "Text",
+        "config": {
+          "label": "SEO Keywords",
+          "placeholder": ""
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"label": {
+				"__TYPE__": "FieldContent",
+				"value": "understanding",
+				"type": "Text"
+			},
+			"name": {
+				"__TYPE__": "FieldContent",
+				"value": "meant",
+				"type": "Text"
+			},
+			"required": {
+				"__TYPE__": "FieldContent",
+				"value": "design",
+				"type": "Text"
+			},
+			"placeholder": {
+				"__TYPE__": "FieldContent",
+				"value": "unknown",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "resources": {
+      "__TYPE__": "GroupContentType",
+      "value": [
+        {
+          "__TYPE__": "GroupItemContent",
+          "value": [
+            [
+              "key",
+              {
+                "__TYPE__": "FieldContent",
+                "value": "warn",
+                "type": "Text"
+              }
+            ],
+            [
+              "value",
+              {
+                "__TYPE__": "FieldContent",
+                "value": "date",
+                "type": "Text"
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  }
+]
