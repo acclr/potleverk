@@ -13,6 +13,7 @@ import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import "./globals.css";
 import { LocalizationDocument, SettingsDocument } from "../prismicio-types";
+import { cn } from "@/components/utils";
 
 const primary = Poppins({
   subsets: ["latin-ext"],
@@ -32,12 +33,12 @@ export const metadata: Metadata = {
  * @param {{ children: React.ReactNode }}
  */
 export default async function RootLayout({ children }) {
-const drawerMenu = [];
-const headerMenu = [];
-const resources = {};
-const settings = {};
+  const drawerMenu = [];
+  const headerMenu = [];
+  const resources = {};
+  const settings = {};
   return (
-    <html lang="no" className={primary.variable}>
+    <html lang="no" className={cn(primary.variable, "overflow-y-scroll")}>
       <head>
         {/* 
         <Script

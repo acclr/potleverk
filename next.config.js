@@ -30,12 +30,7 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  experimental: {
-    optimizePackageImports: ["react-icons"]
-  },
-  /*   transpilePackages: ["@accelor/ui", "@accelor/slices", "@accelor/utils"], */
   reactStrictMode: false,
-
   images: {
     deviceSizes: [64, 512, 768, 1024, 1920],
     dangerouslyAllowSVG: true,

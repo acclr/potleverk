@@ -100,17 +100,17 @@ export default function OrdersPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 md:px-6 lgup:px-8 py-8">
       <div className="flex w-full py-5 border-b border-b-black/10 flex-row items-center justify-between">
-        <div className="flex flex-row items-start"><strong>
-          Inloggad som - </strong>
-          <span className="font-medium">{user?.meta?.createdAt} {user?.uid}</span>
+        <div className="flex flex-row items-start">
+          <strong>Inloggad som - </strong>
+          <span className="font-medium">
+            {user?.meta?.createdAt} {user?.uid}
+          </span>
         </div>
       </div>
       <div className="flex flex-col lgup:flex-row gap-6">
         {/* Left: Orders list */}
-        <aside className="lgup:col-span-6 border-r py-6 border-black/10 xl:col-span-3">
-          <h2 className="text-2xl font-extrabold mb-4">
-            Mine bestillinger
-          </h2>
+        <aside className="min-w-[380px] border-r py-6 border-black/10 xl:col-span-3">
+          <h2 className="text-2xl font-extrabold mb-4">Mine bestillinger</h2>
           <ul className="space-y-0">
             {isLoading && (
               <div className="text-gray-500">Laster bestillinger…</div>
@@ -142,8 +142,9 @@ export default function OrdersPage() {
                       </p>
                     </div>
                     <span
-                      className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ${statusStyles[order.status]
-                        }`}
+                      className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ${
+                        statusStyles[order.status]
+                      }`}
                     >
                       {statusLabel[order.status]}
                     </span>
@@ -293,14 +294,12 @@ function OrderMessages({ orderId }: { orderId: string }) {
       ) : (
         <ul className="space-y-6">
           {messages
-            .sort((a, b) => a.sentAt.localeCompare(b.sentAt))
+            .sort((a, b) => a?.sentAt?.localeCompare(b?.sentAt))
             .map((m) => {
               return (
                 <li
                   key={m.id}
-                  className={cn(
-                    "flex flex-row items-start gap-3",
-                  )}
+                  className={cn("flex flex-row items-start gap-3")}
                 >
                   <div className="h-8 w-8 shrink-0 rounded-full bg-gray-300" />
                   <div className="flex-1">
