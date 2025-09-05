@@ -7,13 +7,16 @@ import { cache } from "react";
 
 export const getDrawerMenu = cache(async () => {
   const client = createClient();
-  const drawer = await client.getByUID("navigation", "drawer-menu").catch(err => {
-    console.error(err);
-    return null;
-  });
+  try {
+    if (!client) return [];
+    const drawer = await client.getByUID("navigation", "drawer-menu");
 
   return drawer?.data?.items?.map((item: NavigationDocumentDataItemsItem) => ({
     label: item?.link?.text ?? item?.text,
     href: getHrefFromDoc(item.link)
   }));
+  } catch (err) {
+    console.error(err);
+    return [];
+  }
 });

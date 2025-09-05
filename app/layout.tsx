@@ -32,13 +32,10 @@ export const metadata: Metadata = {
  * @param {{ children: React.ReactNode }}
  */
 export default async function RootLayout({ children }) {
-  const [resources, settings, drawerMenu, headerMenu] = await Promise.all([
-    getStringResources(),
-    getSettings(),
-    getDrawerMenu(),
-    getHeaderMenu(),
-  ]);
-
+const drawerMenu = [];
+const headerMenu = [];
+const resources = {};
+const settings = {};
   return (
     <html lang="no" className={primary.variable}>
       <head>

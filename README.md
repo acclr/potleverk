@@ -5,11 +5,14 @@ Website for Potleverk AS
 - NextJs
 - React
 - Tailwind
+- Prismic CMS (for marketing content)
+- Firebase (for authentication, database and blob storage)
+- Resend (for sending email)
 
 ## TODO
 - [x] Fix logo
 - [-] Fix images of products (Placeholder images added for now on front)
-- [ ] Fix tekst in header - make headder more "buttony"
+- [x] Fix tekst in header - make headder more "buttony"
 - [x] Button under tekst to be sentered
 - [ ] Fix tekst on home page
 - [x] Remove tjenester page

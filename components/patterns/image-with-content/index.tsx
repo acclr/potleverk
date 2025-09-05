@@ -22,13 +22,28 @@ export const ImageWithContent = ({
       padding={isFullWidth ? "none" : "lg"}
       direction="row"
       classNames={{
-        container: cn("lg:flex-col", isFullWidth ? (reversed ? "lgup:flex-row-reverse" : "") : "", className),
-        inner: cn("items-stretch lg:!flex-col lg:items-start gap-6", reversed ? "lgup:flex-row-reverse" : "")
-      }}>
+        container: cn(
+          "lg:flex-col",
+          isFullWidth ? (reversed ? "lgup:flex-row-reverse" : "") : "",
+          className
+        ),
+        inner: cn(
+          "items-stretch lg:!flex-col lg:items-start gap-24",
+          reversed ? "lgup:flex-row-reverse" : ""
+        ),
+      }}
+    >
       {image && (
-      <div className={cn(isFullWidth ? "flex w-full flex-[1]" : "flex w-full flex-[1]")}>
+        <div
+          className={cn(
+            isFullWidth ? "flex w-full flex-[1]" : "flex w-full flex-[1]"
+          )}
+        >
           <Image
-            className={cn("left-0 top-0 z-10 h-full w-full", objectContain ? "object-contain" : "object-cover")}
+            className={cn(
+              "left-0 top-0 z-10 h-full w-full",
+              objectContain ? "object-contain" : "object-cover"
+            )}
             alt={image.alt as string}
             src={image.url as string}
             width={600}
@@ -39,11 +54,29 @@ export const ImageWithContent = ({
       )}
 
       <div className="flex flex-[1] flex-col items-center justify-center text-left">
-        <div className={cn(isFullWidth ? "p-24 lg:p-12 md:p-8" : reversed ? "mr-8 lg:mr-0" : "ml-8 lg:ml-0")}>
-          {eyebrowText && <span className="ui-eyebrow inline-block text-lg">{eyebrowText}</span>}
+        <div
+          className={cn(
+            isFullWidth
+              ? "p-24 lg:p-12 md:p-8"
+              : reversed
+                ? "mr-8 lg:mr-0"
+                : "ml-8 lg:ml-0"
+          )}
+        >
+          {eyebrowText && (
+            <span className="ui-eyebrow inline-block text-lg">
+              {eyebrowText}
+            </span>
+          )}
 
           {title && (
-            <h3 className={cn("font-[550]", isFullWidth ? "text-4xl" : "text-3xl")} dangerouslySetInnerHTML={{ __html: title }} />
+            <h3
+              className={cn(
+                "font-[700]",
+                isFullWidth ? "text-[42px]" : "text-[42px]"
+              )}
+              dangerouslySetInnerHTML={{ __html: title }}
+            />
           )}
 
           <div className="mb-8 mt-6 text-lg">{richText}</div>

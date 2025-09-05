@@ -12,10 +12,16 @@ export enum MessageStatus {
   READ = "read"
 }
 
+export enum MessageType {
+  APPROVE = "approved",
+  REJECT = "rejected",
+}
+
 export interface Message {
   id: string;
   senderId: string;
   sentAt: string;
   message: string;
   status?: MessageStatus;
+  type?: MessageType;
 }

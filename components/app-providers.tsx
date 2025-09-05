@@ -17,27 +17,25 @@ const Providers = ({ children, settings, resources }: { children: React.ReactNod
   return (
     <>
       {[
-        [ThemeProvider, {}],
         [AuthProvider, {}],
         [QueryClientProvider, { client }],
         [LazyMotion, { features }],
         [NotificationProvider, {}],
         [LocaleProvider, { resources }],
         [SettingsProvider, { settings }],
-      ].reduce(
-        (acc, [provider, props = {}], i) => {
-          const Provider = provider as React.ComponentType<React.ComponentProps<
-            keyof JSX.IntrinsicElements
-          >>;
+      ].reduce((acc, [provider, props = {}], i) => {
+        const Provider = provider as React.ComponentType<
+          React.ComponentProps<keyof JSX.IntrinsicElements>
+        >;
 
-          return (
-            <Provider key={i} {...(props as JSX.IntrinsicAttributes)}>{acc}</Provider>
-          )
-        },
-        children
-      )}
+        return (
+          <Provider key={i} {...(props as JSX.IntrinsicAttributes)}>
+            {acc}
+          </Provider>
+        );
+      }, children)}
     </>
-  )
+  );
 };
 
 export default Providers;
