@@ -1,0 +1,88 @@
+{
+  "id": "faq_section",
+  "type": "SharedSlice",
+  "name": "FaqSection",
+  "description": "FaqSection",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "text": {
+          "type": "Text",
+          "config": {
+            "label": "Text",
+            "placeholder": ""
+          }
+        },
+        "background": {
+          "type": "Select",
+          "config": {
+            "label": "Background",
+            "placeholder": "",
+            "options": [
+              "White",
+              "Light Gray",
+              "Light Blue",
+              "Dark"
+            ],
+            "default_value": "White"
+          }
+        },
+        "spacing_top": {
+          "type": "Select",
+          "config": {
+            "label": "Spacing (Top)",
+            "placeholder": "",
+            "options": [
+              "Large",
+              "Small",
+              "None"
+            ],
+            "default_value": "Large"
+          }
+        },
+        "spacing_bottom": {
+          "type": "Select",
+          "config": {
+            "label": "Spacing (Bottom)",
+            "placeholder": "",
+            "options": [
+              "Large",
+              "Small",
+              "None"
+            ],
+            "default_value": "Large"
+          }
+        }
+      },
+      "items": {
+        "question": {
+          "type": "Text",
+          "config": {
+            "label": "Question",
+            "placeholder": ""
+          }
+        },
+        "answer": {
+          "type": "Text",
+          "config": {
+            "label": "Answer",
+            "placeholder": ""
+          }
+        }
+      }
+    }
+  ]
+}

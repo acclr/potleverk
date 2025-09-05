@@ -1,0 +1,45 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "hospital",
+				"type": "Text"
+			},
+			"preamble": {
+				"__TYPE__": "FieldContent",
+				"value": "tip",
+				"type": "Text"
+			},
+			"rich_text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Anim eu esse laboris nostrud ea commodo occaecat sunt nostrud. Deserunt proident consequat Lorem veniam amet do est ad ipsum cupidatat do esse esse. Adipisicing adipisicing qui pariatur est laborum anim."
+						}
+					}
+				]
+			},
+			"background": {
+				"__TYPE__": "FieldContent",
+				"value": "White",
+				"type": "Select"
+			},
+			"spacing_top": {
+				"__TYPE__": "FieldContent",
+				"value": "Large",
+				"type": "Select"
+			},
+			"spacing_bottom": {
+				"__TYPE__": "FieldContent",
+				"value": "Small",
+				"type": "Select"
+			}
+		},
+		"items": []
+	}
+]

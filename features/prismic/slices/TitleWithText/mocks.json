@@ -1,0 +1,30 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "concerned",
+				"type": "Text"
+			},
+			"rich_text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Ea ea ex enim aute id. Magna cupidatat et adipisicing anim ea laboris tempor mollit cupidatat dolor ipsum consectetur cillum dolore."
+						}
+					}
+				]
+			},
+			"eyebrow_text": {
+				"__TYPE__": "FieldContent",
+				"value": "neighborhood",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

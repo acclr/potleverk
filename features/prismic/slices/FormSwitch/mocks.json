@@ -1,0 +1,19 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"label": {
+				"__TYPE__": "FieldContent",
+				"value": "shirt",
+				"type": "Text"
+			},
+			"name": {
+				"__TYPE__": "FieldContent",
+				"value": "aware",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

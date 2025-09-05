@@ -1,0 +1,127 @@
+{
+  "format": "page",
+  "id": "blog_post",
+  "label": "Blog Post",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID"
+        }
+      },
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": ""
+        }
+      },
+      "image": {
+        "type": "Image",
+        "config": {
+          "label": "Image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "preamble": {
+        "type": "Text",
+        "config": {
+          "label": "Preamble",
+          "placeholder": ""
+        }
+      },
+      "rich_text": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Rich Text",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "related_content": {
+        "type": "Link",
+        "config": {
+          "label": "Related Content",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": true
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "image_cards": {
+              "type": "SharedSlice"
+            },
+            "faq_section": {
+              "type": "SharedSlice"
+            },
+            "text_block_grid": {
+              "type": "SharedSlice"
+            },
+            "image_with_content": {
+              "type": "SharedSlice"
+            },
+            "content_blocks": {
+              "type": "SharedSlice"
+            },
+            "card_grid": {
+              "type": "SharedSlice"
+            },
+            "banner": {
+              "type": "SharedSlice"
+            },
+            "form_section": {
+              "type": "SharedSlice"
+            },
+            "text_content": {
+              "type": "SharedSlice"
+            },
+            "newsletter": {
+              "type": "SharedSlice"
+            },
+            "blog_posts": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    },
+    "SEO & Metadata": {
+      "meta_title": {
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "A title of the page used for social media and search engines"
+        },
+        "type": "Text"
+      },
+      "meta_description": {
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "A brief summary of the page"
+        },
+        "type": "Text"
+      },
+      "meta_image": {
+        "config": {
+          "constraint": {
+            "height": 1260,
+            "width": 2400
+          },
+          "label": "Meta Image",
+          "thumbnails": []
+        },
+        "type": "Image"
+      }
+    }
+  }
+}

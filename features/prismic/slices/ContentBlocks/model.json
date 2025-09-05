@@ -1,0 +1,111 @@
+{
+  "id": "content_blocks",
+  "type": "SharedSlice",
+  "name": "ContentBlocks",
+  "description": "ContentBlocks",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": "Title displayed above the item grid"
+          }
+        },
+        "text": {
+          "type": "Text",
+          "config": {
+            "label": "Text",
+            "placeholder": "Descriptive text displayed above the item grid"
+          }
+        },
+        "eyebrow_text": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow Text",
+            "placeholder": ""
+          }
+        },
+        "items": {
+          "type": "Group",
+          "config": {
+            "label": "Items",
+            "repeat": true,
+            "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": ""
+                }
+              },
+              "text": {
+                "type": "Text",
+                "config": {
+                  "label": "Text",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "background": {
+          "type": "Select",
+          "config": {
+            "label": "Background",
+            "placeholder": "",
+            "options": [
+              "White",
+              "Light Gray",
+              "Light Blue",
+              "Dark"
+            ],
+            "default_value": "White"
+          }
+        },
+        "spacing_top": {
+          "type": "Select",
+          "config": {
+            "label": "Spacing (Top)",
+            "placeholder": "",
+            "options": [
+              "Large",
+              "Small",
+              "None"
+            ],
+            "default_value": "Large"
+          }
+        },
+        "spacing_bottom": {
+          "type": "Select",
+          "config": {
+            "label": "Spacing (Bottom)",
+            "placeholder": "",
+            "options": [
+              "Large",
+              "Small",
+              "None"
+            ],
+            "default_value": "Large"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

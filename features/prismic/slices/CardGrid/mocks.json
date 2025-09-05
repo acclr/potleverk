@@ -1,0 +1,288 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "title": {
+        "__TYPE__": "FieldContent",
+        "value": "Sustainable Energy Solutions",
+        "type": "Text"
+      },
+      "subTitle": {
+        "__TYPE__": "FieldContent",
+        "value": "Innovate",
+        "type": "Text"
+      },
+      "eyebrowText": {
+        "__TYPE__": "FieldContent",
+        "value": "Renewables",
+        "type": "Text"
+      },
+      "background": {
+        "__TYPE__": "FieldContent",
+        "value": "White",
+        "type": "Select"
+      },
+      "spacing_top": {
+        "__TYPE__": "FieldContent",
+        "value": "Large",
+        "type": "Select"
+      },
+      "spacing_bottom": {
+        "__TYPE__": "FieldContent",
+        "value": "Small",
+        "type": "Select"
+      },
+      "buttons": {
+        "__TYPE__": "GroupContentType",
+        "value": [
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "link",
+                {
+                  "key": "ba2c4d67-6332-47a4-81d3-449617fe3004",
+                  "__TYPE__": "LinkContent",
+                  "value": {
+                    "__TYPE__": "ExternalLink",
+                    "url": "https://slicemachine.dev",
+                    "text": "Learn More"
+                  }
+                }
+              ],
+              [
+                "type",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "primary",
+                  "type": "Select"
+                }
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "title",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "Solar Power Integration",
+              "type": "Text"
+            }
+          ],
+          [
+            "text",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "Integrate solar power into your existing infrastructure seamlessly with our expert services. Reduce energy costs and your carbon footprint.",
+              "type": "Text"
+            }
+          ],
+          [
+            "link",
+            {
+              "__TYPE__": "LinkContent",
+              "key": "d1a2b3c4-5678-90ab-cdef-1234567890ab",
+              "value": {
+                "__TYPE__": "ExternalLink",
+                "url": "https://slicemachine.dev/solar-integration",
+                "text": "Solar Integration Services"
+              }
+            }
+          ]
+        ]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "title",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "Eco-Friendly Materials",
+              "type": "Text"
+            }
+          ],
+          [
+            "text",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "Our products are crafted using environmentally responsible materials, ensuring a minimal carbon footprint and promoting sustainability.",
+              "type": "Text"
+            }
+          ],
+          [
+            "link",
+            {
+              "__TYPE__": "LinkContent",
+              "key": "e5f6g7h8-90ij-klmn-opqr-2345678901bc",
+              "value": {
+                "__TYPE__": "ExternalLink",
+                "url": "https://slicemachine.dev/wind-energy",
+                "text": "Explore Wind Solutions"
+              }
+            }
+          ]
+        ]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "title",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "Green Technologies",
+              "type": "Text"
+            }
+          ],
+          [
+            "text",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "Stay ahead with our innovative green technologies that drive efficiency and reduce environmental impact across various industries.",
+              "type": "Text"
+            }
+          ],
+          [
+            "link",
+            {
+              "__TYPE__": "LinkContent",
+              "key": "i9j0k1l2-345m-n6op-qrst-3456789012cd",
+              "value": {
+                "__TYPE__": "ExternalLink",
+                "url": "https://slicemachine.dev/energy-storage",
+                "text": "Discover Storage Solutions"
+              }
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "gridWithImages",
+    "primary": {
+      "title": {
+        "__TYPE__": "FieldContent",
+        "value": "Renewable Projects",
+        "type": "Text"
+      },
+      "text": {
+        "__TYPE__": "FieldContent",
+        "value": "Our portfolio showcases a diverse range of successful renewable energy projects across various sectors.",
+        "type": "Text"
+      },
+      "eyebrow_text": {
+        "__TYPE__": "FieldContent",
+        "value": "Projects",
+        "type": "Text"
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "title",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "Community Solar Farms",
+              "type": "Text"
+            }
+          ],
+          [
+            "text",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "Empowering communities with access to affordable solar energy through our community solar farm projects.",
+              "type": "Text"
+            }
+          ],
+          [
+            "image",
+            {
+              "__TYPE__": "ImageContent",
+              "origin": {
+                "id": "main",
+                "url": "https://images.unsplash.com/photo-1494173853739-c21f58b16055",
+                "width": 3277,
+                "height": 4092
+              },
+              "url": "https://images.unsplash.com/photo-1494173853739-c21f58b16055?auto=format&fit=crop&w=2200&h=2200",
+              "width": 2200,
+              "height": 2200,
+              "edit": {
+                "zoom": 1,
+                "crop": {
+                  "x": 0,
+                  "y": 0
+                },
+                "background": "transparent"
+              },
+              "credits": "Photo by Dustin Schroeder on Unsplash",
+              "alt": "Aerial view of a community solar farm with solar panels",
+              "__TYPE__": "ImageContent",
+              "thumbnails": {}
+            }
+          ]
+        ]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "title",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "Wind Turbine Installations",
+              "type": "Text"
+            }
+          ],
+          [
+            "text",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "Installing state-of-the-art wind turbines to harness wind energy efficiently for commercial and residential use.",
+              "type": "Text"
+            }
+          ],
+          [
+            "image",
+            {
+              "__TYPE__": "ImageContent",
+              "origin": {
+                "id": "main",
+                "url": "https://images.unsplash.com/photo-1591012911207-0dbac31f37da",
+                "width": 4000,
+                "height": 4000
+              },
+              "url": "https://images.unsplash.com/photo-1591012911207-0dbac31f37da?auto=format&fit=crop&w=2200&h=2200",
+              "width": 2200,
+              "height": 2200,
+              "edit": {
+                "zoom": 1,
+                "crop": {
+                  "x": 0,
+                  "y": 0
+                },
+                "background": "transparent"
+              },
+              "credits": "Photo by Craig Smith on Unsplash",
+              "alt": "Wind turbines operating in a large wind farm",
+              "__TYPE__": "ImageContent",
+              "thumbnails": {}
+            }
+          ]
+        ]
+      }
+    ]
+  }
+]

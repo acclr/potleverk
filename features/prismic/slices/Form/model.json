@@ -1,0 +1,26 @@
+{
+  "id": "form_section",
+  "type": "SharedSlice",
+  "name": "Form",
+  "description": "FormSection",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "form_shape": {
+          "type": "Link",
+          "config": {
+            "label": "Form Shape",
+            "select": "document"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

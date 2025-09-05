@@ -1,0 +1,92 @@
+{
+  "id": "blog_posts",
+  "type": "SharedSlice",
+  "name": "BlogPosts",
+  "description": "BlogPosts",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "show_all": {
+          "type": "Boolean",
+          "config": {
+            "label": "Show All",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
+        },
+        "text": {
+          "type": "Text",
+          "config": {
+            "label": "Text",
+            "placeholder": ""
+          }
+        },
+        "background": {
+          "type": "Select",
+          "config": {
+            "label": "Background",
+            "placeholder": "",
+            "options": [
+              "White",
+              "Light Gray",
+              "Light Blue"
+            ],
+            "default_value": "White"
+          }
+        },
+        "spacing_top": {
+          "type": "Select",
+          "config": {
+            "label": "Spacing (Top)",
+            "placeholder": "",
+            "options": [
+              "Large",
+              "Small",
+              "None"
+            ],
+            "default_value": "Large"
+          }
+        },
+        "spacing_bottom": {
+          "type": "Select",
+          "config": {
+            "label": "Spacing (Bottom)",
+            "placeholder": "",
+            "options": [
+              "Large",
+              "Small",
+              "None"
+            ],
+            "default_value": "Large"
+          }
+        },
+        "show_all_link": {
+          "type": "Link",
+          "config": {
+            "label": "Show All Link",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": false,
+            "allowText": true,
+            "repeat": false
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

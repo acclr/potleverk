@@ -1,0 +1,353 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "Explore Our Collection",
+				"type": "Text"
+			},
+			"eyebrow_text": {
+				"__TYPE__": "FieldContent",
+				"value": "Clothing",
+				"type": "Text"
+			},
+			"rich_text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Discover our exclusive range of clothing designed to elevate your style. From casual wear to elegant evening attire, we have something for every occasion."
+						}
+					}
+				]
+			},
+			"image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef",
+					"width": 4000,
+					"height": 6000
+				},
+				"url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?rect=0%2C0%2C4000%2C6000&w=2200&h=3300",
+				"width": 2200,
+				"height": 3300,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"credits": "Photo by Brooke Lark on Unsplash",
+				"alt": "Elegant display of assorted clothing items on a rack",
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"direction": {
+				"__TYPE__": "FieldContent",
+				"value": "left",
+				"type": "Select"
+			},
+			"section_title": {
+				"__TYPE__": "FieldContent",
+				"value": "Latest Trends",
+				"type": "Text"
+			},
+			"section_description": {
+				"__TYPE__": "FieldContent",
+				"value": "Stay updated with the newest styles and fashion statements.",
+				"type": "Text"
+			},
+			"spacing_top": {
+				"__TYPE__": "FieldContent",
+				"value": "Large",
+				"type": "Select"
+			},
+			"spacing_bottom": {
+				"__TYPE__": "FieldContent",
+				"value": "Large",
+				"type": "Select"
+			},
+			"background": {
+				"__TYPE__": "FieldContent",
+				"value": "Light Gray",
+				"type": "Select"
+			},
+			"buttons": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"link",
+								{
+									"key": "2c916b34-5e28-4661-83ff-c0fdcebdeedf",
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://twitter.com/yourbrand",
+										"text": "Follow Us on Twitter"
+									}
+								}
+							],
+							[
+								"type",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "secondary",
+									"type": "Select"
+								}
+							]
+						]
+					}
+				]
+			},
+			"object_contain": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "fullWidth",
+		"primary": {
+			"section_title": {
+				"__TYPE__": "FieldContent",
+				"value": "Sustainability Initiatives",
+				"type": "Text"
+			},
+			"section_description": {
+				"__TYPE__": "FieldContent",
+				"value": "Our commitment to a greener future.",
+				"type": "Text"
+			},
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "Eco-Friendly Practices",
+				"type": "Text"
+			},
+			"eyebrow_text": {
+				"__TYPE__": "FieldContent",
+				"value": "Our Body",
+				"type": "Text"
+			},
+			"rich_text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "We prioritize sustainability in all aspects of our operations, ensuring that our products are not only stylish but also environmentally responsible."
+						}
+					}
+				]
+			},
+			"image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1587905069134-008460d7a636",
+					"width": 3935,
+					"height": 5894
+				},
+				"url": "https://images.unsplash.com/photo-1587905069134-008460d7a636?rect=0%2C0%2C3935%2C5894&w=2200&h=3300",
+				"width": 2200,
+				"height": 3300,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"credits": "Photo by Daniel Smith on Unsplash",
+				"alt": "Lush green plants in an eco-friendly workspace",
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"direction": {
+				"__TYPE__": "FieldContent",
+				"value": "reverse",
+				"type": "Select"
+			},
+			"background": {
+				"__TYPE__": "FieldContent",
+				"value": "White",
+				"type": "Select"
+			},
+			"spacing_top": {
+				"__TYPE__": "FieldContent",
+				"value": "Large",
+				"type": "Select"
+			},
+			"spacing_bottom": {
+				"__TYPE__": "FieldContent",
+				"value": "Large",
+				"type": "Select"
+			},
+			"buttons": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"link",
+								{
+									"key": "0bef4fce-579e-4b15-9f11-0c415d78ee4b",
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://google.com/our-initiatives",
+										"text": "Learn About Our Initiatives"
+									}
+								}
+							],
+							[
+								"type",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "primary",
+									"type": "Select"
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "vertical",
+		"primary": {
+			"section_title": {
+				"__TYPE__": "FieldContent",
+				"value": "adventure",
+				"type": "Text"
+			},
+			"section_description": {
+				"__TYPE__": "FieldContent",
+				"value": "shoe",
+				"type": "Text"
+			},
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "ball",
+				"type": "Text"
+			},
+			"eyebrow_text": {
+				"__TYPE__": "FieldContent",
+				"value": "our",
+				"type": "Text"
+			},
+			"rich_text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Sit do ipsum tempor eu Lorem incididunt laborum ipsum. Id nostrud reprehenderit Lorem proident ipsum pariatur pariatur eiusmod proident reprehenderit Lorem officia anim consectetur. Elit enim reprehenderit quis dolore."
+						}
+					}
+				]
+			},
+			"image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9",
+					"width": 4752,
+					"height": 3168
+				},
+				"url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9",
+				"width": 4752,
+				"height": 3168,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"background": {
+				"__TYPE__": "FieldContent",
+				"value": "White",
+				"type": "Select"
+			},
+			"spacing_top": {
+				"__TYPE__": "FieldContent",
+				"value": "Large",
+				"type": "Select"
+			},
+			"spacing_bottom": {
+				"__TYPE__": "FieldContent",
+				"value": "Large",
+				"type": "Select"
+			},
+			"buttons": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"link",
+								{
+									"key": "56d92911-ce57-478c-8221-a95851476e12",
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://google.com",
+										"text": "wire"
+									}
+								}
+							],
+							[
+								"type",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "muted-inverted",
+									"type": "Select"
+								}
+							]
+						]
+					}
+				]
+			},
+			"object_contain": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	}
+]

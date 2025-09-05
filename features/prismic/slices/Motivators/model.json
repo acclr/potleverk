@@ -1,0 +1,97 @@
+{
+  "id": "motivators",
+  "type": "SharedSlice",
+  "name": "Motivators",
+  "description": "Motivators",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "background": {
+          "type": "Select",
+          "config": {
+            "label": "Background",
+            "placeholder": "",
+            "options": [
+              "White",
+              "Light Gray",
+              "Light Blue",
+              "Dark"
+            ],
+            "default_value": "White"
+          }
+        },
+        "spacing_top": {
+          "type": "Select",
+          "config": {
+            "label": "Spacing (Top)",
+            "placeholder": "",
+            "options": [
+              "Large",
+              "Small",
+              "None"
+            ],
+            "default_value": "Large"
+          }
+        },
+        "spacing_bottom": {
+          "type": "Select",
+          "config": {
+            "label": "Spacing (Bottom)",
+            "placeholder": "",
+            "options": [
+              "Large",
+              "Small",
+              "None"
+            ],
+            "default_value": "Large"
+          }
+        },
+        "items": {
+          "type": "Group",
+          "config": {
+            "label": "Items",
+            "repeat": true,
+            "fields": {
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": ""
+                }
+              },
+              "text": {
+                "type": "Text",
+                "config": {
+                  "label": "Text",
+                  "placeholder": ""
+                }
+              },
+              "icon": {
+                "type": "Image",
+                "config": {
+                  "label": "Icon",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "vector_icon": {
+                "type": "Text",
+                "config": {
+                  "label": "Vector Icon",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

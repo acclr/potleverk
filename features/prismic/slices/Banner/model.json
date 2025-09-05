@@ -1,0 +1,166 @@
+{
+  "id": "banner",
+  "type": "SharedSlice",
+  "name": "Banner",
+  "description": "Banner",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {
+              "width": null,
+              "height": null
+            },
+            "thumbnails": [
+              {
+                "name": "portrait",
+                "width": 1366,
+                "height": 1366
+              }
+            ]
+          }
+        },
+        "eyebrow_text": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow Text",
+            "placeholder": "Text displayed above the title in small letters"
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "rich_text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Rich Text",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "background": {
+          "type": "Select",
+          "config": {
+            "label": "Background",
+            "placeholder": "",
+            "options": [
+              "White",
+              "Light Gray",
+              "Light Blue",
+              "Dark"
+            ],
+            "default_value": "White"
+          }
+        },
+        "centered": {
+          "type": "Boolean",
+          "config": {
+            "label": "Centered",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
+        },
+        "spacing_top": {
+          "type": "Select",
+          "config": {
+            "label": "Spacing (Top)",
+            "placeholder": "",
+            "options": [
+              "Large",
+              "Small",
+              "None"
+            ],
+            "default_value": "Large"
+          }
+        },
+        "spacing_bottom": {
+          "type": "Select",
+          "config": {
+            "label": "Spacing (Bottom)",
+            "placeholder": "",
+            "options": [
+              "Large",
+              "Small",
+              "None"
+            ],
+            "default_value": "Large"
+          }
+        },
+        "buttons": {
+          "type": "Group",
+          "config": {
+            "label": "Buttons",
+            "repeat": true,
+            "fields": {
+              "label": {
+                "type": "Text",
+                "config": {
+                  "label": "Label",
+                  "placeholder": ""
+                }
+              },
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "Link",
+                  "placeholder": "",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": true,
+                  "repeat": false
+                }
+              },
+              "type": {
+                "type": "Select",
+                "config": {
+                  "label": "Type",
+                  "placeholder": "",
+                  "options": [
+                    "primary",
+                    "secondary",
+                    "muted"
+                  ],
+                  "default_value": "primary"
+                }
+              }
+            }
+          }
+        },
+        "boxed": {
+          "type": "Boolean",
+          "config": {
+            "label": "Boxed",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
+        },
+        "background_overlay": {
+          "type": "Boolean",
+          "config": {
+            "label": "Background Overlay",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
