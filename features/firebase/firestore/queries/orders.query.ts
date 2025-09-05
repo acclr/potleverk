@@ -21,10 +21,10 @@ export function useOrders() {
   });
 }
 
-export function useOrdersByClient(clientId: string | undefined) {
+export function useOrdersByClient(clientId: string | undefined, isAdmin: boolean = false) {
   return useQuery({
     queryKey: orderKeys.list({ clientId }),
-    queryFn: () => ordersRepo.getAllBy(where("clientId", "==", clientId as string)),
+    queryFn: () => ordersRepo.getAllBy(...isAdmin ? [] : [where("clientId", "==", clientId as string)]),
     enabled: !!clientId
   });
 }

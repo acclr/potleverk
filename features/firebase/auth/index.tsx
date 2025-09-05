@@ -1,7 +1,7 @@
 "use client";
 import { type User } from "@/features/firebase/firestore/types/user";
 import { createUserWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged, signInWithEmailAndPassword, signOut, UserInfo } from "firebase/auth";
-import { doc, setDoc, getDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc, where } from "firebase/firestore";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { auth, db } from "../client";
 
@@ -13,12 +13,18 @@ export const logout = () => {
   return signOut(auth);
 };
 
-export const checkAuthStatus = (callback: (currentUser: UserInfo | null) => void) => {
+export const checkAuthStatus = (
+  callback: (currentUser: UserInfo | null) => void
+) => {
   return onAuthStateChanged(auth, callback);
 };
 
 // Register a new user with email/password and create a corresponding Firestore user document keyed by uid
-export const register = async (email: string, password: string, profile?: Partial<{ name: string; phone: string; orgName: string }>) => {
+export const register = async (
+  email: string,
+  password: string,
+  profile?: Partial<{ name: string; phone: string; orgName: string }>
+) => {
   const cred = await createUserWithEmailAndPassword(auth, email, password);
   const uid = cred.user.uid;
 
@@ -29,9 +35,12 @@ export const register = async (email: string, password: string, profile?: Partia
       id: uid,
       role: "client",
       status: "active",
-      meta: { createdAt: new Date().toISOString(), lastLogin: new Date().toISOString() },
+      meta: {
+        createdAt: new Date().toISOString(),
+        lastLogin: new Date().toISOString(),
+      },
       userDetails: { email, name: profile?.name, phone: profile?.phone },
-      orgDetails: profile?.orgName ? { orgName: profile.orgName } : undefined
+      orgDetails: profile?.orgName ? { orgName: profile.orgName } : undefined,
     },
     { merge: true }
   );
@@ -40,7 +49,8 @@ export const register = async (email: string, password: string, profile?: Partia
 };
 
 // Send a password reset email
-export const resetPassword = (email: string) => sendPasswordResetEmail(auth, email);
+export const resetPassword = (email: string) =>
+  sendPasswordResetEmail(auth, email);
 
 // Define a type for the auth context
 type AuthContextType = {
@@ -50,7 +60,7 @@ type AuthContextType = {
 
 // Create the auth context with a default value
 export const AuthContext = createContext<AuthContextType>({
-  user: null
+  user: null,
 });
 
 // Hook to use the auth context
@@ -63,10 +73,15 @@ export const AuthProvider = ({ children }) => {
   // Function to fetch and update user data
   const fetchUserData = async (userId: string) => {
     try {
-      const userDoc = doc(db, "users", userId);
-      const userSnapshot = await getDoc(userDoc);
-      const userData = userSnapshot.data();
-      return userData;
+      const userDocRef = doc(db, "users", userId); // userId is the doc ID
+      const userSnapshot = await getDoc(userDocRef);
+
+      if (userSnapshot.exists()) {
+        const userData = userSnapshot.data();
+        return userData;
+      } else {
+        return {};
+      }
     } catch (error) {
       console.error("Error fetching user data:", error);
       return null;

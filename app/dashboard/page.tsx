@@ -13,7 +13,7 @@ import {
   subscribeToOrderMessages,
 } from "@/features/firebase/firestore/queries/user.query";
 import Image from "next/image";
-import type { Message } from "@/features/firebase/firestore/types";
+import { UserRole, type Message } from "@/features/firebase/firestore/types";
 import { cn } from "@/components/utils";
 import { Timestamp } from "firebase/firestore";
 import { Textarea } from "@/components/ui/textarea";
@@ -74,7 +74,11 @@ function formatTimeAgo(input: Timestamp | string) {
 export default function OrdersPage() {
   const { user } = useAuth();
   const router = useRouter();
-  const { data: orders = [], isLoading } = useOrdersByClient(user?.uid);
+  const { data: orders = [], isLoading } = useOrdersByClient(
+    user?.uid,
+    user?.role === UserRole.ADMIN
+  );
+
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
   const selected = useMemo<Order | null>(() => {
@@ -87,14 +91,14 @@ export default function OrdersPage() {
     if (!user?.uid) {
       router.push("/account");
     }
-  }, [user])
+  }, [user]);
 
   if (!user?.uid) {
     return (
       <div className="flex items-center justify-center">
         <LoaderIcon className="animate-spin" />
       </div>
-    )
+    );
   }
 
   return (
