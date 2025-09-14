@@ -59,7 +59,7 @@ const settings = {};
         {/* <Script id="gtm" strategy="afterInteractive" async src="https://www.googletagmanager.com/gtag/js?id=AW-989964114" /> */}
       </head>
 
-      <body className="pt-32 relative overflow-x-hidden bg-gray-50 font-primary font-normal leading-relaxed antialiased">
+      <body className="!pt-32 relative overflow-x-hidden bg-gray-50 font-primary font-normal leading-relaxed antialiased">
         <ParallaxBackground className="opacity-50 fixed -z-10 top-0 left-0 w-full h-full" />
 
         {/* <noscript>

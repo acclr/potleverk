@@ -5,9 +5,24 @@ import { Button } from "@/components/ui/button"
 import { useEffect, useState } from "react";
 import { cn } from "../utils";
 import { useAuth } from "@/hooks/useAuth";
-import { UserIcon, LogInIcon, LogOutIcon } from "lucide-react";
+import {
+  UserIcon,
+  LogInIcon,
+  LogOutIcon,
+  MenuSquareIcon,
+  MenuIcon,
+  XIcon,
+} from "lucide-react";
 import { signOut } from "firebase/auth";
 import { auth } from "@/features/firebase/client";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerTitle,
+  DrawerHeader,
+  DrawerTrigger,
+  DrawerClose,
+} from "../ui/drawer";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -40,7 +55,7 @@ export default function Header() {
   return (
     <header
       className={cn(
-        "fixed z-50 w-full top-0 px-4 py-4 md:px-6 lg:px-8 transition-all duration-100",
+        "fixed inset-x-0 z-50 w-full top-0 px-4 py-4 md:px-6 lg:px-8 transition-all duration-100",
         isScrolled && "py-3 bg-white"
       )}
     >
@@ -52,12 +67,59 @@ export default function Header() {
             width={180}
             height={128}
             className={cn(
-              "h-24 w-auto transition-all duration-300",
-              isScrolled && "h-16"
+              "h-24 lg:h-16 w-auto transition-all duration-300",
+              isScrolled && "h-16 lg:h-12"
             )}
           />
         </Link>
-        <div className="flex items-center gap-8">
+        <Drawer direction="right">
+          <DrawerTrigger asChild>
+            <div className="flex items-center justify-center bg-secondary-900 rounded-full p-1">
+              <MenuIcon className="w-8 h-8" color="white" strokeWidth={1.25} />
+            </div>
+          </DrawerTrigger>
+          <DrawerContent className="mt-[unset] left-[unset] right-0 !top-0 w-[95vw] rounded-bl-xl rounded-tr-none">
+            <header
+              className={cn(
+                "fixed flex flex-row justify-between items-center inset-x-0 z-50 w-full top-0 px-4 py-4 md:px-6 lg:px-8 transition-all duration-100",
+                isScrolled && "py-3 bg-white"
+              )}
+            >
+              <Image
+                src="/potleverk-logo-dark.svg"
+                alt="Potleverk Logo"
+                width={180}
+                height={128}
+                className={cn(
+                  "h-24 lg:h-16 w-auto transition-all duration-300",
+                  isScrolled && "h-16 lg:h-12"
+                )}
+              />
+              <DrawerClose className="flex items-center justify-center bg-gray-100 rounded-full p-1">
+                <XIcon className="w-8 h-8" color="black" strokeWidth={1.25} />
+              </DrawerClose>
+            </header>
+
+            <div className="w-full flex-col flex">
+              <div className="h-[80px] w-[6px] bg-gray-200 absolute left-2.5 top-1/2 -translate-y-1/2 rounded-full bg-muted" />
+            </div>
+
+            <nav className="flex flex-col w-full space-y-1 p-4 mt-28 ml-[18px]">
+              {["Produkter og tjenester", "Kontakt", "Bestill her"].map(
+                (item) => (
+                  <Link
+                    key={item}
+                    href={item.toLowerCase()}
+                    className="text-black w-max border-b-2 border-transparent -mt-0.5 hover:border-secondary-800 hover:text-secondary-800 font-semibold text-2xl"
+                  >
+                    {item}
+                  </Link>
+                )
+              )}
+            </nav>
+          </DrawerContent>
+        </Drawer>
+        <div className="lg:hidden flex items-center gap-8">
           {[
             {
               label: "Produkter og tjenester",

@@ -73,7 +73,7 @@ export const ImageWithContent = ({
             <h3
               className={cn(
                 "font-[700]",
-                isFullWidth ? "text-[42px]" : "text-[42px]"
+                isFullWidth ? "text-[42px]" : "text-[42px] lg:text-[32px]"
               )}
               dangerouslySetInnerHTML={{ __html: title }}
             />
