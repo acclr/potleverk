@@ -72,7 +72,11 @@ export default function Header() {
             )}
           />
         </Link>
-        <Drawer direction="right">
+        <Drawer
+          preventScrollRestoration={false}
+          noBodyStyles={true}
+          direction="right"
+        >
           <DrawerTrigger asChild>
             <div className="flex items-center justify-center bg-secondary-900 rounded-full p-1">
               <MenuIcon className="w-8 h-8" color="white" strokeWidth={1.25} />
@@ -81,8 +85,7 @@ export default function Header() {
           <DrawerContent className="mt-[unset] left-[unset] right-0 !top-0 w-[95vw] rounded-bl-xl rounded-tr-none">
             <header
               className={cn(
-                "fixed flex flex-row justify-between items-center inset-x-0 z-50 w-full top-0 px-4 py-4 md:px-6 lg:px-8 transition-all duration-100",
-                isScrolled && "py-3 bg-white"
+                "fixed flex flex-row justify-between items-center inset-x-0 z-50 w-full top-0 px-4 py-4 md:px-6 lg:px-8 transition-all duration-100"
               )}
             >
               <Image
@@ -91,8 +94,7 @@ export default function Header() {
                 width={180}
                 height={128}
                 className={cn(
-                  "h-24 lg:h-16 w-auto transition-all duration-300",
-                  isScrolled && "h-16 lg:h-12"
+                  "h-24 lg:h-16 w-auto transition-all duration-300"
                 )}
               />
               <DrawerClose className="flex items-center justify-center bg-gray-100 rounded-full p-1">

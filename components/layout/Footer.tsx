@@ -25,13 +25,13 @@ export default function Footer() {
             <div className="flex flex-col gap-1">
               <div className="flex items-center gap-2">
                 <PhoneIcon />
-                <p className="text-sm/6 text-gray-600 dark:text-gray-400">
+                <p className="text-sm/6 lg:text-lg text-gray-600 lg:text-black dark:text-gray-400">
                   855 49 350
                 </p>
               </div>
               <div className="flex items-center gap-2">
                 <MailIcon />
-                <p className="text-sm/6 text-gray-600 dark:text-gray-400">
+                <p className="text-sm/6 lg:text-lg text-gray-600 lg:text-black dark:text-gray-400">
                   bestilling@potleverk.no
                 </p>
               </div>
