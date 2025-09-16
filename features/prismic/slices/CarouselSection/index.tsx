@@ -5,10 +5,10 @@ import { createStylesForSlice } from "../utils";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 
-const transformCard = (card) => ({
+const transformCard = (card: any) => ({
   ...card,
   eyebrowText: card.eyebrow_text,
-  buttonText: card.button_text
+  buttonText: card.button_text,
 });
 
 /**

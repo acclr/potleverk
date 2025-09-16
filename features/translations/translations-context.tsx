@@ -27,11 +27,13 @@ export const LocaleContext = createContext<TLocaleContextValue>({
 export const LocaleProvider: React.FC<TLocaleContext> = ({ children, defaultLocale, resources })  => {
   const [locale, setLocale] = useState(defaultLocale);
   const localeResources = resources?.data?.resources?.reduce((acc, curr) => {
-    acc[curr.key ?? ''] = curr.value ?? '';
+    // @ts-ignore
+    acc[curr.key ?? ""] = curr.value ?? "";
     return acc;
   }, {}) ?? {};
 
   const translate = useCallback((key: string) => {
+    // @ts-ignore
     return localeResources[key] || key;
   }, [locale]);
   

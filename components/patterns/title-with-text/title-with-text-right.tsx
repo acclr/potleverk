@@ -1,12 +1,27 @@
 import Contained from "@/components/ui/contained";
 import { PrismicRichText } from "@/components/ui/prismic-rich-text";
 import DefaultSection from "@/components/ui/section";
+import { RichTextField } from "@prismicio/client";
 
-const TitleWithTextOnRight = ({ eyebrowText, title, richText }) => {
+interface TitleWithTextOnRightProps {
+  eyebrowText?: string;
+  title?: string;
+  richText: RichTextField;
+}
+
+const TitleWithTextOnRight = ({
+  eyebrowText,
+  title,
+  richText,
+}: TitleWithTextOnRightProps) => {
   return (
     <DefaultSection classNames={{ inner: "gap-0" }}>
       <Contained width="lg" className="mb-4">
-        {eyebrowText && <span className="font-primary text-sm uppercase text-white">{eyebrowText}</span>}
+        {eyebrowText && (
+          <span className="font-primary text-sm uppercase text-white">
+            {eyebrowText}
+          </span>
+        )}
       </Contained>
 
       <Contained width="lg">
