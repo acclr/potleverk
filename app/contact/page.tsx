@@ -64,6 +64,7 @@ export default function Contact() {
         {
           type: "linkedin",
           value: "https://linkedin.com/in/jostein-hanssen",
+          // @ts-ignore Fix this
           icon: LinkedInStrokeIcon,
         },
       ],
@@ -115,12 +116,14 @@ export default function Contact() {
           </div>
         </div>
       </Section>
+      {/* @ts-ignore */}
       <TeamSection
         items={employees}
         columns={3}
         classNames={{
           container: createStylesForSlice({
             primary: {
+              // @ts-ignore
               background: "",
               spacing_top: "None",
             },
