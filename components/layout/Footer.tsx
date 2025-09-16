@@ -9,7 +9,7 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <footer className="">
-      <div className="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
+      <div className="mx-auto container overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
         <div className="lg:flex lg:flex-col lg:space-y-6 grid grid-cols-[1fr,auto,1fr] w-full">
           <div className="lgup:hidden">
             <Image
@@ -26,13 +26,13 @@ export default function Footer() {
             <div className="flex flex-col gap-1">
               <div className="flex items-center gap-2">
                 <PhoneIcon />
-                <p className="text-sm/6 text-gray-600 dark:text-gray-400">
+                <p className="text-sm/6 text-gray-600 dark:text-gray-400 lg:text-black lg:text-lg lg:font-medium">
                   855 49 350
                 </p>
               </div>
               <div className="flex items-center gap-2">
                 <MailIcon />
-                <p className="text-sm/6 text-gray-600 dark:text-gray-400">
+                <p className="text-sm/6 text-gray-600 dark:text-gray-400 lg:text-black lg:text-lg lg:font-medium">
                   bestilling@potleverk.no
                 </p>
               </div>
@@ -55,7 +55,7 @@ export default function Footer() {
 
 /**
  * <footer className="py-16 px-4 md:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+      <div className="container mx-auto">
         <div className="space-y-4">
           <div className="flex items-center gap-2">
             <span className="text-gray-600">Telefon: 855 49 350</span>

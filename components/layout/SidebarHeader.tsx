@@ -6,21 +6,15 @@ import { DrawerClose } from "../ui/drawer";
 
 export default function SidebarHeader() {
   return (
-    <header
-      className={cn(
-        "w-full px-4 py-4 md:px-6 lg:px-8 transition-all duration-100",
-      )}
-    >
-      <nav className="max-w-7xl mx-auto flex justify-between items-center">
+    <header className={cn("w-full py-4 transition-all duration-100")}>
+      <nav className="container mx-auto flex justify-between items-center">
         <Link href="/" className="flex-shrink-0">
           <Image
             src="/potleverk-logo-dark.svg"
             alt="Potleverk Logo"
             width={150}
             height={100}
-            className={cn(
-              "h-16 -ml-2.5 w-auto transition-all duration-300",
-            )}
+            className={cn("h-16 -ml-2.5 w-auto transition-all duration-300")}
           />
         </Link>
         <DrawerClose asChild>
@@ -33,5 +27,5 @@ export default function SidebarHeader() {
         </DrawerClose>
       </nav>
     </header>
-  )
+  );
 }

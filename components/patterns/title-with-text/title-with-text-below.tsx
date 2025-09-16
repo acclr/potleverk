@@ -2,23 +2,40 @@ import Contained from "@/components/ui/contained";
 import { PrismicRichText } from "@/components/ui/prismic-rich-text";
 import DefaultSection from "@/components/ui/section";
 
-const TitleWithTextBelow = ({ eyebrowText, title, richText }) => {
+const TitleWithTextBelow = ({
+  eyebrowText,
+  title,
+  richText,
+  text,
+  width = "sm",
+  classNames,
+}) => {
   return (
-    <DefaultSection classNames={{ inner: "gap-0" }} className="lg:py-8 md:py-4">
-      <Contained width="sm" className="mb-4 lg:mx-[unset] lg:mr-auto">
-        {eyebrowText && <span className="font-primary text-sm uppercase">{eyebrowText}</span>}
+    <DefaultSection
+      boxed
+      classNames={{ inner: "gap-0", ...classNames }}
+      className="lg:py-8 md:py-4"
+    >
+      <Contained width={width} className="mb-4 lg:mx-[unset] lg:mr-auto">
+        {eyebrowText && (
+          <span className="font-primary text-sm uppercase">{eyebrowText}</span>
+        )}
       </Contained>
 
-      <Contained width="sm" className="lg:w-full lg:items-start lg:text-left">
+      <Contained
+        width={width}
+        className="lg:w-full lg:items-start lg:text-left"
+      >
         <div className="flex flex-col items-start justify-start">
           {title && (
-            <span className="heading-like mb-6 text-4xl font-medium leading-snug text-primary-200 lg:text-3xl md:text-2xl">
+            <h3 className="text-4xl font-semibold leading-snug text-black lg:text-3xl md:text-2xl">
               {title}
-            </span>
+            </h3>
           )}
 
           <div className="wysiwyg text-base leading-relaxed">
-            <PrismicRichText field={richText} />
+            {richText && <PrismicRichText field={richText} />}
+            {text && text}
           </div>
         </div>
       </Contained>

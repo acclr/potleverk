@@ -1,43 +1,132 @@
-import Image from "next/image"
+import { FacebookIcon } from "@/components/icons/facebook";
+import { LinkedinIcon, LinkedInStrokeIcon } from "@/components/icons/linkedin";
+import {
+  TeamContactPoint,
+  TeamMember,
+  TeamSection,
+} from "@/components/patterns/team-section";
+import Section from "@/components/ui/section";
+import { createStylesForSlice } from "@/features/prismic/slices/utils";
+import { MailIcon, MapIcon, PhoneIcon, ExternalLinkIcon } from "lucide-react";
 
 export default function Contact() {
-  const employees = [
-    { name: "Daniel Ehrenberg-Rasmussen", role: "Position" },
-    { name: "Elliott Ehrenberg", role: "Position" },
-  ]
+  const employees: TeamMember[] = [
+    {
+      name: "Daniel Ehrenberg-Rasmussen",
+      title: "Graphics Designer",
+      bio: "Daniel is a graphics designer at Potleverk. He is responsible for the design of the website and the graphics for the products.",
+      imageUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg2UYjIh_mqRAWnKFUUyuHASqEEZzFbR2CMw&s",
+      contactPoints: [
+        {
+          type: "email",
+          value: "daniel@potleverk.no",
+          icon: MailIcon,
+        },
+        {
+          type: "phone",
+          value: "855 49 350",
+          icon: PhoneIcon,
+        },
+      ],
+    },
+    {
+      name: "Elliott Ehrenberg",
+      title: "Graphics Designer",
+      bio: "Elliott is a graphics designer at Potleverk. He is responsible for the design of the website and the graphics for the products.",
+      imageUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk3NmmlpJ3rKlh5NPGAd00zocHhdamnxDepg&s",
+      contactPoints: [
+        {
+          type: "email",
+          value: "elliott@potleverk.no",
+          icon: MailIcon,
+        },
+      ],
+    },
+    {
+      name: "Jostein Hanssen",
+      title: "Software Engineer",
+      bio: "Jostein is a software engineer at Potleverk. He is responsible for the development of the website and the software for the products.",
+      imageUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg2UYjIh_mqRAWnKFUUyuHASqEEZzFbR2CMw&s",
+      contactPoints: [
+        {
+          type: "email",
+          value: "jostein@potleverk.no",
+          icon: MailIcon,
+        },
+        {
+          type: "phone",
+          value: "855 49 350",
+          icon: PhoneIcon,
+        },
+        {
+          type: "linkedin",
+          value: "https://linkedin.com/in/jostein-hanssen",
+          icon: LinkedInStrokeIcon,
+        },
+      ],
+    },
+  ];
+
+  const contactMethods = [
+    {
+      type: "Mejla oss",
+      value: "daniel@potleverk.no",
+      icon: MailIcon,
+    },
+    {
+      type: "Ring oss",
+      value: "855 49 350",
+      icon: PhoneIcon,
+    },
+    {
+      type: "Besök oss",
+      value: "Hoveveien 38, 1234 Sandnes",
+      icon: MapIcon,
+    },
+  ];
 
   return (
-    <div className="max-w-4xl mx-auto">
-      <h1 className="text-4xl font-bold mb-6">Contact Us</h1>
-      <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4">Our Location</h2>
-        <p className="mb-4">Hoveveien 38, 4306 Sandnes, Norway</p>
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2057.3046718238947!2d5.729720776678886!3d58.85186447301882!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x463a350f71807639%3A0x886c83c5a7a2e73a!2sHoveveien%2038%2C%204306%20Sandnes%2C%20Norway!5e0!3m2!1sen!2sus!4v1688484343321!5m2!1sen!2sus"
-          width="600"
-          height="450"
-          style={{ border: 0 }}
-          allowFullScreen={false}
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          className="w-full rounded-lg"
-        ></iframe>
-      </div>
-      <div>
-        <h2 className="text-2xl font-semibold mb-4">Our Team</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {employees.map((employee, index) => (
-            <div key={index} className="flex items-center space-x-4">
-              <Image src="/placeholder.svg" alt={employee.name} width={100} height={100} className="rounded-full" />
-              <div>
-                <h3 className="font-semibold">{employee.name}</h3>
-                <p>{employee.role}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  )
-}
+    <div>
+      <Section boxed>
+        <div className="flex flex-row lg:flex-col items-center justify-between lg:items-start gap-12 lg:gap-8 w-full">
+          <div className="flex flex-col">
+            <h3 className="text-3xl font-semibold leading-snug text-black lg:text-3xl md:text-2xl">
+              Hur kan vi hjälpa?
+            </h3>
+          </div>
 
+          <div className="flex flex-row lg:flex-col gap-8 lg:gap-6 items-center lg:items-start">
+            {contactMethods?.map((method, i) => (
+              <div key={i} className="flex flex-row items-center gap-4">
+                <div className="w-10 h-10 p-2.5 bg-gray-200 rounded-full flex items-center justify-center">
+                  <method.icon size={32} color="black" />
+                </div>
+                <div className="flex flex-col">
+                  <p className="text-base min-w-max font-semibold">
+                    {method.type}
+                  </p>
+                  <p className="text-sm min-w-max">{method.value}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+      <TeamSection
+        items={employees}
+        columns={3}
+        classNames={{
+          container: createStylesForSlice({
+            primary: {
+              background: "",
+              spacing_top: "None",
+            },
+          }),
+        }}
+      />
+    </div>
+  );
+}

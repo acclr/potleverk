@@ -54,10 +54,12 @@ export function usePlaceOrder() {
         router.push("/order");
       } catch (e: any) {
         setError(e?.message || "Kunne ikke sende bestilling");
-        throw e;
+        return Promise.reject(e);
       } finally {
         setUploading(false);
       }
+
+      return Promise.resolve();
     },
     [user?.uid, router, createOrder]
   );
