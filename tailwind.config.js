@@ -37,11 +37,11 @@ module.exports = {
     },
     container: {
       center: true,
-      padding: "2rem",
+      padding: "1.5rem",
       screens: {
-        "xl": "1240px",
-        "2xl": "1320px",
-        "3xl": "1320px",
+        "xl": "1180px",
+        "2xl": "1180px",
+        "3xl": "1240px",
       },
     },
     extend: {

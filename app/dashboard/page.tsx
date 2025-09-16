@@ -102,8 +102,8 @@ export default function OrdersPage() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 md:px-6 lgup:px-8 py-8">
-      <div className="flex w-full py-5 border-b border-b-black/10 flex-row items-center justify-between">
+    <div className="!px-0 container mx-auto bg-white/65 rounded-xl overflow-hidden ">
+      <div className="flex w-full py-5 px-6 border-b border-b-black/10 flex-row items-center justify-between">
         <div className="flex flex-row items-start">
           <strong>Inloggad som - </strong>
           <span className="font-medium">
@@ -111,9 +111,10 @@ export default function OrdersPage() {
           </span>
         </div>
       </div>
+
       <div className="flex flex-col lgup:flex-row gap-6">
         {/* Left: Orders list */}
-        <aside className="min-w-[380px] border-r py-6 border-black/10 xl:col-span-3">
+        <aside className="min-w-[380px] border-r pt-6 border-black/10 xl:col-span-3 pl-6">
           <h2 className="text-2xl font-extrabold mb-4">Mine bestillinger</h2>
           <ul className="space-y-0">
             {isLoading && (
@@ -126,7 +127,7 @@ export default function OrdersPage() {
               <li key={order.id}>
                 <button
                   onClick={() => setSelectedId(order.id)}
-                  className="relative w-full text-left pl-0 p-8 pr-12 transition-all"
+                  className="relative w-full text-left pl-0 p-8 pr-12 !mb-0 transition-all"
                 >
                   <div
                     className={cn(
@@ -160,7 +161,7 @@ export default function OrdersPage() {
         </aside>
 
         {/* Right: Order detail */}
-        <section className="lgup:col-span-8 xl:col-span-9 py-6 flex-[999]">
+        <section className="lgup:col-span-8 xl:col-span-9 py-6 pr-8 flex-[999]">
           {!selected ? (
             <div className="p-6 border rounded-md">
               <p className="text-gray-600">

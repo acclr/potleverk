@@ -59,11 +59,11 @@ export default function Header() {
   return (
     <header
       className={cn(
-        "sticky z-50 w-full top-0 px-4 py-4 md:px-6 lg:px-8 transition-all duration-100",
+        "sticky z-50 w-full top-0 py-4 transition-all duration-100",
         isScrolled && "py-3 bg-white"
       )}
     >
-      <nav className="max-w-7xl mx-auto flex justify-between items-center">
+      <nav className="container mx-auto flex justify-between items-center">
         <Link href="/" className="flex-shrink-0">
           <Image
             src="/potleverk-logo-dark.svg"

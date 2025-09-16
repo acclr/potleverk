@@ -4,8 +4,8 @@ import { DrawerClose } from '../ui/drawer';
 export default function SidebarMenu({ navigation }) {
   return (
     <nav className="px-4 py-4 md:px-6 lg:px-8 flex w-full flex-col space-y-1">
-      {navigation.map((item) => (
-        <DrawerClose asChild>
+      {navigation.map((item, i) => (
+        <DrawerClose key={i} asChild>
           <Link
             key={item.label}
             href={item.href}
@@ -16,5 +16,5 @@ export default function SidebarMenu({ navigation }) {
         </DrawerClose>
       ))}
     </nav>
-  )
+  );
 }
