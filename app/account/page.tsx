@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { login, register, resetPassword } from "@/features/firebase/auth";
 import { useAuth } from "@/features/firebase/auth";
@@ -30,7 +30,7 @@ function Section({
   );
 }
 
-export default function AccountPage() {
+function AccountPageContent() {
   const { user } = useAuth();
   const router = useRouter();
   const search = useSearchParams();
@@ -189,6 +189,20 @@ export default function AccountPage() {
         </TabsContent>
       </Tabs>
     </Section>
+  );
+}
+
+export default function AccountPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex items-center justify-center">
+          <Loader className="animate-spin" />
+        </div>
+      }
+    >
+      <AccountPageContent />
+    </Suspense>
   );
 }
 
