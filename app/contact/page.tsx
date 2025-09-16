@@ -64,7 +64,8 @@ export default function Contact() {
         {
           type: "linkedin",
           value: "https://linkedin.com/in/jostein-hanssen",
-          icon: LinkedInStrokeIcon as any,
+          // @ts-ignore Fix this type
+          icon: LinkedInStrokeIcon as React.ForwardRefExoticComponent<any>,
         },
       ],
     },
