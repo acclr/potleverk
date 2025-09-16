@@ -24,7 +24,7 @@ export type TeamMember = {
 };
 
 export type TeamSectionProps = {
-  title: string;
+  title?: string;
   preamble?: string;
   items: TeamMember[];
   columns: 2 | 3 | 4 | 5 | 6;

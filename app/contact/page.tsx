@@ -7,7 +7,7 @@ import {
 } from "@/components/patterns/team-section";
 import Section from "@/components/ui/section";
 import { createStylesForSlice } from "@/features/prismic/slices/utils";
-import { MailIcon, MapIcon, PhoneIcon, ExternalLinkIcon } from "lucide-react";
+import { MailIcon, MapIcon, PhoneIcon } from "lucide-react";
 
 export default function Contact() {
   const employees: TeamMember[] = [
@@ -64,8 +64,7 @@ export default function Contact() {
         {
           type: "linkedin",
           value: "https://linkedin.com/in/jostein-hanssen",
-          // @ts-ignore Fix this
-          icon: LinkedInStrokeIcon,
+          icon: LinkedInStrokeIcon as any,
         },
       ],
     },
@@ -116,7 +115,6 @@ export default function Contact() {
           </div>
         </div>
       </Section>
-      {/* @ts-ignore */}
       <TeamSection
         items={employees}
         columns={3}
