@@ -2,11 +2,21 @@ import Contained from "@/components/ui/contained";
 import { PrismicRichText } from "@/components/ui/prismic-rich-text";
 import DefaultSection from "@/components/ui/section";
 
-const TitleWithTextBelow = ({ eyebrowText, title, richText }) => {
+const TitleWithTextBelow = ({
+  eyebrowText,
+  title,
+  richText,
+}: {
+  eyebrowText: string;
+  title: string;
+  richText: any;
+}) => {
   return (
     <DefaultSection classNames={{ inner: "gap-0" }} className="lg:py-8 md:py-4">
       <Contained width="sm" className="mb-4 lg:mx-[unset] lg:mr-auto">
-        {eyebrowText && <span className="font-primary text-sm uppercase">{eyebrowText}</span>}
+        {eyebrowText && (
+          <span className="font-primary text-sm uppercase">{eyebrowText}</span>
+        )}
       </Contained>
 
       <Contained width="sm" className="lg:w-full lg:items-start lg:text-left">
@@ -18,7 +28,7 @@ const TitleWithTextBelow = ({ eyebrowText, title, richText }) => {
           )}
 
           <div className="wysiwyg text-base leading-relaxed">
-            <PrismicRichText field={richText} />
+            <PrismicRichText field={richText ?? undefined} />
           </div>
         </div>
       </Contained>
