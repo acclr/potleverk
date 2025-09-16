@@ -2,6 +2,18 @@ import Contained from "@/components/ui/contained";
 import { PrismicRichText } from "@/components/ui/prismic-rich-text";
 import DefaultSection from "@/components/ui/section";
 
+type TitleWithTextBelowProps = {
+  eyebrowText?: string;
+  title?: string;
+  richText?: string;
+  text?: string;
+  width?: "sm" | "md" | "lg" | "xl" | "2xl" | "full";
+  classNames?: {
+    inner?: string;
+    container?: string;
+  };
+};
+
 const TitleWithTextBelow = ({
   eyebrowText,
   title,
@@ -9,7 +21,7 @@ const TitleWithTextBelow = ({
   text,
   width = "sm",
   classNames,
-}) => {
+}: TitleWithTextBelowProps) => {
   return (
     <DefaultSection
       boxed
@@ -34,7 +46,8 @@ const TitleWithTextBelow = ({
           )}
 
           <div className="wysiwyg text-base leading-relaxed">
-            {richText && <PrismicRichText field={richText} />}
+            {/* @ts-ignore Fix this type */}
+            {richText && <PrismicRichText field={richText as any} />}
             {text && text}
           </div>
         </div>
