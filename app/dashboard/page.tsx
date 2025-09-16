@@ -282,14 +282,14 @@ function OrderMessages({ orderId }: { orderId: string }) {
       />
       <div className="mt-2.5 mb-6 w-full justify-between items-center flex gap-6">
         <div className="flex flex-row gap-1">
-          <Button size="sm" variant="destructive">
+          <Button size="xs" variant="destructive">
             Avvis
           </Button>
-          <Button size="sm" variant="default">
+          <Button size="xs" variant="default">
             Godkjenn
           </Button>
         </div>
-        <Button size="sm" variant="ghost" onClick={() => sendMessage(message)}>
+        <Button size="xs" variant="ghost" onClick={() => sendMessage(message)}>
           Send
         </Button>
       </div>

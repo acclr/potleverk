@@ -1,4 +1,4 @@
-export const getHrefFromDoc = (doc: any) => {
+export const getHrefFromDoc = (doc) =>{
   if (doc.type === "page") {
     return `/${doc.uid}`;
   }

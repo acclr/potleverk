@@ -3,12 +3,25 @@ import { FacebookIcon } from "../icons/facebook";
 import { LinkedinIcon } from "../icons/linkedin";
 import { InstagramIcon } from "../icons/insta";
 import { MailIcon, PhoneIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export default function Footer() {
   return (
     <footer className="">
       <div className="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
-        <div className="grid grid-cols-[1fr,auto,1fr] w-full">
+        <div className="lg:flex lg:flex-col lg:space-y-6 grid grid-cols-[1fr,auto,1fr] w-full">
+          <div className="lgup:hidden">
+            <Image
+              src="/potleverk-logo-dark.svg"
+              alt="Potleverk Logo"
+              width={180}
+              height={128}
+              className={cn(
+                "-ml-2.5 lg:h-16 h-24 w-auto transition-all duration-300"
+              )}
+            />
+          </div>
           <div className="flex flex-col gap-2">
             <div className="flex flex-col gap-1">
               <div className="flex items-center gap-2">
@@ -31,7 +44,7 @@ export default function Footer() {
             <InstagramIcon size={50} />
             <LinkedinIcon size={50} />
           </div>
-          <p className="justify-end w-full flex items-center text-sm/6 text-gray-600 dark:text-gray-400">
+          <p className="justify-end lg:justify-start w-full flex items-center lg:text-left text-sm/6 text-gray-600 dark:text-gray-400">
             &copy; 2025 Potleverk AS. Alle rettigheter reservert.
           </p>
         </div>

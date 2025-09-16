@@ -119,7 +119,7 @@ export const PrismicFormComponent = ({ formType, fields, title, preamble, submit
   );
 };
 
-export const PrismicForm = (props: any) => (
+export const PrismicForm = (props) => (
   <GoogleReCaptchaProvider reCaptchaKey={CAPTCHA_PUBLIC_KEY ?? ""}>
     <PrismicFormComponent {...props} />
   </GoogleReCaptchaProvider>

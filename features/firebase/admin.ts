@@ -1,4 +1,3 @@
-/*
 import * as admin from "firebase-admin";
 import serviceAccount from './service_account.json';
 
@@ -10,4 +9,3 @@ if (!admin.apps.length) {
 
 export const adminAuth = admin.auth();
 export const adminDb = admin.firestore();
-*/
