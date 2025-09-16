@@ -14,7 +14,6 @@ export const getStringResources = async () => {
 
   const resources = {};
   localization.data.resources.map((resource) => {
-    // @ts-ignore
     resources[resource.key] = resource.value;
   });
 

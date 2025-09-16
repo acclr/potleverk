@@ -3,11 +3,45 @@ module.exports = {
   darkMode: ["class"],
   content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
   theme: {
+    screens: {
+      xlup: {
+        min: "1040px"
+      },
+      xl: {
+        max: "1039px"
+      },
+      lgup: {
+        min: "1024px"
+      },
+      lg: {
+        max: "1023px"
+      },
+      mdup: {
+        min: "768px"
+      },
+      md: {
+        max: "767px"
+      },
+      smup: {
+        min: "640px"
+      },
+      sm: {
+        max: "639px"
+      },
+      xsup: {
+        min: "380px"
+      },
+      xs: {
+        max: "379px"
+      }
+    },
     container: {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1400px",
+        "xl": "1240px",
+        "2xl": "1320px",
+        "3xl": "1320px",
       },
     },
     extend: {
@@ -18,10 +52,32 @@ module.exports = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
+          '50': '#effefb',
+          '100': '#c7fff5',
+          '200': '#90ffeb',
+          '300': '#51f7e1',
+          '400': '#1de4cf',
+          '500': '#04c8b6',
+          '600': '#00b4a8',
+          '700': '#058079',
+          '800': '#0a6561',
+          '900': '#0d5451',
+          '950': '#003333',
+          DEFAULT: "#00b4a8",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
+          '50': '#fef1fa',
+          '100': '#fee5f6',
+          '200': '#ffcbf0',
+          '300': '#ffa0e2',
+          '400': '#ff66cc',
+          '500': '#fc38b4',
+          '600': '#ec1693',
+          '700': '#ce0876',
+          '800': '#aa0a61',
+          '900': '#8d0e53',
+          '950': '#52002c',
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
         },

@@ -2,23 +2,15 @@ import Image from "next/image";
 import Section from "../../ui/section";
 import { AspectRatio } from "../../ui/aspect-ratio";
 
-type ContentBlocksProps = {
-  className?: string | null;
-  items?: any[] | null;
-  title?: string | null;
-  preamble?: string | null;
-  eyebrowText?: string | null;
-};
-
 export default function ContentBlocks({
   className,
-  items = [],
+  items,
   title,
   preamble,
   eyebrowText,
-}: ContentBlocksProps) {
+}) {
   return (
-    <Section classNames={{ container: className ?? undefined }} boxed>
+    <Section classNames={{ container: className }} boxed>
       <div className="mb-8 mr-auto flex w-[860px] max-w-full flex-col items-start justify-start text-left">
         {eyebrowText && (
           <span className="ui-eyebrow text-base">{eyebrowText}</span>
@@ -28,7 +20,7 @@ export default function ContentBlocks({
       </div>
 
       <div className="grid gap-4 gap-y-10 lgup:grid-cols-3 lg:grid-cols-2 lg:gap-8 md:grid-cols-1">
-        {items?.map((item, index) => (
+        {items.map((item, index) => (
           <ContentBlock key={index} {...item} />
         ))}
       </div>
@@ -36,15 +28,7 @@ export default function ContentBlocks({
   );
 }
 
-const ContentBlock = ({
-  title,
-  text,
-  image,
-}: {
-  title?: string;
-  text?: string;
-  image: any;
-}) => {
+const ContentBlock = ({ title, text, image }) => {
   return (
     <div className="ui-card flex flex-col">
       {image?.url && (
@@ -66,13 +50,11 @@ const ContentBlock = ({
         className="mt-4 flex flex-col space-y-1.5"
         data-testid="content-block-content"
       >
-        {title && <span className="text-lg font-[550]">{title}</span>}
-        {text && (
-          <p className="text-[15px] font-[500]">
-            {text ??
-              "Nulla ullamco id dolor et. Ad non reprehenderit ex occaecat aliquip qui qui dolore sit."}
-          </p>
-        )}
+        <span className="text-lg font-[550]">{title}</span>
+        <p className="text-[15px] font-[500]">
+          {text ??
+            "Nulla ullamco id dolor et. Ad non reprehenderit ex occaecat aliquip qui qui dolore sit."}
+        </p>
       </div>
     </div>
   );

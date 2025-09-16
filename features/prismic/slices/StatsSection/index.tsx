@@ -15,18 +15,7 @@ const StatsSection = ({ slice }: StatsSectionProps): JSX.Element => {
   // @ts-ignore
   const className = createStylesForSlice(slice);
 
-  const mappedItems = slice.primary.items.map((item) => ({
-    label: item.label || "",
-    number: String(item.number || ""),
-  }));
-
-  return (
-    <StatsSectionComponent
-      className={className}
-      title={slice.primary.title || undefined}
-      items={mappedItems}
-    />
-  );
+  return <StatsSectionComponent className={className} title={slice.primary.title} items={slice.primary.items} />;
 };
 
 export default StatsSection;

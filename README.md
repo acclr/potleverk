@@ -5,7 +5,6 @@ Website for Potleverk AS
 - NextJs
 - React
 - Tailwind
-<<<<<<< HEAD
 - Prismic CMS (for marketing content)
 - Firebase (for authentication, database and blob storage)
 - Resend (for sending email)
@@ -34,11 +33,3 @@ Website for Potleverk AS
   - [ ] Best practices for Tailwind
   - [ ] Best practices for NextJs
  
-=======
-
-## TODO
-[ ] Fix logo
-[ ] Fix background grapics
-[ ] Ensure contact form works as expected
-[ } ...
->>>>>>> 1ae53ab (Create README.md)

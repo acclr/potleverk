@@ -12,12 +12,11 @@ export type TitleWithTextProps = SliceComponentProps<Content.TitleWithTextSlice>
  */
 const TitleWithText = ({ slice }: TitleWithTextProps): JSX.Element => {
   return (
+    //@ts-ignore
     <TitleWithTextComponent
-      title={slice.primary.title || ""}
-      eyebrowText={slice.primary.eyebrow_text || ""}
+      title={slice.primary.title}
+      eyebrowText={slice.primary.eyebrow_text}
       text={<PrismicRichText field={slice.primary.rich_text} />}
-      buttons={undefined}
-      className=""
     />
   );
 };

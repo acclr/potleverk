@@ -35,6 +35,7 @@ const nextConfig = {
     deviceSizes: [64, 512, 768, 1024, 1920],
     dangerouslyAllowSVG: true,
     domains: [
+      "hebbkx1anhila5yf.public.blob.vercel-storage.com",
       "images.prismic.io",
       "plus.unsplash.com",
       "images.prismic.io",
@@ -43,6 +44,7 @@ const nextConfig = {
       "images.hdqwalls.com",
       "source.unsplash.com",
       "accelor.cdn.prismic.io",
+      "potleverk.cdn.prismic.io",
       "placehold.co"
     ]
   },

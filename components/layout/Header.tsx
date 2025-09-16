@@ -5,9 +5,13 @@ import { Button } from "@/components/ui/button"
 import { useEffect, useState } from "react";
 import { cn } from "../utils";
 import { useAuth } from "@/hooks/useAuth";
-import { UserIcon, LogInIcon, LogOutIcon } from "lucide-react";
+import { UserIcon, LogInIcon, LogOutIcon, MenuIcon } from "lucide-react";
 import { signOut } from "firebase/auth";
 import { auth } from "@/features/firebase/client";
+import { Drawer, DrawerContent, DrawerTrigger } from "../ui/drawer";
+import SidebarHeader from "./SidebarHeader";
+import SidebarMenu from "./SidebarMenu";
+import SidebarFooter from "./SidebarFooter";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,10 +41,25 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const navigation = [
+    {
+      label: "Produkter og tjenester",
+      href: "/our-products",
+    },
+    {
+      label: "Kontakt",
+      href: "/contact",
+    },
+    {
+      label: "Bestill her",
+      href: "/order",
+    },
+  ];
+
   return (
     <header
       className={cn(
-        "fixed z-50 w-full top-0 px-4 py-4 md:px-6 lg:px-8 transition-all duration-100",
+        "sticky z-50 w-full top-0 px-4 py-4 md:px-6 lg:px-8 transition-all duration-100",
         isScrolled && "py-3 bg-white"
       )}
     >
@@ -52,26 +71,32 @@ export default function Header() {
             width={180}
             height={128}
             className={cn(
-              "h-24 w-auto transition-all duration-300",
-              isScrolled && "h-16"
+              "-ml-2.5 lg:h-16 h-24 w-auto transition-all duration-300",
+              isScrolled && "h-16 lg:h-14"
             )}
           />
         </Link>
-        <div className="flex items-center gap-8">
-          {[
-            {
-              label: "Produkter og tjenester",
-              href: "/our-products",
-            },
-            {
-              label: "Kontakt",
-              href: "/contact",
-            },
-            {
-              label: "Bestill her",
-              href: "/order",
-            },
-          ].map((item) => (
+
+        <div className="lgup:hidden">
+          <Drawer direction="right">
+            <DrawerTrigger asChild>
+              <MenuIcon
+                className="p-1 rounded-full bg-secondary-950"
+                color="white"
+                size={36}
+                strokeWidth={1.5}
+              />
+            </DrawerTrigger>
+            <DrawerContent className="mt-0 rounded-tr-none rounded-tl-xl rounded-bl-xl w-[95dvw] top-0 right-0 h-full bottom-[unset] left-[unset]">
+              <SidebarHeader />
+              <SidebarMenu navigation={navigation} />
+              <SidebarFooter />
+            </DrawerContent>
+          </Drawer>
+        </div>
+
+        <div className="lg:hidden flex items-center gap-8">
+          {navigation.map((item) => (
             <Link
               key={item.label}
               href={item.href}

@@ -3,7 +3,7 @@ import { Text } from "@react-email/text";
 import { Section } from "@react-email/section";
 import { Container } from "@react-email/container";
 
-export function GenericMail({ title, props }: { title: string; props: any }) {
+export function GenericMail({ title, props }) {
   return (
     <Html>
       <Section style={main}>
