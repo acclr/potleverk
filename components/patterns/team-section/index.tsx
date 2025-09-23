@@ -70,7 +70,7 @@ export function TeamSection({
         {/* Team Members Grid */}
         <div
           className={cn(
-            "grid gap-8 !gap-y-24 lg:!gap-y-8 lg:flex lg:flex-col lg:w-full",
+            "grid gap-8 !gap-y-24 lg:!gap-y-8 md:grid-cols-2 lg:w-full",
             colsMap[columns]
           )}
         >
@@ -82,7 +82,7 @@ export function TeamSection({
               {/* Bild och Överlägg */}
               <div className="relative">
                 {/* Member Image */}
-                <AspectRatio ratio={3 / 4}>
+                <AspectRatio ratio={1}>
                   <Image
                     src={member.imageUrl}
                     alt={member.name}
@@ -92,7 +92,7 @@ export function TeamSection({
                 </AspectRatio>
 
                 {/* Överlägg som visas vid hover */}
-                <div className="duration-[50ms] absolute inset-0 flex flex-col rounded-xl items-center justify-center bg-secondary-900/80 p-4 opacity-0 transition-opacity group-hover:opacity-100">
+                <div className="duration-[50ms] absolute inset-0 flex flex-col rounded-xl items-center justify-center bg-black/80 p-4 opacity-0 transition-opacity group-hover:opacity-100">
                   {/* Bio */}
                   <p className="mb-4 px-4 text-center text-white">
                     {member.bio}

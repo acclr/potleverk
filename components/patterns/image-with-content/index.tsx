@@ -11,16 +11,28 @@ export const ImageWithContent = ({
   eyebrowText,
   buttons,
   image,
+  isVertical = false,
   isFullWidth = false,
   objectContain = false,
-  className
-}: { title: string; richText: string; reversed: boolean; eyebrowText: string; buttons: UIButtonProps; image: { url: string; alt: string }; isFullWidth: boolean; objectContain: boolean; className?: string }) => {
+  className,
+}: {
+  title: string;
+  richText: string;
+  reversed: boolean;
+  eyebrowText: string;
+  buttons: UIButtonProps;
+  image: { url: string; alt: string };
+  isVertical: boolean;
+  isFullWidth: boolean;
+  objectContain: boolean;
+  className?: string;
+}) => {
   return (
     <Section
       data-slice="image-with-content"
       boxed={isFullWidth ? false : true}
       padding={isFullWidth ? "none" : "lg"}
-      direction="row"
+      direction={isVertical ? "column" : "row"}
       classNames={{
         container: cn(
           "lg:flex-col",
@@ -28,8 +40,9 @@ export const ImageWithContent = ({
           className
         ),
         inner: cn(
-          "items-stretch lg:!flex-col lg:items-start gap-24",
-          reversed ? "lgup:flex-row-reverse" : ""
+          "items-stretch lg:!flex-col lg:items-start",
+          reversed ? "lgup:flex-row-reverse" : "",
+          isVertical ? "gap-8" : "gap-24"
         ),
       }}
     >
@@ -41,8 +54,8 @@ export const ImageWithContent = ({
         >
           <Image
             className={cn(
-              "left-0 top-0 z-10 h-full w-full",
-              objectContain ? "object-contain" : "object-cover"
+              "left-0 rounded-2xl top-0 z-10 h-full w-full",
+              objectContain ? "object-cover" : "object-cover"
             )}
             alt={image.alt as string}
             src={image.url as string}
@@ -53,7 +66,12 @@ export const ImageWithContent = ({
         </div>
       )}
 
-      <div className="flex flex-[1] flex-col items-center justify-center text-left">
+      <div
+        className={cn(
+          "flex flex-[1] flex-col items-center justify-center text-left",
+          isVertical ? "text-center" : ""
+        )}
+      >
         <div
           className={cn(
             isFullWidth

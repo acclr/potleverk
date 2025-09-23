@@ -109,20 +109,10 @@ export default function Header() {
           <div className="flex items-center gap-2">
             <Link href={user?.uid ? "/dashboard" : "/account"}>
               <Button variant="default" size="sm">
-                {user?.uid ? (
-                  <UserIcon className="w-4 h-4" />
-                ) : (
-                  <LogInIcon className="w-4 h-4" />
-                )}
-                <span>{user?.uid ? "Min konto" : "Logg inn"}</span>
+                <UserIcon className="w-4 h-4" />
+                <span>Min konto</span>
               </Button>
             </Link>
-
-            {user?.uid && (
-              <Button variant="ghost" size="sm" onClick={() => signOut(auth)}>
-                <LogOutIcon className="w-4 h-4" />
-              </Button>
-            )}
           </div>
         </div>
       </nav>

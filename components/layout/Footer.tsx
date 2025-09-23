@@ -8,8 +8,8 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="">
-      <div className="mx-auto container overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
+    <footer>
+      <div className="mx-auto container overflow-hidden px-6 py-20 sm:py-24 lg:px-8 md:px-6">
         <div className="lg:flex lg:flex-col lg:space-y-6 grid grid-cols-[1fr,auto,1fr] w-full">
           <div className="lgup:hidden">
             <Image

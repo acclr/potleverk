@@ -50,6 +50,18 @@
 									"__TYPE__": "ImageContent",
 									"thumbnails": {}
 								}
+							],
+							[
+								"link",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "0b5f5dde-1060-4814-976f-8d671d4a9082",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://prismic.io",
+										"text": "harder"
+									}
+								}
 							]
 						]
 					},
@@ -97,6 +109,18 @@
 									"__TYPE__": "ImageContent",
 									"thumbnails": {}
 								}
+							],
+							[
+								"link",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "2d0e3004-5d19-49da-a8f1-664e5eb6a57f",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://twitter.com",
+										"text": "force"
+									}
+								}
 							]
 						]
 					}
@@ -131,6 +155,15 @@
 				"__TYPE__": "FieldContent",
 				"value": "thou",
 				"type": "Text"
+			},
+			"link": {
+				"key": "a2a881d7-9dcc-438c-857d-a7b35817c693",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://prismic.io",
+					"text": "drive"
+				}
 			}
 		},
 		"items": []

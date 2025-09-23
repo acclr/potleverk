@@ -14,7 +14,11 @@ import {
   addDoc,
   Timestamp,
   where,
-  documentId
+  documentId,
+  limit,
+  orderBy,
+  startAfter,
+  getCountFromServer
 } from "firebase/firestore";
 import { db } from "@/features/firebase/client";
 import { Repository } from "@/features/firebase/firestore/interfaces/repository";
@@ -108,5 +112,36 @@ export class FirestoreRepository<T> implements Repository<T> {
     return onSnapshot(docRef, (snap) => {
       callback(snap.docs.map((d) => ({ id: d.id, ...d.data() }) as T));
     });
+  }
+
+  async getPaginatedBy(
+    pageSize: number,
+    startAfterDoc?: any,
+    orderByField: string = 'createdAt',
+    ...constraints: QueryConstraint[]
+  ): Promise<{ data: T[], lastDoc: any, hasMore: boolean }> {
+    const queryConstraints = [
+      orderBy(orderByField, 'desc'),
+      limit(pageSize + 1), // Get one extra to determine if there's more
+      ...constraints
+    ];
+
+    if (startAfterDoc) {
+      queryConstraints.push(startAfter(startAfterDoc));
+    }
+
+    const snap = await getDocs(query(collection(db, this.collectionName), ...queryConstraints));
+    const docs = snap.docs;
+
+    const hasMore = docs.length > pageSize;
+    const data = docs.slice(0, pageSize).map((d) => ({ id: d.id, ...d.data() }) as T);
+    const lastDoc = hasMore ? docs[pageSize - 1] : docs[docs.length - 1];
+
+    return { data, lastDoc, hasMore };
+  }
+
+  async getCount(...constraints: QueryConstraint[]): Promise<number> {
+    const snap = await getCountFromServer(query(collection(db, this.collectionName), ...constraints));
+    return snap.data().count;
   }
 }

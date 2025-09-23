@@ -1,18 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { usePlaceOrder } from "@/hooks/usePlaceOrder";
 import { useAuth } from "@/features/firebase/auth";
 import { useRouter } from "next/navigation";
-import { Switch } from "@/components/ui/switch";
-import { Label } from "@/components/ui/label";
 import Image from "next/image";
 import Section from "@/components/ui/section";
 import { useNotify } from "@/features/notifications";
 import Link from "next/link";
+import { OrderForm } from "./components/order-form";
 
 export default function PlaceOrderPage() {
   const router = useRouter();
@@ -25,6 +22,13 @@ export default function PlaceOrderPage() {
   const [isPickup, setIsPickup] = useState(false);
   const [files, setFiles] = useState<File[]>([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  // Address fields state
+  const [address, setAddress] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
+  const [instructions, setInstructions] = useState("");
 
   if (!user?.uid) {
     return (
@@ -60,6 +64,19 @@ export default function PlaceOrderPage() {
       });
   }
 
+  const resetForm = () => {
+    setIsSubmitted(false);
+    setSubject("");
+    setDescription("");
+    setIsPickup(false);
+    setFiles([]);
+    setAddress("");
+    setPostalCode("");
+    setCity("");
+    setCountry("");
+    setInstructions("");
+  };
+
   return (
     <Section boxed>
       {isSubmitted ? (
@@ -74,105 +91,35 @@ export default function PlaceOrderPage() {
             <Link href="/dashboard">
               <Button>Mine bestillinger</Button>
             </Link>
-            <Button variant="outline" onClick={() => setIsSubmitted(false)}>
+            <Button variant="outline" onClick={resetForm}>
               Ny bestilling
             </Button>
           </div>
         </div>
       ) : (
-        <div className="w-full grid grid-cols-2 mx-auto gap-12 lg:flex lg:flex-col lg:w-full">
-          <div className="flex flex-col items-start justify-start w-full">
-            <form className="flex flex-col w-full gap-4" onSubmit={onSubmit}>
-              <h3 className="text-3xl lg:text-2xl font-semibold">
-                Din beställning
-              </h3>
-
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Emne</label>
-                <Input
-                  value={subject}
-                  onChange={(e) => setSubject(e.target.value)}
-                  required
-                  placeholder="Hva ønsker du?"
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Beskrivelse</label>
-                <Textarea
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  placeholder="Beskriv bestillingen"
-                  rows={5}
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Vedlegg</label>
-                <Input
-                  type="file"
-                  multiple
-                  onChange={(e) => setFiles(Array.from(e.target.files || []))}
-                />
-                {files?.length ? (
-                  <p className="text-xs text-gray-500">
-                    {files.length} fil(er) valgt
-                  </p>
-                ) : null}
-              </div>
-              <div className="flex items-center gap-3">
-                <Switch
-                  title="Henter selv"
-                  id="pickup"
-                  className="text-sm"
-                  checked={isPickup}
-                  onCheckedChange={setIsPickup}
-                />
-                <Label>Henter selv</Label>
-              </div>
-              {!isPickup && (
-                <div className="flex flex-col w-full space-y-2">
-                  <strong>Leveransadresse (Frakt tillkommer)</strong>
-                  <label className="text-sm font-medium">Adresse</label>
-                  <Input
-                    value={""}
-                    onChange={(e) => {}}
-                    placeholder="Adresse"
-                  />
-                  <Input
-                    value={""}
-                    onChange={(e) => {}}
-                    placeholder="Postnummer"
-                  />
-                  <Input value={""} onChange={(e) => {}} placeholder="Stad" />
-                  <Input value={""} onChange={(e) => {}} placeholder="Land" />
-                  <Textarea
-                    value={""}
-                    onChange={(e) => {}}
-                    placeholder="Övrig instruktion t.ex. c/o, etc."
-                  />
-                </div>
-              )}
-              <div className="mt-2">
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full text-lg"
-                  disabled={uploading}
-                >
-                  {uploading ? "Sender…" : "Send bestilling"}
-                </Button>
-              </div>
-            </form>
-          </div>
-
-          <div className="lg:hidden flex flex-col items-start justify-start w-full relative">
-            <Image
-              src="https://images.prismic.io/potleverk/aLgpFGGNHVfTOj2H_ideas-bulb.webp?auto=format,compress"
-              width={1024}
-              height={1024}
-              className="object-cover w-full rounded-xl overflow-hidden"
-              alt="asd"
-            />
-          </div>
+        <div className="flex max-w-2xl mx-auto w-full flex-col items-start justify-start">
+          <OrderForm
+            subject={subject}
+            setSubject={setSubject}
+            description={description}
+            setDescription={setDescription}
+            isPickup={isPickup}
+            setIsPickup={setIsPickup}
+            files={files}
+            setFiles={setFiles}
+            onSubmit={onSubmit}
+            uploading={uploading}
+            address={address}
+            setAddress={setAddress}
+            postalCode={postalCode}
+            setPostalCode={setPostalCode}
+            city={city}
+            setCity={setCity}
+            country={country}
+            setCountry={setCountry}
+            instructions={instructions}
+            setInstructions={setInstructions}
+          />
         </div>
       )}
     </Section>

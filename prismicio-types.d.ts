@@ -424,8 +424,12 @@ export type NavigationDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | CarouselSectionSlice
+  | CardGridSlice
+  | TitleWithTextSlice
+  | StatsSectionSlice
+  | BannerSlice
   | BlogPostsSlice
-  | NewsletterSlice
   | FormSectionSlice
   | ContentBlocksSlice
   | TextContentSlice
@@ -1321,6 +1325,16 @@ export interface ContentBlocksSliceDefaultPrimaryItemsItem {
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   text: prismic.KeyTextField;
+
+  /**
+   * Link field in *ContentBlocks → Default → Primary → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_blocks.default.primary.items[].link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 }
 
 /**
@@ -1404,6 +1418,16 @@ export interface ContentBlocksSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
   spacing_bottom: prismic.SelectField<"Large" | "Small" | "None", "filled">;
+
+  /**
+   * Link field in *ContentBlocks → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_blocks.default.primary.link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 }
 
 /**

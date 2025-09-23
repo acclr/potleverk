@@ -14,12 +14,16 @@ export type ContentBlocksProps = SliceComponentProps<Content.ContentBlocksSlice>
 const ContentBlocks = ({ slice }: ContentBlocksProps): JSX.Element => {
   const className = createStylesForSlice(slice);
 
-  const transformItem = (item: Content.ContentBlocksSliceDefaultPrimaryItemsItem) => ({
+  const transformItem = (
+    item: Content.ContentBlocksSliceDefaultPrimaryItemsItem
+  ) => ({
     title: item.title,
     text: item.text,
-    image: item.image
+    image: item.image,
+    link: item.link,
   });
 
+  console.log({ prm: slice.primary });
   return (
     //@ts-ignore
     <ContentBlocksComponent
@@ -28,6 +32,7 @@ const ContentBlocks = ({ slice }: ContentBlocksProps): JSX.Element => {
       title={slice.primary.title}
       preamble={slice.primary.text}
       items={slice.primary.items.map((item) => transformItem(item))}
+      link={slice.primary.link}
     />
   );
 };

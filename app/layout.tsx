@@ -1,19 +1,14 @@
-import { getSettings } from "@/features/prismic/actions/getSettings";
-import { getStringResources } from "@/features/prismic/actions/getStringResources";
 import { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
 
-import { getDrawerMenu } from "@/features/prismic/actions/getDrawerMenu";
-import { getHeaderMenu } from "@/features/prismic/actions/getHeaderMenu";
-
-import ParallaxBackground from "@/components/parallax-background";
 import Providers from "@/components/app-providers";
-import Header from "../components/layout/Header";
-import Footer from "../components/layout/Footer";
-import "./globals.css";
-import { LocalizationDocument, SettingsDocument } from "../prismicio-types";
+import ParallaxBackground from "@/components/parallax-background";
 import { cn } from "@/components/utils";
+import Footer from "../components/layout/Footer";
+import Header from "../components/layout/Header";
+import { LocalizationDocument, SettingsDocument } from "../prismicio-types";
+import "./globals.css";
 
 const primary = Poppins({
   subsets: ["latin-ext"],

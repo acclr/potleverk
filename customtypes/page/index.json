@@ -42,10 +42,22 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "blog_posts": {
+            "carousel_section": {
               "type": "SharedSlice"
             },
-            "newsletter": {
+            "card_grid": {
+              "type": "SharedSlice"
+            },
+            "title_with_text": {
+              "type": "SharedSlice"
+            },
+            "stats_section": {
+              "type": "SharedSlice"
+            },
+            "banner": {
+              "type": "SharedSlice"
+            },
+            "blog_posts": {
               "type": "SharedSlice"
             },
             "form_section": {

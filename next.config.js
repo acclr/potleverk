@@ -30,11 +30,13 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+
   reactStrictMode: false,
   images: {
     deviceSizes: [64, 512, 768, 1024, 1920],
     dangerouslyAllowSVG: true,
     domains: [
+      "firebasestorage.googleapis.com",
       "encrypted-tbn0.gstatic.com",
       "hebbkx1anhila5yf.public.blob.vercel-storage.com",
       "images.prismic.io",

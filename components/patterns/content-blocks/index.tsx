@@ -1,6 +1,10 @@
 import Image from "next/image";
 import Section from "../../ui/section";
 import { AspectRatio } from "../../ui/aspect-ratio";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { getPrismicLink } from "@/features/prismic/utils/get-prismic-link";
+import { resolver } from "@/features/prismic/resolver";
 
 export default function ContentBlocks({
   className,
@@ -8,6 +12,7 @@ export default function ContentBlocks({
   title,
   preamble,
   eyebrowText,
+  link,
 }) {
   return (
     <Section classNames={{ container: className }} boxed>
@@ -24,13 +29,25 @@ export default function ContentBlocks({
           <ContentBlock key={index} {...item} />
         ))}
       </div>
+
+      <Link href={getPrismicLink(link, resolver)}>
+        <Button variant="default" size="lg" className="mt-12 max-w-max">
+          {link?.text ?? "Visa alla"}
+        </Button>
+      </Link>
     </Section>
   );
 }
 
-const ContentBlock = ({ title, text, image }) => {
+const ContentBlock = ({ title, text, image, link }) => {
+  const Element = link ? Link : "div";
+
+  console.log({ title, link });
   return (
-    <div className="ui-card flex flex-col">
+    <Element
+      className="ui-card flex flex-col"
+      href={getPrismicLink(link, resolver)}
+    >
       {image?.url && (
         <AspectRatio
           ratio={4 / 3}
@@ -56,6 +73,6 @@ const ContentBlock = ({ title, text, image }) => {
             "Nulla ullamco id dolor et. Ad non reprehenderit ex occaecat aliquip qui qui dolore sit."}
         </p>
       </div>
-    </div>
+    </Element>
   );
 };

@@ -20,6 +20,7 @@ export enum MessageType {
 export interface Message {
   id: string;
   senderId: string;
+  senderName: string;
   sentAt: string;
   message: string;
   status?: MessageStatus;
