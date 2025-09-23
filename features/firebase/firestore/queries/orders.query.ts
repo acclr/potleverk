@@ -2,6 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { ordersRepo } from "@/features/firebase/firestore/repositories";
 import type { Order } from "@/features/firebase/firestore/types";
 import { where } from "firebase/firestore";
+import { useState, useCallback } from "react";
 
 // Query keys for consistent cache management
 export const orderKeys = {
@@ -35,6 +36,70 @@ export function useOrder(id: string) {
     queryFn: () => ordersRepo.getById(id),
     enabled: !!id
   });
+}
+
+export function usePaginatedOrdersByClient(
+  clientId: string | undefined,
+  isAdmin: boolean = false,
+  pageSize: number = 10
+) {
+  const [pages, setPages] = useState<{ [key: number]: { data: Order[], lastDoc: any, hasMore: boolean } }>({});
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const queryResult = useQuery({
+    queryKey: orderKeys.list({ clientId, page: currentPage, pageSize }),
+    queryFn: async () => {
+      // Check if we already have this page cached
+      if (pages[currentPage]) {
+        return pages[currentPage];
+      }
+
+      const startAfterDoc = currentPage > 0 ? pages[currentPage - 1]?.lastDoc : undefined;
+      const constraints = isAdmin ? [] : [where("clientId", "==", clientId as string)];
+
+      const result = await ordersRepo.getPaginatedBy(pageSize, startAfterDoc, 'createdAt', ...constraints);
+
+      // Cache the result
+      setPages(prev => ({ ...prev, [currentPage]: result }));
+
+      return result;
+    },
+    enabled: !!clientId
+  });
+
+  const goToPage = useCallback((page: number) => {
+    setCurrentPage(page);
+  }, []);
+
+  const nextPage = useCallback(() => {
+    if (queryResult.data?.hasMore) {
+      setCurrentPage(prev => prev + 1);
+    }
+  }, [queryResult.data?.hasMore]);
+
+  const prevPage = useCallback(() => {
+    if (currentPage > 0) {
+      setCurrentPage(prev => prev - 1);
+    }
+  }, [currentPage]);
+
+  const reset = useCallback(() => {
+    setPages({});
+    setCurrentPage(0);
+  }, []);
+
+  return {
+    ...queryResult,
+    orders: queryResult.data?.data || [],
+    hasMore: queryResult.data?.hasMore || false,
+    currentPage,
+    pageSize,
+    goToPage,
+    nextPage,
+    prevPage,
+    reset,
+    hasPrevPage: currentPage > 0
+  };
 }
 
 // ===== MUTATIONS =====
