@@ -245,8 +245,9 @@ export function OrderMessages({
           {messages
             .sort((a, b) => a?.sentAt?.localeCompare(b?.sentAt))
             .map((m, i, sortedMessages) => {
+
               const isFromCurrentUser = m.senderId === user?.uid;
-              const isRightAligned = i % 2 === 1; // Alternate based on message index
+              const isRightAligned = !isFromCurrentUser
               
               // Check if we should show a timestamp divider
               const showTimestamp = shouldShowTimestamp(

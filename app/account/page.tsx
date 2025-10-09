@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import Link from "next/link";
 import { Loader } from "lucide-react";
+import { useTranslation } from "@/hooks/useTranslation";
 
 function Section({
   children,
@@ -54,6 +55,7 @@ export default function AccountPage() {
   const [registerName, setRegisterName] = useState("");
   const [registerPhone, setRegisterPhone] = useState("");
   const [loading, setLoading] = useState(false);
+  const { t } = useTranslation();
 
   async function onLogin(e: React.FormEvent) {
     e.preventDefault();
@@ -106,17 +108,17 @@ export default function AccountPage() {
     );
   }
   return (
-    <Section title="Konto" subtitle="Logg inn eller opprett en konto.">
+    <Section title="Konto" subtitle={ t('loginPageHeader.text') }>
       <Tabs value={tab} onValueChange={setTab}>
         <TabsList className="grid grid-cols-2 w-full">
-          <TabsTrigger value="login">Logg inn</TabsTrigger>
-          <TabsTrigger value="register">Registrer</TabsTrigger>
+          <TabsTrigger value="login">{ t('loginPageTabLogin.text') }</TabsTrigger>
+          <TabsTrigger value="register">{ t('loginPageTabRegister.text') }</TabsTrigger>
         </TabsList>
 
         <TabsContent value="login" className="mt-6">
           <form className="space-y-4" onSubmit={onLogin}>
             <div className="space-y-2">
-              <label className="text-sm font-medium">E-post</label>
+              <label className="text-sm font-medium">{ t('loginPageMailHeader.text') }</label>
               <Input
                 type="email"
                 value={loginEmail}
@@ -125,7 +127,7 @@ export default function AccountPage() {
               />
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-medium">Passord</label>
+              <label className="text-sm font-medium">{ t('loginPagePwdHeader.text') }</label>
               <Input
                 type="password"
                 value={loginPassword}
@@ -135,14 +137,14 @@ export default function AccountPage() {
             </div>
             <div className="flex items-center justify-between">
               <Button type="submit" disabled={loading}>
-                {loading ? "Logger inn…" : "Logg inn"}
+                {loading ? "Logger inn…" : t('loginPageButtonLogin.text') }
               </Button>
               <Button
                 type="button"
                 variant="ghost"
                 onClick={() => router.push("/account/forgot")}
               >
-                Glemt passord?
+                { t('loginPageButtonForgotPwd.text') }
               </Button>
             </div>
           </form>
@@ -151,21 +153,21 @@ export default function AccountPage() {
         <TabsContent value="register" className="mt-6">
           <form className="space-y-4" onSubmit={onRegister}>
             <div className="space-y-2">
-              <label className="text-sm font-medium">Navn</label>
+              <label className="text-sm font-medium">{ t('loginPageRegisterName.text') }</label>
               <Input
                 value={registerName}
                 onChange={(e) => setRegisterName(e.target.value)}
               />
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-medium">Telefon</label>
+              <label className="text-sm font-medium">{ t('loginPageRegisterTel.text') }</label>
               <Input
                 value={registerPhone}
                 onChange={(e) => setRegisterPhone(e.target.value)}
               />
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-medium">E-post</label>
+              <label className="text-sm font-medium">{ t('loginPageRegisterMail.text') }</label>
               <Input
                 type="email"
                 value={registerEmail}
@@ -174,7 +176,7 @@ export default function AccountPage() {
               />
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-medium">Passord</label>
+              <label className="text-sm font-medium">{ t('loginPageRegisterPwd.text') }</label>
               <Input
                 type="password"
                 value={registerPassword}
@@ -183,7 +185,7 @@ export default function AccountPage() {
               />
             </div>
             <Button type="submit" disabled={loading}>
-              {loading ? "Registrerer…" : "Opprett konto"}
+              {loading ? "Registrerer…" : t('loginPageRegisterButtonCreate.text') }
             </Button>
           </form>
         </TabsContent>

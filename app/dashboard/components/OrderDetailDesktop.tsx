@@ -8,6 +8,7 @@ import type { Order } from "@/features/firebase/firestore/types/order";
 import { OrderMessages } from "./OrderMessages";
 import { statusLabel, statusStyles } from "./constants";
 import { formatDate } from "./utils";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface OrderDetailDesktopProps {
   orders: Order[];
@@ -15,16 +16,19 @@ interface OrderDetailDesktopProps {
 }
 
 export function OrderDetailDesktop({ orders, selected }: OrderDetailDesktopProps) {
+
+  const { t } = useTranslation();
+
   if (orders?.length === 0) {
     return (
       <div className="flex flex-col gap-2 items-start justify-start">
-        <h3 className="text-2xl font-bold">Ingen bestillinger</h3>
+        <h3 className="text-2xl font-bold">{ t('componentOrderDetailNoOrderHeader.text') }</h3>
         <p className="text-gray-600">
-          Du har ingen bestillinger.
+         { t('componentOrderDetailNoOrder.text') }
         </p>
         <Link href="/order">
           <Button variant="default">
-            Legg til en bestilling
+            { t('componentOrderDetailNoDoOrder.text') }
           </Button>
         </Link>
       </div>
@@ -35,7 +39,7 @@ export function OrderDetailDesktop({ orders, selected }: OrderDetailDesktopProps
     return (
       <div className="p-6 border rounded-md">
         <p className="text-gray-600">
-          Velg en bestilling fra listen for å se detaljer.
+            { t('componentOrderDetailChoseOrder.text') }
         </p>
       </div>
     );

@@ -1,13 +1,15 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { LucideIcon } from "lucide-react";
+import { LucideIcon, MailIcon, PhoneIcon } from "lucide-react";
 
 import { cn } from "@/components/utils";
 
 import { AspectRatio } from "../../ui/aspect-ratio";
 import Hoverable from "../../ui/hoverable";
 import Section from "../../ui/section";
+import { ContactInformationDocument, ContactInformationDocumentDataEmployeesItem } from "@/prismicio-types";
+import { LinkedinIcon } from "@/components/icons/linkedin";
 
 export type TeamContactPoint = {
   icon: LucideIcon;
@@ -26,7 +28,7 @@ export type TeamMember = {
 export type TeamSectionProps = {
   title?: string;
   preamble?: string;
-  items: TeamMember[];
+  items: ContactInformationDocument;
   columns: 2 | 3 | 4 | 5 | 6;
   classNames?: {
     container?: string;
@@ -74,7 +76,7 @@ export function TeamSection({
             colsMap[columns]
           )}
         >
-          {items?.map((member) => (
+          {items.data.employees?.map((member: ContactInformationDocumentDataEmployeesItem) => (
             <div
               key={member.name}
               className="group relative flex w-full flex-col"
@@ -82,14 +84,18 @@ export function TeamSection({
               {/* Bild och Överlägg */}
               <div className="relative">
                 {/* Member Image */}
-                <AspectRatio ratio={1}>
-                  <Image
-                    src={member.imageUrl}
-                    alt={member.name}
-                    layout="fill"
-                    className="w-full rounded-xl object-cover"
-                  />
-                </AspectRatio>
+
+                {member.image.url &&
+                  <AspectRatio ratio={1}>
+                    <Image
+                      src={member.image.url}
+                      alt={member.image.alt?? member.name?? ""}
+                      layout="fill"
+                      className="w-full rounded-xl object-cover"
+                    />
+                  </AspectRatio>
+                }
+                
 
                 {/* Överlägg som visas vid hover */}
                 <div className="duration-[50ms] absolute inset-0 flex flex-col rounded-xl items-center justify-center bg-black/80 p-4 opacity-0 transition-opacity group-hover:opacity-100">
@@ -113,58 +119,44 @@ export function TeamSection({
                 </p>
 
                 <div className="-mt-1 flex flex-row justify-start items-center gap-1">
-                  {member.contactPoints.map((contact) => {
-                    const Icon = contact.icon;
-                    let href: string = "#";
-                    let isExternal = false;
-
-                    switch (contact.type) {
-                      case "email":
-                        href = `mailto:${contact.value}`;
-                        break;
-                      case "phone":
-                        href = `tel:${contact.value}`;
-                        break;
-                      case "linkedin":
-                        href = `https://linkedin.com/in/${contact.value}`;
-                        break;
-                      case "twitter":
-                        href = `https://twitter.com/${contact.value}`;
-                        isExternal = true;
-                        break;
-                      case "github":
-                        href = `https://github.com/${contact.value}`;
-                        isExternal = true;
-                        break;
-                      case "website":
-                        href = contact.value.startsWith("http")
-                          ? contact.value
-                          : `https://${contact.value}`;
-                        isExternal = true;
-                        break;
-                      default:
-                        href = "#";
-                    }
-
-                    return (
-                      <Link
-                        key={contact.type}
-                        href={href}
-                        target={isExternal ? "_blank" : "_self"}
-                        rel={isExternal ? "noopener noreferrer" : undefined}
-                        aria-label={contact.type}
+                  {member.linkedin &&
+                    <Link
+                        href={member.linkedin}
                         className="flex bg-black/5 hover:bg-black/10 rounded-full items-center space-x-2 text-black transition-colors duration-200 hover:text-black"
                       >
-                        <Hoverable bg="lighten" shape="circle" initial>
-                          <Icon
-                            size={32}
-                            className="h-5 w-5"
-                            strokeWidth={1.25}
-                          />
-                        </Hoverable>
-                      </Link>
-                    );
-                  })}
+                      <Hoverable bg="lighten" shape="circle" initial>
+                        <LinkedinIcon
+                          size={32}
+                        />
+                      </Hoverable>
+                    </Link>
+                  }
+
+                  {member.email &&
+                    <Link
+                        href={member.email}
+                        className="flex bg-black/5 hover:bg-black/10 rounded-full items-center space-x-2 text-black transition-colors duration-200 hover:text-black"
+                      >
+                      <Hoverable bg="lighten" shape="circle" initial>
+                        <MailIcon
+                          size={32}
+                        />
+                      </Hoverable>
+                    </Link>
+                  }
+
+                  {member.phone && 
+                    <Link
+                        href={member.phone}
+                        className="flex bg-black/5 hover:bg-black/10 rounded-full items-center space-x-2 text-black transition-colors duration-200 hover:text-black"
+                      >
+                      <Hoverable bg="lighten" shape="circle" initial>
+                        <PhoneIcon
+                          size={32}
+                        />
+                      </Hoverable>
+                    </Link>                  
+                  }
                 </div>
               </div>
             </div>

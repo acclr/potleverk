@@ -8,68 +8,12 @@ import {
 import Section from "@/components/ui/section";
 import { createStylesForSlice } from "@/features/prismic/slices/utils";
 import { MailIcon, MapIcon, PhoneIcon } from "lucide-react";
+import { createClient } from "@/features/prismic";
 
-export default function Contact() {
-  const employees: TeamMember[] = [
-    {
-      name: "Daniel Ehrenberg-Rasmussen",
-      title: "Graphics Designer",
-      bio: "Daniel is a graphics designer at Potleverk. He is responsible for the design of the website and the graphics for the products.",
-      imageUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg2UYjIh_mqRAWnKFUUyuHASqEEZzFbR2CMw&s",
-      contactPoints: [
-        {
-          type: "email",
-          value: "daniel@potleverk.no",
-          icon: MailIcon,
-        },
-        {
-          type: "phone",
-          value: "855 49 350",
-          icon: PhoneIcon,
-        },
-      ],
-    },
-    {
-      name: "Elliott Ehrenberg",
-      title: "Graphics Designer",
-      bio: "Elliott is a graphics designer at Potleverk. He is responsible for the design of the website and the graphics for the products.",
-      imageUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk3NmmlpJ3rKlh5NPGAd00zocHhdamnxDepg&s",
-      contactPoints: [
-        {
-          type: "email",
-          value: "elliott@potleverk.no",
-          icon: MailIcon,
-        },
-      ],
-    },
-    {
-      name: "Jostein Hanssen",
-      title: "Software Engineer",
-      bio: "Jostein is a software engineer at Potleverk. He is responsible for the development of the website and the software for the products.",
-      imageUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg2UYjIh_mqRAWnKFUUyuHASqEEZzFbR2CMw&s",
-      contactPoints: [
-        {
-          type: "email",
-          value: "jostein@potleverk.no",
-          icon: MailIcon,
-        },
-        {
-          type: "phone",
-          value: "855 49 350",
-          icon: PhoneIcon,
-        },
-        {
-          type: "linkedin",
-          value: "https://linkedin.com/in/jostein-hanssen",
-          // @ts-ignore Fix this type
-          icon: LinkedInStrokeIcon as React.ForwardRefExoticComponent<any>,
-        },
-      ],
-    },
-  ];
+export default async function Contact() {
+
+  const prismicClient = createClient();
+  const contactInfo = await prismicClient.getSingle("contact_information");
 
   const contactMethods = [
     {
@@ -117,7 +61,7 @@ export default function Contact() {
         </div>
       </Section>
       <TeamSection
-        items={employees}
+        items={contactInfo}
         columns={3}
         classNames={{
           container: createStylesForSlice({

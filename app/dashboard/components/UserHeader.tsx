@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useAuth, logout } from "@/features/firebase/auth";
 import { User, LogOut, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface UserHeaderProps {
   title?: string;
@@ -17,6 +18,8 @@ export function UserHeader({
 }: UserHeaderProps) {
   const { user } = useAuth();
   const router = useRouter();
+
+  const { t } = useTranslation();
 
   const handleLogout = async () => {
     try {
@@ -49,12 +52,12 @@ export function UserHeader({
                 ) : (
                   <>
                     <h1 className="text-2xl md:text-base md:leading-snug font-semibold text-gray-900">
-                      Velkommen, {userName}
+                      { t('welcome.text') }, {userName}
                     </h1>
 
                     {user?.meta?.createdAt && (
                       <p className="text-xs text-gray-500">
-                        Opprettet {new Date(user.meta.createdAt).toLocaleDateString("nb-NO")}
+                        { t('createdAt.text') } {new Date(user.meta.createdAt).toLocaleDateString("nb-NO")}
                       </p>
                     )}
                   </>
@@ -69,7 +72,7 @@ export function UserHeader({
               className="!p-0 lg:!size-10 min-w-10 lgup:!px-3 lg:rounded-full flex items-center justify-center text-red-600 hover:text-red-700 hover:bg-red-50 gap-2"
             >
               <LogOut className="h-4 w-4" />
-              <span className="lg:hidden">Logg ut</span>
+              <span className="lg:hidden">{ t('logout.text') }</span>
             </Button>
           </div>
         </div>

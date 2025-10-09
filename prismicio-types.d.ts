@@ -202,6 +202,133 @@ export type BlogPostDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *Contact information → Employees*
+ */
+export interface ContactInformationDocumentDataEmployeesItem {
+  /**
+   * Name field in *Contact information → Employees*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Name
+   * - **API ID Path**: contact_information.employees[].name
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * Title field in *Contact information → Employees*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: title
+   * - **API ID Path**: contact_information.employees[].title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Bio field in *Contact information → Employees*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Bio
+   * - **API ID Path**: contact_information.employees[].bio
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  bio: prismic.KeyTextField;
+
+  /**
+   * Image field in *Contact information → Employees*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_information.employees[].image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Email field in *Contact information → Employees*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Email
+   * - **API ID Path**: contact_information.employees[].email
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  email: prismic.KeyTextField;
+
+  /**
+   * LinkedIn field in *Contact information → Employees*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: LinkedIn
+   * - **API ID Path**: contact_information.employees[].linkedin
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  linkedin: prismic.KeyTextField;
+
+  /**
+   * Phone field in *Contact information → Employees*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Phone
+   * - **API ID Path**: contact_information.employees[].phone
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  phone: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Contact information → Methods*
+ */
+export interface ContactInformationDocumentDataMethodsItem {}
+
+/**
+ * Content for Contact information documents
+ */
+interface ContactInformationDocumentData {
+  /**
+   * Employees field in *Contact information*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_information.employees[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  employees: prismic.GroupField<
+    Simplify<ContactInformationDocumentDataEmployeesItem>
+  >;
+
+  /**
+   * Methods field in *Contact information*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_information.methods[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  methods: prismic.GroupField<
+    Simplify<ContactInformationDocumentDataMethodsItem>
+  >;
+}
+
+/**
+ * Contact information document from Prismic
+ *
+ * - **API ID**: `contact_information`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ContactInformationDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<ContactInformationDocumentData>,
+    "contact_information",
+    Lang
+  >;
+
 type FormShapeDocumentDataSlicesSlice =
   | FormSwitchSlice
   | FormTextareaSlice
@@ -647,6 +774,7 @@ export type SettingsDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | BlogPostDocument
+  | ContactInformationDocument
   | FormShapeDocument
   | LocalizationDocument
   | NavigationDocument
@@ -3279,6 +3407,10 @@ declare module "@prismicio/client" {
       BlogPostDocument,
       BlogPostDocumentData,
       BlogPostDocumentDataSlicesSlice,
+      ContactInformationDocument,
+      ContactInformationDocumentData,
+      ContactInformationDocumentDataEmployeesItem,
+      ContactInformationDocumentDataMethodsItem,
       FormShapeDocument,
       FormShapeDocumentData,
       FormShapeDocumentDataSlicesSlice,
