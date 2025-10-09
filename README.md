@@ -1,6 +1,10 @@
 # Potleverk web
 Website for Potleverk AS
 
+# Getting started
+- Install dependencies with `npm i` 
+- Run development server: `npm run dev`
+
 ## Main tech involved
 - NextJs
 - React

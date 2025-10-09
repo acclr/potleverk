@@ -4,7 +4,7 @@ import { SliceZone } from "@prismicio/react";
 
 export default async function Page({params}: { params: Promise<{ uid: string }> }) {
   const { uid } = (await params);
-  const prismicPage = await getPage(uid).catch(err => {
+  const prismicPage = await getPage(uid)?.catch((err) => {
     console.error(err);
     return null;
   });

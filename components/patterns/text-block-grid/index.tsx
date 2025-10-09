@@ -85,12 +85,12 @@ export default function TextBlockGrid({
         {eyebrowText && <span className="ui-eyebrow">{eyebrowText}</span>}
         <h2 className="text-3xl font-[550]">{title}</h2>
         <p className="mb-4 max-w-[70ch] text-xl">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna
-          aliqua.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
       </div>
 
-      <div className="grid grid-cols-3 gap-12 gap-y-4 lg:grid-cols-2 lg:gap-8 md:grid-cols-1 md:gap-6">
+      <div className="grid grid-cols-3 gap-12 gap-y-4 lg:grid-cols-2 lg:gap-8 md:grid-cols-2 md:gap-6">
         {items.map((item) => (
           <div key={item.title} className="flex flex-col">
             {item.vectorHtml && (
@@ -100,13 +100,16 @@ export default function TextBlockGrid({
               />
             )}
             <div className="pt-0">
-              <span className="heading py-1 text-lg font-[550]">{item.title}</span>
+              <span className="heading py-1 text-lg font-[550]">
+                {item.title}
+              </span>
               <p className="text-base">{item.text}</p>
 
               {item?.link?.label && (
                 <Link
                   className="group mt-1.5 flex items-center justify-start space-x-1 font-medium text-primary-600 hover:font-semibold"
-                  href={item?.link?.href ?? ""}>
+                  href={item?.link?.href ?? ""}
+                >
                   <span>{item?.link?.label}</span>
                   <ArrowRight strokeWidth={2} size={18} />
                 </Link>

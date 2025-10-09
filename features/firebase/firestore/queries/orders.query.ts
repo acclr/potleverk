@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { ordersRepo } from "@/features/firebase/firestore/repositories";
 import type { Order } from "@/features/firebase/firestore/types";
-import { where } from "firebase/firestore";
+import { QueryConstraint, where } from "firebase/firestore";
 import { useState, useCallback } from "react";
 
 // Query keys for consistent cache management
@@ -25,8 +25,19 @@ export function useOrders() {
 export function useOrdersByClient(clientId: string | undefined, isAdmin: boolean = false) {
   return useQuery({
     queryKey: orderKeys.list({ clientId }),
-    queryFn: () => ordersRepo.getAllBy(...isAdmin ? [] : [where("clientId", "==", clientId as string)]),
-    enabled: !!clientId
+    queryFn: () => {
+      if (!clientId && !isAdmin) {
+        throw new Error("No clientId provided for non-admin user");
+      }
+
+      const constraints: QueryConstraint[] = [];
+      if (!isAdmin && clientId) {
+        constraints.push(where("clientId", "==", clientId));
+      }
+
+      return ordersRepo.getAllBy(...constraints);
+    },
+    enabled: isAdmin || !!clientId
   });
 }
 
@@ -55,7 +66,12 @@ export function usePaginatedOrdersByClient(
       }
 
       const startAfterDoc = currentPage > 0 ? pages[currentPage - 1]?.lastDoc : undefined;
-      const constraints = isAdmin ? [] : [where("clientId", "==", clientId as string)];
+      const constraints: QueryConstraint[] = [];
+
+      // Only add clientId filter for non-admin users
+      if (!isAdmin && clientId) {
+        constraints.push(where("clientId", "==", clientId));
+      }
 
       const result = await ordersRepo.getPaginatedBy(pageSize, startAfterDoc, 'createdAt', ...constraints);
 
@@ -64,7 +80,7 @@ export function usePaginatedOrdersByClient(
 
       return result;
     },
-    enabled: !!clientId
+    enabled: isAdmin || !!clientId
   });
 
   const goToPage = useCallback((page: number) => {

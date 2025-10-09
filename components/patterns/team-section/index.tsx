@@ -95,7 +95,7 @@ export function TeamSection({
                     />
                   </AspectRatio>
                 }
-                
+
 
                 {/* Överlägg som visas vid hover */}
                 <div className="duration-[50ms] absolute inset-0 flex flex-col rounded-xl items-center justify-center bg-black/80 p-4 opacity-0 transition-opacity group-hover:opacity-100">
@@ -145,7 +145,7 @@ export function TeamSection({
                     </Link>
                   }
 
-                  {member.phone && 
+                  {member.phone &&
                     <Link
                         href={member.phone}
                         className="flex bg-black/5 hover:bg-black/10 rounded-full items-center space-x-2 text-black transition-colors duration-200 hover:text-black"
@@ -155,7 +155,7 @@ export function TeamSection({
                           size={32}
                         />
                       </Hoverable>
-                    </Link>                  
+                    </Link>
                   }
                 </div>
               </div>

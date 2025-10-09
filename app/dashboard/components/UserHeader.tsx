@@ -47,7 +47,9 @@ export function UserHeader({
               <div className="flex flex-col items-start justify-start">
                 {title ? (
                   <>
-                    <h1 className="text-2xl md:leading-none md:!text-base font-bold text-gray-900">{title}</h1>
+                    <h1 className="text-2xl md:leading-none md:!text-base font-bold text-gray-900">
+                      {title}
+                    </h1>
                   </>
                 ) : (
                   <>

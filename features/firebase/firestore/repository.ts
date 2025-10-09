@@ -1,3 +1,5 @@
+"use client";
+
 import {
   doc,
   getDoc,
@@ -26,7 +28,7 @@ import { Identifiable } from "./interfaces/identifiable";
 
 export class FirestoreRepository<T> implements Repository<T> {
   private collectionName: string;
-  
+
   constructor(private name: string) {
     this.collectionName = this.name;
   }
@@ -120,24 +122,29 @@ export class FirestoreRepository<T> implements Repository<T> {
     orderByField: string = 'createdAt',
     ...constraints: QueryConstraint[]
   ): Promise<{ data: T[], lastDoc: any, hasMore: boolean }> {
-    const queryConstraints = [
-      orderBy(orderByField, 'desc'),
-      limit(pageSize + 1), // Get one extra to determine if there's more
-      ...constraints
-    ];
+    try {
+    // Firestore requires where clauses before orderBy
+      const queryConstraints = [
+        ...constraints,
+        orderBy(orderByField, 'desc'),
+        limit(pageSize + 1) // Get one extra to determine if there's more
+      ];
 
-    if (startAfterDoc) {
-      queryConstraints.push(startAfter(startAfterDoc));
+      if (startAfterDoc) {
+        queryConstraints.push(startAfter(startAfterDoc));
+      }
+
+      const snap = query(collection(db, this.collectionName), ...queryConstraints)
+      const docs = await getDocs(snap);
+      const hasMore = docs.docs.length > pageSize;
+      const data = docs.docs.slice(0, pageSize).map((d) => ({ id: d.id, ...d.data() }) as T);
+      const lastDoc = hasMore ? docs[pageSize - 1] : docs[docs.docs.length - 1];
+
+      return { data, lastDoc, hasMore };
+    } catch (error) {
+      console.error({ error: error });
+      return { data: [], lastDoc: null, hasMore: false };
     }
-
-    const snap = await getDocs(query(collection(db, this.collectionName), ...queryConstraints));
-    const docs = snap.docs;
-
-    const hasMore = docs.length > pageSize;
-    const data = docs.slice(0, pageSize).map((d) => ({ id: d.id, ...d.data() }) as T);
-    const lastDoc = hasMore ? docs[pageSize - 1] : docs[docs.length - 1];
-
-    return { data, lastDoc, hasMore };
   }
 
   async getCount(...constraints: QueryConstraint[]): Promise<number> {

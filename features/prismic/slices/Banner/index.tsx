@@ -3,6 +3,7 @@ import PrismicRichText from "@/components/ui/prismic-rich-text";
 import { getPrismicLink } from "@/features/prismic/utils/get-prismic-link";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
+import { createStylesForSlice } from "../utils";
 // import { getPrismicLink } from "@/features/prismic/actions/get-prismic-link";
 
 /**
@@ -16,9 +17,11 @@ export type BannerProps = SliceComponentProps<Content.BannerSlice>;
 const Banner = ({ slice, context }: BannerProps): JSX.Element => {
   // @ts-ignore
   const { resolver } = context;
+  const className = createStylesForSlice(slice);
 
   return (
     <BannerComponent
+      className={className}
       data-sliceid={slice.slice_type}
       imageUrl={slice.primary.image.url ?? ""}
       altTitle={slice.primary.image.alt ?? ""}
@@ -30,7 +33,7 @@ const Banner = ({ slice, context }: BannerProps): JSX.Element => {
       buttons={slice.primary.buttons?.map((button) => ({
         text: button.link.text,
         link: getPrismicLink(button.link, resolver),
-        type: button.type
+        type: button.type,
       }))}
       backgroundOverlay={slice.primary.background_overlay}
     />
