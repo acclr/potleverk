@@ -7,12 +7,22 @@ export type UIButtonProps = {
   type: "primary" | "secondary" | "hollow";
 }[];
 
+const buttonTypeMap = {
+  primary: "default",
+  muted: "outline",
+};
+
 export function renderButtons(buttons: UIButtonProps) {
   return (
     <div className="mt-2 flex space-x-2">
       {buttons?.map((button, index) => (
         <Link key={index} href={button.link}>
-          <Button key={index} variant={button.type as ButtonProps["variant"]} size="lg" className="max-w-max">
+          <Button
+            key={index}
+            variant={buttonTypeMap[button.type] as ButtonProps["variant"]}
+            size="lg"
+            className="max-w-max"
+          >
             {button.text}
           </Button>
         </Link>

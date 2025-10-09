@@ -42,7 +42,6 @@ export default function ContentBlocks({
 const ContentBlock = ({ title, text, image, link }) => {
   const Element = link ? Link : "div";
 
-  console.log({ title, link });
   return (
     <Element
       className="ui-card flex flex-col"

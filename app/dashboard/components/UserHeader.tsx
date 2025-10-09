@@ -44,17 +44,22 @@ export function UserHeader({
               <div className="flex flex-col items-start justify-start">
                 {title ? (
                   <>
-                    <h1 className="text-2xl md:leading-none md:!text-base font-bold text-gray-900">{title}</h1>
+                    <h1 className="text-2xl md:leading-none md:!text-base font-bold text-gray-900">
+                      {title}
+                    </h1>
                   </>
                 ) : (
                   <>
                     <h1 className="text-2xl md:text-base md:leading-snug font-semibold text-gray-900">
-                      Velkommen, {userName}
+                      Velkommen, {userName} {user?.uid}
                     </h1>
 
                     {user?.meta?.createdAt && (
                       <p className="text-xs text-gray-500">
-                        Opprettet {new Date(user.meta.createdAt).toLocaleDateString("nb-NO")}
+                        Opprettet{" "}
+                        {new Date(user.meta.createdAt).toLocaleDateString(
+                          "nb-NO"
+                        )}
                       </p>
                     )}
                   </>

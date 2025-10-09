@@ -52,17 +52,33 @@ export const ImageWithContent = ({
             isFullWidth ? "flex w-full flex-[1]" : "flex w-full flex-[1]"
           )}
         >
-          <Image
-            className={cn(
-              "left-0 rounded-2xl top-0 z-10 h-full w-full",
-              objectContain ? "object-cover" : "object-cover"
-            )}
-            alt={image.alt as string}
-            src={image.url as string}
-            width={600}
-            height={400}
-            quality={80}
-          />
+          {isFullWidth ? (
+            <AspectRatio ratio={4 / 3}>
+              <Image
+                className={cn(
+                  "left-0 rounded-none top-0 z-10 h-full w-full",
+                  objectContain ? "object-cover" : "object-cover"
+                )}
+                alt={image.alt as string}
+                src={image.url as string}
+                width={600}
+                height={400}
+                quality={80}
+              />
+            </AspectRatio>
+          ) : (
+            <Image
+              className={cn(
+                "left-0 rounded-2xl top-0 z-10 h-full w-full",
+                objectContain ? "object-cover" : "object-cover"
+              )}
+              alt={image.alt as string}
+              src={image.url as string}
+              width={600}
+              height={400}
+              quality={80}
+            />
+          )}
         </div>
       )}
 
@@ -75,7 +91,7 @@ export const ImageWithContent = ({
         <div
           className={cn(
             isFullWidth
-              ? "p-24 lg:p-12 md:p-8"
+              ? "p-16 lg:p-6 md:p-6 gap-3 flex flex-col w-full"
               : reversed
                 ? "mr-8 lg:mr-0"
                 : "ml-8 lg:ml-0"
@@ -90,16 +106,16 @@ export const ImageWithContent = ({
           {title && (
             <h3
               className={cn(
-                "font-[700]",
+                "font-[700] leading-tight",
                 isFullWidth
-                  ? "text-[42px] lg:text-[32px]"
+                  ? "text-[42px] lg:text-[32px] md:text-[28px]"
                   : "text-[42px] lg:text-[32px]"
               )}
               dangerouslySetInnerHTML={{ __html: title }}
             />
           )}
 
-          <div className="mb-8 mt-6 text-lg">{richText}</div>
+          <div className="text-lg">{richText}</div>
           {buttons && renderButtons(buttons)}
         </div>
       </div>

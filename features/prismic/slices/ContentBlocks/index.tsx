@@ -23,7 +23,6 @@ const ContentBlocks = ({ slice }: ContentBlocksProps): JSX.Element => {
     link: item.link,
   });
 
-  console.log({ prm: slice.primary });
   return (
     //@ts-ignore
     <ContentBlocksComponent
