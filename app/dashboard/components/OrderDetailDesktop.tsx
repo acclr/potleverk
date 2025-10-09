@@ -56,23 +56,23 @@ export function OrderDetailDesktop({ orders, selected }: OrderDetailDesktopProps
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
             <div>
-              <p className="text-xs text-gray-500 mb-1">Opprettet</p>
+              <p className="text-xs text-gray-500 mb-1">{ t('createdAt.text')}</p>
               <p className="text-gray-900 font-medium">{formatDate(selected.createdAt)}</p>
             </div>
             <div>
-              <p className="text-xs text-gray-500 mb-1">Sist oppdatert</p>
+              <p className="text-xs text-gray-500 mb-1">{ t('updatedAt.text') }</p>
               <p className="text-gray-900 font-medium">{formatDate(selected.updatedAt)}</p>
             </div>
             <div>
-              <p className="text-xs text-gray-500 mb-1">Ansvarlige</p>
-              <p className="text-gray-900 font-medium truncate">Ansatt, Kunde</p>
+              <p className="text-xs text-gray-500 mb-1">{ t('deliveryResponsible.text') }</p>
+              <p className="text-gray-900 font-medium truncate">{ t('deliveryCustomer.text') }</p>
             </div>
             <div>
-              <p className="text-xs text-gray-500 mb-1">Levering</p>
-              <p className="text-gray-900 font-medium">{selected.is_pickup ? "Hentes" : "Sendes"}</p>
+              <p className="text-xs text-gray-500 mb-1">{ t('delivery.text') }</p>
+              <p className="text-gray-900 font-medium">{selected.is_pickup ? t('deliveryGet.text') : t('deliverySend.text') }</p>
             </div>
             <div>
-              <p className="text-xs text-gray-500 mb-1">Beskrivelse</p>
+              <p className="text-xs text-gray-500 mb-1">{ t('deliveryDesc.text') }</p>
               <p className="text-gray-900 font-medium truncate">{selected.description}</p>
             </div>
           </div>
@@ -82,7 +82,7 @@ export function OrderDetailDesktop({ orders, selected }: OrderDetailDesktopProps
         {selected.attachments?.length ? (
           <div className="space-y-3 pt-4 mt-4 border-t border-t-black/10">
             <h3 className="text-base font-semibold">
-              Vedlegg
+              { t('deliveryAttachment.text') }
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lgup:grid-cols-3 gap-4">
               {selected.attachments.map((src, idx) => (

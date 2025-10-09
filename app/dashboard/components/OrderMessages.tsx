@@ -17,6 +17,7 @@ import {
   shouldShowTimestamp,
   formatMessageTimestamp,
 } from "./utils";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface OrderMessagesProps {
   orderId: string;
@@ -36,6 +37,7 @@ export function OrderMessages({
   const [messageType, setMessageType] = useState(MessageType.APPROVE);
   const [messages, setMessages] = useState<Message[]>([]);
   const createOrderMessage = useCreateOrderMessage(orderId);
+  const { t } = useTranslation();
 
   const sendMessage = (msg: string, type?: MessageType) => {
     if (!msg.trim()) return;
@@ -83,7 +85,7 @@ export function OrderMessages({
       <div className="fixed bottom-0 left-0 right-0 bg-white p-4 z-50">
         <div className="relative">
           <Textarea
-            placeholder="Skriv en melding..."
+            placeholder={ t('writeAMessage.text')}
             className="w-full p-3 bg-gray-100 border-none pr-24 resize-none"
             rows={3}
             value={message}
@@ -109,7 +111,7 @@ export function OrderMessages({
     if (!messages.length) {
       return (
         <div className="p-4 text-sm text-gray-600">
-          Ingen meldinger ennå.
+            { t('noMessagesYet.text') }
         </div>
       );
     }
@@ -173,7 +175,7 @@ export function OrderMessages({
                               : "bg-emerald-100 text-emerald-800"
                           )}
                         >
-                          Godkjent
+                        { t('accepted.text') }
                         </span>
                       ) : m.type === MessageType.REJECT ? (
                         <span
@@ -182,7 +184,7 @@ export function OrderMessages({
                             "bg-red-100 text-red-800"
                           )}
                         >
-                          Avvist
+                          { t('denied.text') }
                         </span>
                       ) : null}
                     </div>
@@ -199,10 +201,10 @@ export function OrderMessages({
   return (
     <div className="flex flex-col p-4 -ml-4 min-w-[calc(100%+32px)] pt-4 mt-4 border-t border-t-black/10">
       <h3 className="text-base font-semibold mb-3">
-        Historikk
+        { t('messageHistory.text')}
       </h3>
       <Textarea
-        placeholder="Skriv en melding"
+        placeholder={ t('writeAMessage.text')}
         className="w-full md:text-[13px]"
         rows={3}
         value={message}
@@ -224,7 +226,7 @@ export function OrderMessages({
             className="md:text-[13px]"
             onClick={() => sendMessage("Godkjent", MessageType.APPROVE)}
           >
-            Godkjenn
+             { t('accepted.text') }
           </Button>
         </div>
         <Button
@@ -233,12 +235,12 @@ export function OrderMessages({
           onClick={() => sendMessage(message)}
           className="md:text-[13px]"
         >
-          Send
+           { t('send.text') }
         </Button>
       </div>
       {messages.length === 0 ? (
         <p className="text-sm md:text-[13px] text-gray-600">
-          Ingen meldinger ennå.
+           { t('noMessagesYet.text') }
         </p>
       ) : (
         <div className="space-y-4 md:space-y-3">
@@ -310,7 +312,7 @@ export function OrderMessages({
                                 : "bg-emerald-100 text-emerald-800"
                             )}
                           >
-                            Godkjent
+                             { t('accepted.text') }
                           </span>
                         ) : m.type === MessageType.REJECT ? (
                           <span
@@ -321,7 +323,7 @@ export function OrderMessages({
                                 : "bg-red-100 text-red-800"
                             )}
                           >
-                            Avvist
+                            { t('denied.text') }
                           </span>
                         ) : null}
                       </div>

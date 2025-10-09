@@ -9,11 +9,13 @@ import Section from "@/components/ui/section";
 import { createStylesForSlice } from "@/features/prismic/slices/utils";
 import { MailIcon, MapIcon, PhoneIcon } from "lucide-react";
 import { createClient } from "@/features/prismic";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export default async function Contact() {
 
   const prismicClient = createClient();
   const contactInfo = await prismicClient.getSingle("contact_information");
+  const { t } = useTranslation();
 
   const contactMethods = [
     {
@@ -39,7 +41,7 @@ export default async function Contact() {
         <div className="flex flex-row lg:flex-col items-center justify-between lg:items-start gap-12 lg:gap-8 w-full">
           <div className="flex flex-col">
             <h3 className="text-3xl font-semibold leading-snug text-black lg:text-3xl md:text-2xl">
-              Hur kan vi hjälpa?
+              { t('howCanWeHelp.text') }
             </h3>
           </div>
 
