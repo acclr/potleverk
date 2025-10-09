@@ -39,8 +39,7 @@ export function OrdersList({
   const generatePageNumbers = () => {
     const pages: number[] = [];
     const maxPagesToShow = 3;
-    const { t } = useTranslation();
-    
+
     // Always show page 0
     if (currentPage > 1) {
       pages.push(0);
@@ -56,6 +55,8 @@ export function OrdersList({
     
     return Array.from(new Set(pages)); // Remove duplicates
   };
+
+  const { t } = useTranslation();
 
   return (
     <aside className="lgup:min-w-[380px] lgup:border-r p-6 md:p-4 lgup:border-black/10 xl:col-span-3">
