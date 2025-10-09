@@ -82,7 +82,7 @@ export function TeamSection({
               {/* Bild och Överlägg */}
               <div className="relative">
                 {/* Member Image */}
-                <AspectRatio ratio={1}>
+                <AspectRatio ratio={4 / 3}>
                   <Image
                     src={member.imageUrl}
                     alt={member.name}

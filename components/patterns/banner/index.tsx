@@ -31,8 +31,12 @@ export type BannerProps = VariantProps<typeof bannerVariants> &
     centered?: boolean;
   };
 
-const Banner: React.FC<BannerProps> = ({ boxed = false, backgroundOverlay = false, className, ...props }) => {
-
+const Banner: React.FC<BannerProps> = ({
+  boxed = false,
+  backgroundOverlay = false,
+  className,
+  ...props
+}) => {
   const Content = (
     <>
       {props.imageUrl && (
@@ -48,19 +52,35 @@ const Banner: React.FC<BannerProps> = ({ boxed = false, backgroundOverlay = fals
         <div
           className={cn(
             "flex max-w-[60ch] flex-col",
-            props.centered ? "items-center justify-center text-center" : "mr-auto items-start justify-start text-left"
-          )}>
-          {props.eyebrowText && <span className="ui-eyebrow">{props?.eyebrowText}</span>}
-          {props.title && (
-            <h1 className={cn("mb-4 text-5xl leading-[1] [text-shadow:_0_1px_13px_rgb(0_0_0_/_20%)]")}>{props.title}</h1>
+            props.centered
+              ? "items-center justify-center text-center"
+              : "mr-auto items-start justify-start text-left"
           )}
-          {props.richText ||
-            (props.buttons && (
-              <div className={cn("flex flex-col items-center justify-center text-lg text-white/80")}>
-                {props.richText}
-                {props?.buttons && props?.buttons?.length > 0 && renderButtons(props?.buttons)}
-              </div>
-            ))}
+        >
+          {props.eyebrowText && (
+            <span className="ui-eyebrow">{props?.eyebrowText}</span>
+          )}
+          {props.title && (
+            <h1
+              className={cn(
+                "mb-4 text-5xl leading-[1] [text-shadow:_0_1px_13px_rgb(0_0_0_/_20%)]"
+              )}
+            >
+              {props.title}
+            </h1>
+          )}
+          {(props.richText || props.buttons) && (
+            <div
+              className={cn(
+                "flex flex-col items-start gap-2 justify-start text-lg text-white/80"
+              )}
+            >
+              {props.richText}
+              {props?.buttons &&
+                props?.buttons?.length > 0 &&
+                renderButtons(props?.buttons)}
+            </div>
+          )}
 
           {props.children}
         </div>
@@ -74,7 +94,7 @@ const Banner: React.FC<BannerProps> = ({ boxed = false, backgroundOverlay = fals
 
   const aspectProps = {
     className: "w-full flex",
-    ...props
+    ...props,
   };
 
   return (
