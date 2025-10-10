@@ -5,6 +5,7 @@ import type { Order } from "@/features/firebase/firestore/types/order";
 import { statusLabel, statusStyles } from "./constants";
 import { formatDate } from "./utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface OrdersListProps {
   orders: Order[];
@@ -38,7 +39,7 @@ export function OrdersList({
   const generatePageNumbers = () => {
     const pages: number[] = [];
     const maxPagesToShow = 3;
-    
+
     // Always show page 0
     if (currentPage > 1) {
       pages.push(0);
@@ -55,12 +56,14 @@ export function OrdersList({
     return Array.from(new Set(pages)); // Remove duplicates
   };
 
+  const { t } = useTranslation();
+
   return (
     <aside className="lgup:min-w-[380px] lgup:border-r p-6 md:p-4 lgup:border-black/10 xl:col-span-3">
       {/* Header with title and pagination */}
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-2xl md:text-base font-extrabold">
-          Mine bestillinger
+         { t('myOrdersTitle.text') }
         </h2>
         
         {/* Compact pagination */}
@@ -120,10 +123,10 @@ export function OrdersList({
       </div>
       <ul className="space-y-1.5">
         {isLoading && (
-          <div className="text-gray-500">Laster bestillinger…</div>
+          <div className="text-gray-500">{ t('loadingOrders.text') }</div>
         )}
         {!isLoading && orders?.length === 0 && (
-          <div className="text-gray-500">Ingen bestillinger funnet.</div>
+          <div className="text-gray-500">{ t('noOrdersFound.text') }</div>
         )}
         {orders?.map((order) => (
           <li key={order.id}>

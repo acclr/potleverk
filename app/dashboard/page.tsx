@@ -14,10 +14,13 @@ import {
 } from "@/components/ui/card";
 import { UserHeader } from "./components";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export default function DashboardPage() {
   const { user } = useAuth();
   const router = useRouter();
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!user?.uid) {
@@ -42,17 +45,16 @@ export default function DashboardPage() {
         <div className="grid grid-cols-1 mdup:grid-cols-2 gap-6 mb-8">
           {[
             {
-              title: "Mine bestillinger",
+              title: t('myOrdersTitle.text'),
               href: "/dashboard/orders",
               icon: ShoppingBag,
-              description:
-                "Spor status, se detaljer og kommuniser om dine bestillinger.",
+              description: t('myOrdersDesc.text'),
             },
             {
-              title: "Rediger profil",
+              title: t('myOrdersEditProfileTitle.text'),
               href: "/dashboard/edit-profile",
               icon: User,
-              description: "Endre navn, kontaktinformasjon og adresse.",
+              description: t('myOrdersEditProfileDesc.text'),
             },
           ].map((item) => (
             <Link href={item.href}>

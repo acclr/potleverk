@@ -2,7 +2,7 @@
 
 import { AuthProvider } from "@/features/firebase/auth";
 import { NotificationProvider } from "@/features/notifications";
-import { LocaleProvider } from "@/features/translations/translations-context";
+import { TranslationProvider } from "@/features/translations/index";
 import { LazyMotion, domAnimation as features } from "framer-motion";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
@@ -21,7 +21,7 @@ const Providers = ({ children, settings, resources }: { children: React.ReactNod
         [QueryClientProvider, { client }],
         [LazyMotion, { features }],
         [NotificationProvider, {}],
-        [LocaleProvider, { resources }],
+        [TranslationProvider, { translations:resources }],
         [SettingsProvider, { settings }],
       ].reduce((acc, [provider, props = {}], i) => {
         const Provider = provider as React.ComponentType<

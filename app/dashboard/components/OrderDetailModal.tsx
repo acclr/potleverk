@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/drawer";
 import type { Order } from "@/features/firebase/firestore/types/order";
 import { OrderDetail } from "./OrderDetail";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface OrderDetailModalProps {
   isOpen: boolean;
@@ -22,13 +23,16 @@ export function OrderDetailModal({
   onOpenChange,
   selected,
 }: OrderDetailModalProps) {
+
+  const { t } = useTranslation();
+
   return (
     <Drawer direction="bottom" open={isOpen} onOpenChange={onOpenChange}>
       <DrawerContent className="w-full rounded-tl-xl rounded-tr-xl fixed bottom-0 left-0 h-[90vh] z-[999]">
         <div className="flex flex-col w-full h-full overflow-y-auto">
           <DrawerHeader className="flex flex-row items-center justify-between">
             <DrawerTitle className="py-1 mb-0 pb-0">
-              {selected?.subject || "Bestillingsdetaljer"}
+              {selected?.subject || t('orderDetails.text')}
             </DrawerTitle>
             <DrawerClose asChild>
               <XIcon

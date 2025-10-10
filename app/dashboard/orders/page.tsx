@@ -9,6 +9,7 @@ import { LoaderIcon } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { OrdersList, OrderDetail, OrderDetailModal, UserHeader } from "../components";
 import { BackButton } from "../components/back-button";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export default function OrdersPage() {
   const { user } = useAuth();
@@ -28,6 +29,8 @@ export default function OrdersPage() {
     user?.role === UserRole.ADMIN,
     10 // page size
   );
+
+  const { t } = useTranslation();
 
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [isMobileModalOpen, setIsMobileModalOpen] = useState(false);
@@ -62,8 +65,8 @@ export default function OrdersPage() {
   return (
     <div className="min-h-max bg-gray-50/50">
       <UserHeader 
-        title="Mine bestillinger"
-        subtitle="Se og administrer dine bestillinger"
+        title={ t('myOrdersTitle.text') }
+        subtitle={ t('myOrdersSubTitle.text') }
       />
       
       <div className="container mx-auto flex flex-col gap-6 px-6 py-8">
