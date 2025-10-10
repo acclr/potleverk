@@ -42,9 +42,9 @@ export default function ForgotPasswordPage() {
           </div>
           <div className="flex items-center gap-3">
             <Button type="submit" disabled={loading}>
-              {loading ? "Sender…" : "Send tilbakestillingslenke"}
+              {loading ? t('sending.text') : t('sendBackLink.text') }
             </Button>
-            <Button type="button" variant="ghost" onClick={() => router.push("/account?tab=login")}>Avbryt</Button>
+            <Button type="button" variant="ghost" onClick={() => router.push("/account?tab=login")}>{ t('abort.text')}</Button>
           </div>
         </form>
       </Card>
