@@ -21,9 +21,14 @@ function mapMessageDoc(doc: any): Message {
   return {
     id: doc.id,
     senderId: data?.senderId ?? "",
+    senderName: data?.senderName,
     message: data?.message ?? "",
     sentAt,
-    status: data?.status
+    status: data?.status,
+    type: data?.type,
+    is_quote: data?.is_quote,
+    intent: data?.intent ?? null,
+    replyToMessageId: data?.replyToMessageId ?? null,
   } as Message;
 }
 
