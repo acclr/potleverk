@@ -2,7 +2,6 @@
 
 import { cn } from "@/components/utils";
 import type { Order } from "@/features/firebase/firestore/types/order";
-import { statusLabel, statusStyles } from "./constants";
 import { formatDate } from "./utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -11,6 +10,7 @@ interface OrdersListProps {
   selectedId: string | null;
   isLoading: boolean;
   onSelectOrder: (orderId: string) => void;
+  isAdmin: boolean;
   // Pagination props
   currentPage: number;
   hasMore: boolean;
@@ -26,6 +26,7 @@ export function OrdersList({
   selectedId,
   isLoading,
   onSelectOrder,
+  isAdmin,
   currentPage,
   hasMore,
   hasPrevPage,
@@ -127,6 +128,11 @@ export function OrdersList({
         )}
         {orders?.map((order) => (
           <li key={order.id}>
+            {(() => {
+              const unreadCount = isAdmin
+                ? (order.unreadForAdmin ?? 0)
+                : (order.unreadForClient ?? 0);
+              return (
             <button
               onClick={() => onSelectOrder(order.id)}
               className={cn("relative w-full text-left p-4 lg:p-3 rounded-lg overflow-hidden !mb-0", 
@@ -145,22 +151,24 @@ export function OrdersList({
               />
               <div className="flex items-start justify-between gap-0">
                 <div>
-                  <p className="font-medium truncate max-w-[220px]">
-                    {order.subject || "Uten tittel"}
-                  </p>
+                  <div className="flex items-center gap-2">
+                    <p className="font-medium truncate max-w-[220px]">
+                      {order.subject || "Uten tittel"}
+                    </p>
+                    {unreadCount > 0 ? (
+                      <span className="inline-flex min-w-5 h-5 items-center justify-center rounded-full bg-red-500 px-1.5 text-[10px] font-semibold text-white">
+                        {unreadCount > 99 ? "99+" : unreadCount}
+                      </span>
+                    ) : null}
+                  </div>
                   <p className="text-xs text-gray-500 mt-1">
                     Opprettet {formatDate(order.createdAt)}
                   </p>
                 </div>
-                <span
-                  className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ${
-                    statusStyles[order.status]
-                  }`}
-                >
-                  {statusLabel[order.status]}
-                </span>
               </div>
             </button>
+              );
+            })()}
           </li>
         ))}
       </ul>

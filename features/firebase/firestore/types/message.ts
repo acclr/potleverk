@@ -26,6 +26,7 @@ export interface Message {
   id: string;
   senderId: string;
   senderName?: string;
+  senderRole?: "admin" | "client";
   sentAt: string;
   message: string;
   status?: MessageStatus;

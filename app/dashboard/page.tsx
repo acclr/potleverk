@@ -55,7 +55,7 @@ export default function DashboardPage() {
               description: "Endre navn, kontaktinformasjon og adresse.",
             },
           ].map((item) => (
-            <Link href={item.href}>
+            <Link key={item.href} href={item.href}>
               <Card className="cursor-pointer rounded-xl">
                 <CardHeader className="!p-4 !pb-2">
                   <div className="flex items-center gap-3">

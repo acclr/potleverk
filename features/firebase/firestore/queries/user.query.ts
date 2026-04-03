@@ -1,7 +1,21 @@
 "use client";
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { addDoc, collection, getDocs, onSnapshot, orderBy, query, Timestamp, Unsubscribe, serverTimestamp } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  getDocs,
+  increment,
+  onSnapshot,
+  orderBy,
+  query,
+  serverTimestamp,
+  Timestamp,
+  Unsubscribe,
+  updateDoc,
+  writeBatch
+} from "firebase/firestore";
 import { db } from "@/features/firebase/client";
 import type { Message, User } from "@/features/firebase/firestore/types";
 import { usersRepo } from "../repositories";
@@ -22,6 +36,7 @@ function mapMessageDoc(doc: any): Message {
     id: doc.id,
     senderId: data?.senderId ?? "",
     senderName: data?.senderName,
+    senderRole: data?.senderRole,
     message: data?.message ?? "",
     sentAt,
     status: data?.status,
@@ -53,15 +68,50 @@ export function useCreateOrderMessage(orderId?: string | undefined) {
         return Promise.reject(new Error("orderId is required to create a message"));
       }
       const ref = collection(db, "orders", orderId, "messages");
-      // Enforce server-side timestamp for consistency across clients
-      return addDoc(ref, {
+      const orderRef = doc(db, "orders", orderId);
+      const senderRole = data?.senderRole;
+      const isFromAdmin = senderRole === "admin";
+      const unreadField = isFromAdmin ? "unreadForClient" : "unreadForAdmin";
+      const resetOwnUnreadField = isFromAdmin ? "unreadForAdmin" : "unreadForClient";
+
+      const batch = writeBatch(db);
+      const messageRef = doc(ref);
+      batch.set(messageRef, {
         ...data,
         sentAt: serverTimestamp() as unknown as Timestamp
       });
+      batch.update(orderRef, {
+        lastMessageAt: new Date().toISOString(),
+        [unreadField]: increment(1),
+        [resetOwnUnreadField]: 0,
+      } as any);
+      return batch.commit();
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: messageKeys.list({ orderId }) });
+      queryClient.invalidateQueries({ queryKey: ["orders"] });
     }
+  });
+}
+
+export function useMarkOrderMessagesRead() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({ orderId, isAdmin }: { orderId: string; isAdmin: boolean }) => {
+      if (!orderId) {
+        return Promise.reject(new Error("orderId is required to mark messages as read"));
+      }
+
+      const orderRef = doc(db, "orders", orderId);
+      const unreadField = isAdmin ? "unreadForAdmin" : "unreadForClient";
+      return updateDoc(orderRef, {
+        [unreadField]: 0,
+      });
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["orders"] });
+    },
   });
 }
 
