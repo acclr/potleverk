@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/features/firebase/auth";
 import { usePaginatedOrdersByClient } from "@/features/firebase/firestore/queries/orders.query";
+import { useMarkOrderMessagesRead } from "@/features/firebase/firestore/queries/user.query";
 import { UserRole } from "@/features/firebase/firestore/types";
 import { LoaderIcon } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -32,14 +33,48 @@ export default function OrdersPage() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [isMobileModalOpen, setIsMobileModalOpen] = useState(false);
   const isMobile = useIsMobile();
+  const markOrderMessagesRead = useMarkOrderMessagesRead();
+  const isAdmin = user?.role === UserRole.ADMIN;
+
+  const sortedOrders = useMemo(() => {
+    const getUnreadCount = (order: any) =>
+      isAdmin ? (order?.unreadForAdmin ?? 0) : (order?.unreadForClient ?? 0);
+    const toTimestampMs = (value: any): number => {
+      if (!value) return 0;
+      if (typeof value === "string") {
+        const parsed = Date.parse(value);
+        return Number.isNaN(parsed) ? 0 : parsed;
+      }
+      if (value instanceof Date) {
+        return value.getTime();
+      }
+      if (typeof value?.toDate === "function") {
+        const date = value.toDate();
+        return date instanceof Date ? date.getTime() : 0;
+      }
+      if (typeof value?.seconds === "number") {
+        return value.seconds * 1000;
+      }
+      return 0;
+    };
+    const getLastActivity = (order: any) => toTimestampMs(order?.lastMessageAt ?? order?.createdAt);
+
+    return [...orders].sort((a: any, b: any) => {
+      const aUnread = getUnreadCount(a);
+      const bUnread = getUnreadCount(b);
+      if (aUnread !== bUnread) return bUnread - aUnread;
+      return getLastActivity(b) - getLastActivity(a);
+    });
+  }, [orders, isAdmin]);
 
   const selected = useMemo(() => {
-    if (!orders?.length) return null;
-    return orders.find((o) => o.id === selectedId) ?? null;
-  }, [orders, selectedId]);
+    if (!sortedOrders?.length) return null;
+    return sortedOrders.find((o) => o.id === selectedId) ?? null;
+  }, [sortedOrders, selectedId]);
 
   const handleSelectOrder = (orderId: string) => {
     setSelectedId(orderId);
+    markOrderMessagesRead.mutate({ orderId, isAdmin: user?.role === UserRole.ADMIN });
     if (isMobile) {
       setIsMobileModalOpen(true);
     }
@@ -72,10 +107,11 @@ export default function OrdersPage() {
         <div className="flex flex-col lgup:flex-row gap-6 bg-white rounded-lg shadow-sm border">
         {/* Orders List Sidebar */}
         <OrdersList
-          orders={orders}
+          orders={sortedOrders}
           selectedId={selected?.id ?? null}
           isLoading={isLoading}
           onSelectOrder={handleSelectOrder}
+          isAdmin={isAdmin}
           currentPage={currentPage}
           hasMore={hasMore}
           hasPrevPage={hasPrevPage}
@@ -87,7 +123,7 @@ export default function OrdersPage() {
 
           {/* Desktop Order Detail */}
           <section className="hidden lgup:block lgup:col-span-8 xl:col-span-9 py-6 pr-8 flex-[999]">
-            <OrderDetail orders={orders} selected={selected} isMobile={false} />
+            <OrderDetail orders={sortedOrders} selected={selected} isMobile={false} />
           </section>
         </div>
 

@@ -10,6 +10,9 @@ export interface Order {
   description: string;
   createdAt: string;
   updatedAt: string;
+  lastMessageAt?: string;
+  unreadForAdmin?: number;
+  unreadForClient?: number;
   status: OrderStatus;
   is_pickup: boolean;
   attachments: string[];

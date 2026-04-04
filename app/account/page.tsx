@@ -61,7 +61,7 @@ export default function AccountPage() {
     try {
       await login(loginEmail, loginPassword);
       toast({ title: "Innlogging vellykket" });
-      router.push("/order");
+      router.push("/dashboard");
     } catch (error: unknown) {
       toast({
         title: "Kunne ikke logge inn",

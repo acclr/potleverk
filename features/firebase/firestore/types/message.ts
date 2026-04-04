@@ -17,12 +17,21 @@ export enum MessageType {
   REJECT = "rejected",
 }
 
+export enum MessageIntent {
+  APPROVE = "approve",
+  DENY = "deny",
+}
+
 export interface Message {
   id: string;
   senderId: string;
-  senderName: string;
+  senderName?: string;
+  senderRole?: "admin" | "client";
   sentAt: string;
   message: string;
   status?: MessageStatus;
   type?: MessageType;
+  is_quote?: boolean;
+  intent?: MessageIntent | null;
+  replyToMessageId?: string | null;
 }

@@ -33,7 +33,7 @@ export default async function RootLayout({ children }) {
   const resources = {};
   const settings = {};
   return (
-    <html lang="no" className={cn(primary.variable, "overflow-y-scroll")}>
+    <html lang="no" className={cn(primary.variable, "overflow-y-scroll")} suppressHydrationWarning>
       <head>
         {/* 
         <Script
@@ -55,7 +55,10 @@ export default async function RootLayout({ children }) {
         {/* <Script id="gtm" strategy="afterInteractive" async src="https://www.googletagmanager.com/gtag/js?id=AW-989964114" /> */}
       </head>
 
-      <body className="relative bg-gray-50 font-primary font-normal leading-relaxed antialiased">
+      <body
+        className="relative bg-gray-50 font-primary font-normal leading-relaxed antialiased"
+        suppressHydrationWarning
+      >
         <ParallaxBackground className="opacity-50 fixed -z-10 top-0 left-0 w-full h-full" />
 
         {/* <noscript>

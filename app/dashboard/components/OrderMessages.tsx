@@ -1,6 +1,8 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/components/utils";
 import { useAuth } from "@/features/firebase/auth";
@@ -8,12 +10,11 @@ import {
   subscribeToOrderMessages,
   useCreateOrderMessage,
 } from "@/features/firebase/firestore/queries/user.query";
-import { type Message } from "@/features/firebase/firestore/types";
-import { MessageType } from "@/features/firebase/firestore/types/message";
+import { type Message, UserRole } from "@/features/firebase/firestore/types";
+import { MessageIntent } from "@/features/firebase/firestore/types/message";
 import { UserIcon, SendIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import {
-  formatTimeAgo,
   shouldShowTimestamp,
   formatMessageTimestamp,
 } from "./utils";
@@ -33,36 +34,67 @@ export function OrderMessages({
 }: OrderMessagesProps) {
   const { user } = useAuth();
   const [message, setMessage] = useState("");
-  const [messageType, setMessageType] = useState(MessageType.APPROVE);
+  const [isQuote, setIsQuote] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const createOrderMessage = useCreateOrderMessage(orderId);
+  const isAdmin = user?.role === UserRole.ADMIN;
 
-  const sendMessage = (msg: string, type?: MessageType) => {
+  const senderName =
+    user?.userDetails?.name ??
+    user?.userDetails?.email ??
+    user?.uid?.slice(0, 5) ??
+    "";
+
+  const sendMessage = (msg: string, intent?: MessageIntent | null) => {
     if (!msg.trim()) return;
-    
-    console.log("Sending message:", {
-      orderId,
-      senderId: user?.uid,
-      senderName: user?.userDetails?.name ?? user?.userDetails?.email ?? user?.uid?.slice(0, 5),
-      message: msg,
-      type: type,
-    });
-    
-    createOrderMessage.mutate({
+
+    const payload = {
       senderId: user?.uid ?? "",
-      senderName: user?.userDetails?.name ?? user?.userDetails?.email ?? user?.uid?.slice(0, 5),
-      sentAt: new Date().toISOString(),
+      senderName,
+      senderRole: isAdmin ? "admin" : "client",
       message: msg,
-      type: MessageType.APPROVE,
+      is_quote: isAdmin ? isQuote : false,
+      intent: isAdmin ? null : (intent ?? null),
+      replyToMessageId: null,
+    };
+
+    createOrderMessage.mutate({
+      ...payload,
     }, {
-      onSuccess: () => {
-        console.log("Message sent successfully");
-      },
       onError: (error) => {
         console.error("Error sending message:", error);
       }
     });
     setMessage("");
+    if (isAdmin) {
+      setIsQuote(false);
+    }
+  };
+
+  const sendQuoteResponse = (quoteMessage: Message, intent: MessageIntent) => {
+    if (isAdmin || !quoteMessage?.id) return;
+
+    const responseText =
+      intent === MessageIntent.APPROVE
+        ? "Godkänner kostnadsförslag"
+        : "Avvisar kostnadsförslag";
+
+    createOrderMessage.mutate(
+      {
+        senderId: user?.uid ?? "",
+        senderName,
+        senderRole: "client",
+        message: responseText,
+        is_quote: false,
+        intent,
+        replyToMessageId: quoteMessage.id,
+      },
+      {
+        onError: (error) => {
+          console.error("Error sending quote response:", error);
+        },
+      }
+    );
   };
 
   useEffect(() => {
@@ -90,6 +122,18 @@ export function OrderMessages({
             onChange={(e) => setMessage(e.target.value)}
           />
           <div className="absolute bottom-2 right-2 flex gap-1">
+            {isAdmin && (
+              <div className="flex items-center gap-2 rounded bg-white/90 px-2 py-1">
+                <Checkbox
+                  id="mobile-is-quote"
+                  checked={isQuote}
+                  onCheckedChange={(checked) => setIsQuote(Boolean(checked))}
+                />
+                <Label htmlFor="mobile-is-quote" className="text-xs">
+                  Kostnadsförslag
+                </Label>
+              </div>
+            )}
             <Button
               size="sm"
               variant="outline"
@@ -120,7 +164,12 @@ export function OrderMessages({
           .sort((a, b) => a?.sentAt?.localeCompare(b?.sentAt))
           .map((m, i, sortedMessages) => {
             const isFromCurrentUser = m.senderId === user?.uid;
-            const isRightAligned = i % 2 === 1;
+            const isRightAligned = isFromCurrentUser;
+            const quoteResponse = messages.find(
+              (msg) => msg.replyToMessageId === m.id && !!msg.intent
+            );
+            const canRespondToQuote =
+              !isAdmin && m.is_quote && !isFromCurrentUser && !quoteResponse;
             const showTimestamp = shouldShowTimestamp(
               m.sentAt,
               i > 0 ? sortedMessages[i - 1].sentAt : undefined
@@ -155,16 +204,18 @@ export function OrderMessages({
                     <div
                       className={cn(
                         "relative rounded-2xl p-2.5",
-                        isRightAligned
-                          ? "bg-primary-900 text-white rounded-br-md"
-                          : "bg-gray-100 text-gray-800 rounded-bl-md"
+                        m.is_quote
+                          ? "border-2 border-emerald-300 bg-emerald-50 text-emerald-950"
+                          : isRightAligned
+                            ? "bg-primary-900 text-white rounded-br-md"
+                            : "bg-gray-100 text-gray-800 rounded-bl-md"
                       )}
                     >
                       <p className="text-sm whitespace-pre-wrap leading-relaxed">
                         {m.message}
                       </p>
 
-                      {m.type === MessageType.APPROVE ? (
+                      {m.intent === MessageIntent.APPROVE ? (
                         <span
                           className={cn(
                             "inline-flex items-center mt-2 rounded-full px-2 py-0.5 text-[11px] font-medium",
@@ -175,7 +226,7 @@ export function OrderMessages({
                         >
                           Godkjent
                         </span>
-                      ) : m.type === MessageType.REJECT ? (
+                      ) : m.intent === MessageIntent.DENY ? (
                         <span
                           className={cn(
                             "inline-flex items-center mt-2 rounded-full px-2 py-0.5 text-[11px] font-medium",
@@ -184,6 +235,40 @@ export function OrderMessages({
                         >
                           Avvist
                         </span>
+                      ) : null}
+
+                      {m.is_quote ? (
+                        <span
+                          className={cn(
+                            "inline-flex items-center mt-2 rounded-full px-2 py-0.5 text-[11px] font-medium",
+                            isRightAligned
+                              ? "bg-emerald-100 text-emerald-800"
+                              : "bg-lime-100 text-lime-800"
+                          )}
+                        >
+                          Kostnadsförslag
+                        </span>
+                      ) : null}
+
+                      {canRespondToQuote ? (
+                        <div className="mt-3 flex gap-2">
+                          <Button
+                            size="sm"
+                            variant="destructive"
+                            className="h-8 text-xs"
+                            onClick={() => sendQuoteResponse(m, MessageIntent.DENY)}
+                          >
+                            Avvis
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="default"
+                            className="h-8 text-xs"
+                            onClick={() => sendQuoteResponse(m, MessageIntent.APPROVE)}
+                          >
+                            Godkjenn
+                          </Button>
+                        </div>
                       ) : null}
                     </div>
                   </div>
@@ -209,28 +294,24 @@ export function OrderMessages({
         onChange={(e) => setMessage(e.target.value)}
       />
       <div className="mt-2.5 mb-6 w-full justify-between items-center flex gap-6">
-        <div className="flex flex-row gap-1">
-          <Button 
-            size="xs" 
-            variant="destructive" 
-            className="md:text-[13px]"
-            onClick={() => sendMessage("Avvist", MessageType.REJECT)}
-          >
-            Avvis
-          </Button>
-          <Button 
-            size="xs" 
-            variant="default" 
-            className="md:text-[13px]"
-            onClick={() => sendMessage("Godkjent", MessageType.APPROVE)}
-          >
-            Godkjenn
-          </Button>
-        </div>
+        {isAdmin ? (
+          <div className="flex items-center gap-2">
+            <Checkbox
+              id="is-quote"
+              checked={isQuote}
+              onCheckedChange={(checked) => setIsQuote(Boolean(checked))}
+            />
+            <Label htmlFor="is-quote" className="md:text-[13px]">
+              Markera som kostnadsförslag
+            </Label>
+          </div>
+        ) : (
+          <div />
+        )}
         <Button
           size="xs"
           variant="ghost"
-          onClick={() => sendMessage(message)}
+          onClick={() => sendMessage(message, null)}
           className="md:text-[13px]"
         >
           Send
@@ -246,7 +327,12 @@ export function OrderMessages({
             .sort((a, b) => a?.sentAt?.localeCompare(b?.sentAt))
             .map((m, i, sortedMessages) => {
               const isFromCurrentUser = m.senderId === user?.uid;
-              const isRightAligned = i % 2 === 1; // Alternate based on message index
+              const isRightAligned = isFromCurrentUser;
+              const quoteResponse = messages.find(
+                (msg) => msg.replyToMessageId === m.id && !!msg.intent
+              );
+              const canRespondToQuote =
+                !isAdmin && m.is_quote && !isFromCurrentUser && !quoteResponse;
               
               // Check if we should show a timestamp divider
               const showTimestamp = shouldShowTimestamp(
@@ -289,9 +375,11 @@ export function OrderMessages({
                       <div
                         className={cn(
                           "relative rounded-2xl py-2 px-2.5",
-                          isRightAligned
-                            ? "bg-primary-950 text-white rounded-br-md"
-                            : "bg-gray-100 text-gray-800 rounded-bl-md"
+                          m.is_quote
+                            ? "border-2 border-emerald-300 bg-emerald-50 text-emerald-950"
+                            : isRightAligned
+                              ? "bg-primary-950 text-white rounded-br-md"
+                              : "bg-gray-100 text-gray-800 rounded-bl-md"
                         )}
                       >
                         {/* Message text */}
@@ -299,8 +387,7 @@ export function OrderMessages({
                           {m.message}
                         </p>
 
-                        {/* Status badge - inside bubble at bottom */}
-                        {m.type === MessageType.APPROVE ? (
+                        {m.intent === MessageIntent.APPROVE ? (
                           <span
                             className={cn(
                               "inline-flex items-center mt-2 rounded-full px-2 py-0.5 text-[11px] font-medium",
@@ -311,7 +398,7 @@ export function OrderMessages({
                           >
                             Godkjent
                           </span>
-                        ) : m.type === MessageType.REJECT ? (
+                        ) : m.intent === MessageIntent.DENY ? (
                           <span
                             className={cn(
                               "inline-flex items-center mt-2 rounded-full px-2 py-0.5 text-[11px] font-medium",
@@ -322,6 +409,40 @@ export function OrderMessages({
                           >
                             Avvist
                           </span>
+                        ) : null}
+
+                        {m.is_quote ? (
+                          <span
+                            className={cn(
+                              "inline-flex items-center mt-2 rounded-full px-2 py-0.5 text-[11px] font-medium",
+                              isRightAligned
+                                ? "bg-emerald-100 text-emerald-800"
+                                : "bg-lime-100 text-lime-800"
+                            )}
+                          >
+                            Kostnadsförslag
+                          </span>
+                        ) : null}
+
+                        {canRespondToQuote ? (
+                          <div className="mt-3 flex gap-2">
+                            <Button
+                              size="xs"
+                              variant="destructive"
+                              className="md:text-[13px]"
+                              onClick={() => sendQuoteResponse(m, MessageIntent.DENY)}
+                            >
+                              Avvis
+                            </Button>
+                            <Button
+                              size="xs"
+                              variant="default"
+                              className="md:text-[13px]"
+                              onClick={() => sendQuoteResponse(m, MessageIntent.APPROVE)}
+                            >
+                              Godkjenn
+                            </Button>
+                          </div>
                         ) : null}
                       </div>
                     </div>
