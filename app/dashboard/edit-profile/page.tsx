@@ -11,12 +11,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { UserHeader } from "../components";
 import { BackButton } from "../components/back-button";
+import { useLocale } from "@/features/translations/translations-context";
 
 export default function EditProfilePage() {
   const { user, refreshUserData } = useAuth();
   const router = useRouter();
   const updateUser = useUpdateUser();
-
+  const t = useLocale();
   // Form state
   const [formData, setFormData] = useState({
     // Personal details
@@ -126,8 +127,8 @@ export default function EditProfilePage() {
   return (
     <div className="min-h-max bg-gray-50/50">
       <UserHeader
-        title="Rediger profil"
-        subtitle="Oppdater dine personlige opplysninger og kontaktinformasjon"
+        title={t["dashboard.editProfile"]}
+        subtitle={t["dashboard.updateInformation"]}
       />
 
       <div className="container w-full mx-auto flex flex-col gap-6 px-6 py-8">
@@ -142,72 +143,72 @@ export default function EditProfilePage() {
                   <User size={20} color="white" />
                 </div>
                 <CardTitle className="font-[600] text-[18px] md:text-[16px]">
-                  Personlige opplysninger
+                  {t["dashboard.personalInformation"]}
                 </CardTitle>
               </div>
             </CardHeader>
             <CardContent className="!p-4 !pt-0 space-y-4">
-              <p className="md:text-[13px] text-gray-600">Din personlige informasjon og kontaktdetaljer</p>
+              <p className="md:text-[13px] text-gray-600">{t["dashboard.personalInformationDescription"]}</p>
               <div className="grid w-full grid-cols-2 md:grid-cols-1 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="name">Navn</Label>
+                  <Label htmlFor="name">{t["dashboard.name"]}</Label>
                   <Input
                     id="name"
                     value={formData.name}
                     onChange={(e) => handleInputChange("name", e.target.value)}
-                    placeholder="Ditt navn"
+                    placeholder={t["dashboard.yourName"]}
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="email">E-post</Label>
+                  <Label htmlFor="email">{t["dashboard.email"]}</Label>
                   <Input
                     id="email"
                     type="email"
                     value={formData.email}
                     onChange={(e) => handleInputChange("email", e.target.value)}
-                    placeholder="din@email.no"
+                    placeholder={t["dashboard.yourEmail"]}
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="phone">Telefonnummer</Label>
+                <Label htmlFor="phone">{t["dashboard.phoneNumber"]}</Label>
                 <Input
                   id="phone"
                   value={formData.phone}
                   onChange={(e) => handleInputChange("phone", e.target.value)}
-                  placeholder="+47 123 45 678"
+                  placeholder={t["dashboard.yourPhoneNumber"]}
                 />
               </div>
 
               <div className="space-y-4">
-                <h4 className="font-bold">Adresse</h4>
+                <h4 className="font-bold">{t["dashboard.address"]}</h4>
                 <div className="space-y-2">
-                  <Label htmlFor="personalAddress">Gateadresse</Label>
+                  <Label htmlFor="personalAddress">{t["dashboard.streetAddress"]}</Label>
                   <Input
                     id="personalAddress"
                     value={formData.personalAddress}
                     onChange={(e) => handleInputChange("personalAddress", e.target.value)}
-                    placeholder="Gatenavn 123"
+                    placeholder={t["dashboard.streetName"]}
                   />
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-1 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="personalCity">By</Label>
+                    <Label htmlFor="personalCity">{t["dashboard.city"]}</Label>
                     <Input
                       id="personalCity"
                       value={formData.personalCity}
                       onChange={(e) => handleInputChange("personalCity", e.target.value)}
-                      placeholder="Oslo"
+                      placeholder={t["dashboard.yourCity"]}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="personalPostalCode">Postnummer</Label>
+                    <Label htmlFor="personalPostalCode">{t["dashboard.postalCode"]}</Label>
                     <Input
                       id="personalPostalCode"
                       value={formData.personalPostalCode}
                       onChange={(e) => handleInputChange("personalPostalCode", e.target.value)}
-                      placeholder="0123"
+                      placeholder={t["dashboard.yourPostalCode"]}
                     />
                   </div>
                 </div>
@@ -223,61 +224,61 @@ export default function EditProfilePage() {
                   <Building size={20} color="white" />
                 </div>
                 <CardTitle className="font-[600] text-[18px] md:text-[16px]">
-                  Organisasjonsdetaljer
+                  {t["dashboard.organizationDetails"]}
                 </CardTitle>
               </div>
             </CardHeader>
             <CardContent className="!p-4 !pt-0 space-y-4">
-              <p className="md:text-[13px] text-gray-600">Informasjon om din organisasjon (valgfritt)</p>
+              <p className="md:text-[13px] text-gray-600">{t["dashboard.organizationInformation"]}</p>
               <div className="grid grid-cols-2 md:grid-cols-1 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="orgName">Organisasjonsnavn</Label>
+                  <Label htmlFor="orgName">{t["dashboard.organizationName"]}</Label>
                   <Input
                     id="orgName"
                     value={formData.orgName}
                     onChange={(e) => handleInputChange("orgName", e.target.value)}
-                    placeholder="Din bedrift AS"
+                    placeholder={t["dashboard.yourOrganizationName"]}
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="orgNumber">Organisasjonsnummer</Label>
+                  <Label htmlFor="orgNumber">{t["dashboard.organizationNumber"]}</Label>
                   <Input
                     id="orgNumber"
                     value={formData.orgNumber}
                     onChange={(e) => handleInputChange("orgNumber", e.target.value)}
-                    placeholder="123456789"
+                    placeholder={t["dashboard.yourOrganizationNumber"]}
                   />
                 </div>
               </div>
 
               <div className="space-y-4">
-                <h4 className="font-bold">Organisasjonsadresse</h4>
+                <h4 className="font-bold">{t["dashboard.organizationAddress"]}</h4>
                 <div className="space-y-2">
-                  <Label htmlFor="orgAddress">Gateadresse</Label>
+                  <Label htmlFor="orgAddress">{t["dashboard.streetAddress"]}</Label>
                   <Input
                     id="orgAddress"
                     value={formData.orgAddress}
                     onChange={(e) => handleInputChange("orgAddress", e.target.value)}
-                    placeholder="Bedriftsgata 456"
+                    placeholder={t["dashboard.orgStreetName"]}
                   />
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-1 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="orgCity">By</Label>
+                    <Label htmlFor="orgCity">{t["dashboard.city"]}</Label>
                     <Input
                       id="orgCity"
                       value={formData.orgCity}
                       onChange={(e) => handleInputChange("orgCity", e.target.value)}
-                      placeholder="Bergen"
+                      placeholder={t["dashboard.yourCity"]}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="orgPostalCode">Postnummer</Label>
+                    <Label htmlFor="orgPostalCode">{t["dashboard.postalCode"]}</Label>
                     <Input
                       id="orgPostalCode"
                       value={formData.orgPostalCode}
                       onChange={(e) => handleInputChange("orgPostalCode", e.target.value)}
-                      placeholder="5001"
+                      placeholder={t["dashboard.orgPostalCode"]}
                     />
                   </div>
                 </div>
@@ -298,7 +299,7 @@ export default function EditProfilePage() {
             ) : (
               <Save className="h-4 w-4" />
             )}
-            {isSaving ? "Lagrer..." : "Lagre endringer"}
+            {isSaving ? t["dashboard.saving"] : t["dashboard.saveChanges"]}
           </Button>
         </div>
       </div>
