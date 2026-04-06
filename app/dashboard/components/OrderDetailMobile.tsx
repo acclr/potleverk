@@ -8,6 +8,7 @@ import { OrderMessages } from "./OrderMessages";
 import { statusLabel, statusStyles } from "./constants";
 import { formatDate } from "./utils";
 import { useState } from "react";
+import { useLocale } from "@/features/translations/translations-context";
 
 interface OrderDetailMobileProps {
   selected: Order;
@@ -15,13 +16,14 @@ interface OrderDetailMobileProps {
 
 export function OrderDetailMobile({ selected }: OrderDetailMobileProps) {
   const [tab, setTab] = useState<"overview" | "messages">("overview");
+  const t = useLocale();
   return (
     <div className="flex flex-col h-full">
       <Tabs defaultValue={tab} className="flex flex-col h-full" onValueChange={(value) => setTab(value as "overview" | "messages")}>
         <div className="px-4 py-2">
           <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="overview">Oversikt</TabsTrigger>
-            <TabsTrigger value="messages">Meldinger</TabsTrigger>
+            <TabsTrigger value="overview">{t["dashboard.overview"]}</TabsTrigger>
+            <TabsTrigger value="messages">{t["dashboard.messages"]}</TabsTrigger>
           </TabsList>
         </div>
 
@@ -30,24 +32,24 @@ export function OrderDetailMobile({ selected }: OrderDetailMobileProps) {
             {/* Meta Information */}
             <div className="border rounded-lg p-4">
               <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-3">
-                Detaljer
+                {t["dashboard.details"]}
               </h3>
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div>
-                  <p className="text-xs text-gray-500 mb-1">Opprettet</p>
+                  <p className="text-xs text-gray-500 mb-1">{t["dashboard.createdAt"]}</p>
                   <p className="text-gray-900 font-medium">{formatDate(selected.createdAt)}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 mb-1">Sist oppdatert</p>
+                  <p className="text-xs text-gray-500 mb-1">{t["dashboard.updatedAt"]}</p>
                   <p className="text-gray-900 font-medium">{formatDate(selected.updatedAt)}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 mb-1">Ansvarlige</p>
-                  <p className="text-gray-900 font-medium truncate">Ansatt, Kunde</p>
+                  <p className="text-xs text-gray-500 mb-1">{t["dashboard.responsible"]}</p>
+                  <p className="text-gray-900 font-medium truncate">{t["dashboard.employee"]}, {t["dashboard.customer"]}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 mb-1">Levering</p>
-                  <p className="text-gray-900 font-medium">{selected.is_pickup ? "Hentes" : "Sendes"}</p>
+                  <p className="text-xs text-gray-500 mb-1">{t["dashboard.delivery"]}</p>
+                  <p className="text-gray-900 font-medium">{selected.is_pickup ? t["dashboard.pickedUp"] : t["dashboard.delivered"]}</p>
                 </div>
               </div>
             </div>
@@ -56,7 +58,7 @@ export function OrderDetailMobile({ selected }: OrderDetailMobileProps) {
             {selected.description && (
               <div className="border rounded-lg p-4">
                 <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">
-                  Merknad
+                  {t["dashboard.note"]}
                 </h3>
                 <p className="text-sm text-gray-900 whitespace-pre-wrap">
                   {selected.description}
@@ -68,7 +70,7 @@ export function OrderDetailMobile({ selected }: OrderDetailMobileProps) {
             {selected.attachments?.length ? (
               <div className="space-y-3">
                 <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Vedlegg ({selected.attachments.length})
+                  {t["dashboard.attachments"]} ({selected.attachments.length})
                 </h3>
                 <div className="grid grid-cols-2 gap-4">
                   {selected.attachments.map((src, idx) => (

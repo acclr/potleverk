@@ -311,7 +311,7 @@ export function OrderMessages({
                                 : "bg-emerald-100 text-emerald-800"
                             )}
                           >
-                            {t["dashboard.approved"]}
+                            Godkjent
                           </span>
                         ) : m.type === MessageType.REJECT ? (
                           <span
@@ -322,7 +322,7 @@ export function OrderMessages({
                                 : "bg-red-100 text-red-800"
                             )}
                           >
-                            {t["dashboard.rejected"]}
+                            Avvist
                           </span>
                         ) : null}
                       </div>
