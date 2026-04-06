@@ -11,6 +11,8 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import Link from "next/link";
 import { Loader } from "lucide-react";
+import { useLocale } from "@/features/translations/translations-context";
+
 
 function Section({
   children,
@@ -39,6 +41,8 @@ export default function AccountPage() {
   const initialTab = useMemo(() => search.get("tab") || "login", [search]);
   const [tab, setTab] = useState<string>(initialTab);
 
+  const t = useLocale();
+
   useEffect(() => setTab(initialTab), [initialTab]);
 
   useEffect(() => {
@@ -60,12 +64,12 @@ export default function AccountPage() {
     setLoading(true);
     try {
       await login(loginEmail, loginPassword);
-      toast({ title: "Innlogging vellykket" });
+      toast({ title: t["account.loginSuccess"] });
       router.push("/order");
     } catch (error: unknown) {
       toast({
-        title: "Kunne ikke logge inn",
-        description: (error as Error)?.message || "Ukjent feil",
+        title: t["account.loginError"],
+        description: (error as Error)?.message || t["account.unknownError"],
       });
     } finally {
       setLoading(false);
@@ -80,12 +84,12 @@ export default function AccountPage() {
         name: registerName,
         phone: registerPhone,
       });
-      toast({ title: "Konto opprettet" });
+      toast({ title: t["account.registerSuccess"] });
       router.push("/order");
     } catch (error: unknown) {
       toast({
-        title: "Kunne ikke registrere",
-        description: (error as Error)?.message || "Ukjent feil",
+        title: t["account.registerError"],
+        description: (error as Error)?.message || t["account.unknownError"],
       });
     } finally {
       setLoading(false);
@@ -106,17 +110,17 @@ export default function AccountPage() {
     );
   }
   return (
-    <Section title="Konto" subtitle="Logg inn eller opprett en konto.">
+    <Section title={t["account.title"]} subtitle={t["account.subtitle"]}>
       <Tabs value={tab} onValueChange={setTab}>
         <TabsList className="grid grid-cols-2 w-full">
-          <TabsTrigger value="login">Logg inn</TabsTrigger>
-          <TabsTrigger value="register">Registrer</TabsTrigger>
+          <TabsTrigger value="login">{t["account.login"]}</TabsTrigger>
+          <TabsTrigger value="register">{t["account.register"]}</TabsTrigger>
         </TabsList>
 
         <TabsContent value="login" className="mt-6">
           <form className="space-y-4" onSubmit={onLogin}>
             <div className="space-y-2">
-              <label className="text-sm font-medium">E-post</label>
+              <label className="text-sm font-medium">{t["account.email"]}</label>
               <Input
                 type="email"
                 value={loginEmail}
@@ -125,7 +129,7 @@ export default function AccountPage() {
               />
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-medium">Passord</label>
+              <label className="text-sm font-medium">{t["account.password"]}</label>
               <Input
                 type="password"
                 value={loginPassword}
@@ -135,14 +139,14 @@ export default function AccountPage() {
             </div>
             <div className="flex items-center justify-between">
               <Button type="submit" disabled={loading}>
-                {loading ? "Logger inn…" : "Logg inn"}
+                {loading ? t["account.loggingIn"] : t["account.login"]}
               </Button>
               <Button
                 type="button"
                 variant="ghost"
                 onClick={() => router.push("/account/forgot")}
               >
-                Glemt passord?
+                {t["account.forgotPassword"]}
               </Button>
             </div>
           </form>
@@ -151,21 +155,21 @@ export default function AccountPage() {
         <TabsContent value="register" className="mt-6">
           <form className="space-y-4" onSubmit={onRegister}>
             <div className="space-y-2">
-              <label className="text-sm font-medium">Navn</label>
+              <label className="text-sm font-medium">{t["account.name"]}</label>
               <Input
                 value={registerName}
                 onChange={(e) => setRegisterName(e.target.value)}
               />
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-medium">Telefon</label>
+              <label className="text-sm font-medium">{t["account.phone"]}</label>
               <Input
                 value={registerPhone}
                 onChange={(e) => setRegisterPhone(e.target.value)}
               />
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-medium">E-post</label>
+              <label className="text-sm font-medium">{t["account.email"]}</label>
               <Input
                 type="email"
                 value={registerEmail}
@@ -174,7 +178,7 @@ export default function AccountPage() {
               />
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-medium">Passord</label>
+              <label className="text-sm font-medium">{t["account.password"]}</label>
               <Input
                 type="password"
                 value={registerPassword}
@@ -183,7 +187,7 @@ export default function AccountPage() {
               />
             </div>
             <Button type="submit" disabled={loading}>
-              {loading ? "Registrerer…" : "Opprett konto"}
+              {loading ? t["account.registering"] : t["account.register"]}
             </Button>
           </form>
         </TabsContent>

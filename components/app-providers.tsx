@@ -9,9 +9,10 @@ import { useState } from "react";
 import { ThemeProvider } from "./theme-provider";
 import { SettingsProvider } from "@/features/settings/settings-provider";
 import { defaultQueryClient } from "./default-query-client";
-import { LocalizationDocument, SettingsDocument } from "../prismicio-types";
+import { SettingsDocument } from "../prismicio-types";
+import type { Resources } from "@/features/translations/translations-context";
 
-const Providers = ({ children, settings, resources }: { children: React.ReactNode, settings?: SettingsDocument, resources?: LocalizationDocument }) => {
+const Providers = ({ children, settings, resources }: { children: React.ReactNode, settings?: SettingsDocument, resources?: Resources }) => {
   const [client] = useState(() => defaultQueryClient);
 
   return (

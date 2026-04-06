@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useAuth, logout } from "@/features/firebase/auth";
 import { User, LogOut, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/features/translations/translations-context";
 
 interface UserHeaderProps {
   title?: string;
@@ -17,18 +18,19 @@ export function UserHeader({
 }: UserHeaderProps) {
   const { user } = useAuth();
   const router = useRouter();
+  const t = useLocale();
 
   const handleLogout = async () => {
     try {
       await logout();
       router.push("/");
     } catch (error) {
-      console.error("Error signing out:", error);
+      console.error(t["dashboard.logoutError"], error);
     }
   };
 
-  const userName = user?.userDetails?.name || user?.orgDetails?.orgName || "Bruker";
-  const userEmail = user?.userDetails?.email || "Ingen e-post";
+  const userName = user?.userDetails?.name || user?.orgDetails?.orgName || t["dashboard.user"];
+  const userEmail = user?.userDetails?.email || t["dashboard.noEmail"];
 
   return (
     <div className="border-black/10 border bg-white p-5 md:px-0 md:py-3">
@@ -51,12 +53,12 @@ export function UserHeader({
                 ) : (
                   <>
                     <h1 className="text-2xl md:text-base md:leading-snug font-semibold text-gray-900">
-                      Velkommen, {userName} {user?.uid}
+                      {t["dashboard.welcome"]} {userName}
                     </h1>
 
                     {user?.meta?.createdAt && (
                       <p className="text-xs text-gray-500">
-                        Opprettet{" "}
+                        {t["dashboard.createdAt"]}{" "}
                         {new Date(user.meta.createdAt).toLocaleDateString(
                           "nb-NO"
                         )}
@@ -74,7 +76,7 @@ export function UserHeader({
               className="!p-0 lg:!size-10 min-w-10 lgup:!px-3 lg:rounded-full flex items-center justify-center text-red-600 hover:text-red-700 hover:bg-red-50 gap-2"
             >
               <LogOut className="h-4 w-4" />
-              <span className="lg:hidden">Logg ut</span>
+              <span className="lg:hidden">{t["dashboard.logout"]}</span>
             </Button>
           </div>
         </div>

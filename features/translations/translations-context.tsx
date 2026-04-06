@@ -1,12 +1,11 @@
 "use client";
 
 import { createContext, useCallback, useContext, useMemo, useRef, useState } from "react";
-import { LocalizationDocument } from "../../prismicio-types";
 
 export type Resources = Record<string, string>;
 
 type TLocaleContext = React.PropsWithChildren<{
-  resources?: LocalizationDocument;
+  resources?: Resources;
   defaultLocale: string;
 }>;
 
@@ -21,26 +20,24 @@ export const LocaleContext = createContext<TLocaleContextValue>({
   locale: 'no',
   resources: {},
   translate: () => '',
-  setLocale: () => {}
+  setLocale: () => { }
 });
 
-export const LocaleProvider: React.FC<TLocaleContext> = ({ children, defaultLocale, resources })  => {
-  const [locale, setLocale] = useState(defaultLocale);
-  const localeResources = resources?.data?.resources?.reduce((acc, curr) => {
-    acc[curr.key ?? ''] = curr.value ?? '';
-    return acc;
-  }, {}) ?? {};
+export const LocaleProvider: React.FC<TLocaleContext> = ({ children, defaultLocale, resources }) => {
+  const [locale, setLocale] = useState(defaultLocale ?? "no");
+  const localeResources = resources ?? {};
 
   const translate = useCallback((key: string) => {
     return localeResources[key] || key;
   }, [locale]);
-  
+
   const localeContext = useMemo(() => {
-    return { 
+    return {
       locale,
       resources: localeResources,
-      translate, 
-      setLocale }
+      translate,
+      setLocale
+    }
   }, [locale, resources, translate, setLocale]);
 
   return (
@@ -50,5 +47,5 @@ export const LocaleProvider: React.FC<TLocaleContext> = ({ children, defaultLoca
 
 export const useLocale = () => {
   const { resources } = useContext(LocaleContext);
-  return useRef(resources).current;
+  return resources;
 };

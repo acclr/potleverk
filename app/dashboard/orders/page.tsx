@@ -9,12 +9,14 @@ import { LoaderIcon } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { OrdersList, OrderDetail, OrderDetailModal, UserHeader } from "../components";
 import { BackButton } from "../components/back-button";
+import { useLocale } from "@/features/translations/translations-context";
 
 export default function OrdersPage() {
   const { user } = useAuth();
   const router = useRouter();
-  const { 
-    orders = [], 
+  const t = useLocale();
+  const {
+    orders = [],
     isLoading,
     currentPage,
     hasMore,
@@ -22,7 +24,7 @@ export default function OrdersPage() {
     nextPage,
     prevPage,
     goToPage,
-    pageSize 
+    pageSize
   } = usePaginatedOrdersByClient(
     user?.uid,
     user?.role === UserRole.ADMIN,
@@ -61,29 +63,29 @@ export default function OrdersPage() {
 
   return (
     <div className="min-h-max bg-gray-50/50">
-      <UserHeader 
-        title="Mine bestillinger"
-        subtitle="Se og administrer dine bestillinger"
+      <UserHeader
+        title={t["dashboard.myOrders"]}
+        subtitle={t["dashboard.myOrdersSubtitle"]}
       />
-      
+
       <div className="container mx-auto flex flex-col gap-6 px-6 py-8">
         <BackButton />
-        
+
         <div className="flex flex-col lgup:flex-row gap-6 bg-white rounded-lg shadow-sm border">
-        {/* Orders List Sidebar */}
-        <OrdersList
-          orders={orders}
-          selectedId={selected?.id ?? null}
-          isLoading={isLoading}
-          onSelectOrder={handleSelectOrder}
-          currentPage={currentPage}
-          hasMore={hasMore}
-          hasPrevPage={hasPrevPage}
-          onNextPage={nextPage}
-          onPrevPage={prevPage}
-          onGoToPage={goToPage}
-          totalDisplayed={orders.length}
-        />
+          {/* Orders List Sidebar */}
+          <OrdersList
+            orders={orders}
+            selectedId={selected?.id ?? null}
+            isLoading={isLoading}
+            onSelectOrder={handleSelectOrder}
+            currentPage={currentPage}
+            hasMore={hasMore}
+            hasPrevPage={hasPrevPage}
+            onNextPage={nextPage}
+            onPrevPage={prevPage}
+            onGoToPage={goToPage}
+            totalDisplayed={orders.length}
+          />
 
           {/* Desktop Order Detail */}
           <section className="hidden lgup:block lgup:col-span-8 xl:col-span-9 py-6 pr-8 flex-[999]">

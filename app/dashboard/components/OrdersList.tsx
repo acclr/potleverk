@@ -5,6 +5,7 @@ import type { Order } from "@/features/firebase/firestore/types/order";
 import { statusLabel, statusStyles } from "./constants";
 import { formatDate } from "./utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useLocale } from "@/features/translations/translations-context";
 
 interface OrdersListProps {
   orders: Order[];
@@ -34,24 +35,25 @@ export function OrdersList({
   onGoToPage,
   totalDisplayed,
 }: OrdersListProps) {
+  const t = useLocale();
   // Generate page numbers to show (current page and a few around it)
   const generatePageNumbers = () => {
     const pages: number[] = [];
     const maxPagesToShow = 3;
-    
+
     // Always show page 0
     if (currentPage > 1) {
       pages.push(0);
       if (currentPage > 2) pages.push(-1); // -1 represents ellipsis
     }
-    
+
     // Show pages around current
     for (let i = Math.max(0, currentPage - 1); i <= currentPage + 1; i++) {
       if (i >= 0 && (i <= currentPage || (i === currentPage + 1 && hasMore))) {
         pages.push(i);
       }
     }
-    
+
     return Array.from(new Set(pages)); // Remove duplicates
   };
 
@@ -60,9 +62,9 @@ export function OrdersList({
       {/* Header with title and pagination */}
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-2xl md:text-base font-extrabold">
-          Mine bestillinger
+          {t["dashboard.myOrders"]}
         </h2>
-        
+
         {/* Compact pagination */}
         {(hasMore || hasPrevPage || currentPage > 0) && (
           <div className="flex items-center gap-1 text-sm">
@@ -77,7 +79,7 @@ export function OrdersList({
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
-            
+
             {/* Page numbers */}
             <div className="flex items-center gap-1">
               {generatePageNumbers().map((pageNum, index) => (
@@ -103,7 +105,7 @@ export function OrdersList({
                 <span className="px-1 text-gray-400">…</span>
               )}
             </div>
-            
+
             {/* Next button */}
             <button
               onClick={hasMore ? onNextPage : undefined}
@@ -120,16 +122,16 @@ export function OrdersList({
       </div>
       <ul className="space-y-1.5">
         {isLoading && (
-          <div className="text-gray-500">Laster bestillinger…</div>
+          <div className="text-gray-500">{t["dashboard.loadingOrders"]}</div>
         )}
         {!isLoading && orders?.length === 0 && (
-          <div className="text-gray-500">Ingen bestillinger funnet.</div>
+          <div className="text-gray-500">{t["dashboard.noOrdersFound"]}</div>
         )}
         {orders?.map((order) => (
           <li key={order.id}>
             <button
               onClick={() => onSelectOrder(order.id)}
-              className={cn("relative w-full text-left p-4 lg:p-3 rounded-lg overflow-hidden !mb-0", 
+              className={cn("relative w-full text-left p-4 lg:p-3 rounded-lg overflow-hidden !mb-0",
                 selectedId === order.id
                   ? "border-none outline outline-2 outline-primary-600/20"
                   : "bg-transparent lgup:hover:bg-black/5"
@@ -149,13 +151,12 @@ export function OrdersList({
                     {order.subject || "Uten tittel"}
                   </p>
                   <p className="text-xs text-gray-500 mt-1">
-                    Opprettet {formatDate(order.createdAt)}
+                    {t["dashboard.createdAt"]} {formatDate(order.createdAt)}
                   </p>
                 </div>
                 <span
-                  className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ${
-                    statusStyles[order.status]
-                  }`}
+                  className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ${statusStyles[order.status]
+                    }`}
                 >
                   {statusLabel[order.status]}
                 </span>

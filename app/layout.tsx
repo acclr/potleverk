@@ -1,3 +1,4 @@
+import { getStringResources } from "@/features/prismic/actions/getStringResources";
 import { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
@@ -7,7 +8,7 @@ import ParallaxBackground from "@/components/parallax-background";
 import { cn } from "@/components/utils";
 import Footer from "../components/layout/Footer";
 import Header from "../components/layout/Header";
-import { LocalizationDocument, SettingsDocument } from "../prismicio-types";
+import { SettingsDocument } from "../prismicio-types";
 import "./globals.css";
 
 const primary = Poppins({
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
 export default async function RootLayout({ children }) {
   const drawerMenu = [];
   const headerMenu = [];
-  const resources = {};
+  const resources = await getStringResources();
   const settings = {};
   return (
     <html lang="no" className={cn(primary.variable, "overflow-y-scroll")}>
@@ -86,7 +87,7 @@ export default async function RootLayout({ children }) {
         */}
 
         <Providers
-          resources={resources as LocalizationDocument}
+          resources={resources}
           settings={settings as SettingsDocument}
         >
           <NextTopLoader

@@ -17,6 +17,7 @@ import {
   shouldShowTimestamp,
   formatMessageTimestamp,
 } from "./utils";
+import { useLocale } from "@/features/translations/translations-context";
 
 interface OrderMessagesProps {
   orderId: string;
@@ -25,13 +26,14 @@ interface OrderMessagesProps {
   onlyInput?: boolean;
 }
 
-export function OrderMessages({ 
-  orderId, 
+export function OrderMessages({
+  orderId,
   isMobile = false,
   showInput = true,
-  onlyInput = false 
+  onlyInput = false
 }: OrderMessagesProps) {
   const { user } = useAuth();
+  const t = useLocale();
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState(MessageType.APPROVE);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -39,15 +41,15 @@ export function OrderMessages({
 
   const sendMessage = (msg: string, type?: MessageType) => {
     if (!msg.trim()) return;
-    
-    console.log("Sending message:", {
+
+    console.log(t["dashboard.sendingMessage"], {
       orderId,
       senderId: user?.uid,
       senderName: user?.userDetails?.name ?? user?.userDetails?.email ?? user?.uid?.slice(0, 5),
       message: msg,
       type: type,
     });
-    
+
     createOrderMessage.mutate({
       senderId: user?.uid ?? "",
       senderName: user?.userDetails?.name ?? user?.userDetails?.email ?? user?.uid?.slice(0, 5),
@@ -56,10 +58,10 @@ export function OrderMessages({
       type: MessageType.APPROVE,
     }, {
       onSuccess: () => {
-        console.log("Message sent successfully");
+        console.log(t["dashboard.messageSentSuccessfully"]);
       },
       onError: (error) => {
-        console.error("Error sending message:", error);
+        console.error(t["dashboard.errorSendingMessage"], error);
       }
     });
     setMessage("");
@@ -109,7 +111,7 @@ export function OrderMessages({
     if (!messages.length) {
       return (
         <div className="p-4 text-sm text-gray-600">
-          Ingen meldinger ennå.
+          {t["dashboard.noMessagesYet"]}
         </div>
       );
     }
@@ -173,7 +175,7 @@ export function OrderMessages({
                               : "bg-emerald-100 text-emerald-800"
                           )}
                         >
-                          Godkjent
+                          {t["dashboard.approved"]}
                         </span>
                       ) : m.type === MessageType.REJECT ? (
                         <span
@@ -182,7 +184,7 @@ export function OrderMessages({
                             "bg-red-100 text-red-800"
                           )}
                         >
-                          Avvist
+                          {t["dashboard.rejected"]}
                         </span>
                       ) : null}
                     </div>
@@ -199,10 +201,10 @@ export function OrderMessages({
   return (
     <div className="flex flex-col p-4 -ml-4 min-w-[calc(100%+32px)] pt-4 mt-4 border-t border-t-black/10">
       <h3 className="text-base font-semibold mb-3">
-        Historikk
+        {t["dashboard.history"]}
       </h3>
       <Textarea
-        placeholder="Skriv en melding"
+        placeholder={t["dashboard.writeMessage"]}
         className="w-full md:text-[13px]"
         rows={3}
         value={message}
@@ -210,21 +212,21 @@ export function OrderMessages({
       />
       <div className="mt-2.5 mb-6 w-full justify-between items-center flex gap-6">
         <div className="flex flex-row gap-1">
-          <Button 
-            size="xs" 
-            variant="destructive" 
+          <Button
+            size="xs"
+            variant="destructive"
             className="md:text-[13px]"
             onClick={() => sendMessage("Avvist", MessageType.REJECT)}
           >
-            Avvis
+            {t["dashboard.reject"]}
           </Button>
-          <Button 
-            size="xs" 
-            variant="default" 
+          <Button
+            size="xs"
+            variant="default"
             className="md:text-[13px]"
             onClick={() => sendMessage("Godkjent", MessageType.APPROVE)}
           >
-            Godkjenn
+            {t["dashboard.approve"]}
           </Button>
         </div>
         <Button
@@ -233,12 +235,12 @@ export function OrderMessages({
           onClick={() => sendMessage(message)}
           className="md:text-[13px]"
         >
-          Send
+          {t["dashboard.send"]}
         </Button>
       </div>
       {messages.length === 0 ? (
         <p className="text-sm md:text-[13px] text-gray-600">
-          Ingen meldinger ennå.
+          {t["dashboard.noMessagesYet"]}
         </p>
       ) : (
         <div className="space-y-4 md:space-y-3">
@@ -247,7 +249,7 @@ export function OrderMessages({
             .map((m, i, sortedMessages) => {
               const isFromCurrentUser = m.senderId === user?.uid;
               const isRightAligned = i % 2 === 1; // Alternate based on message index
-              
+
               // Check if we should show a timestamp divider
               const showTimestamp = shouldShowTimestamp(
                 m.sentAt,
@@ -309,7 +311,7 @@ export function OrderMessages({
                                 : "bg-emerald-100 text-emerald-800"
                             )}
                           >
-                            Godkjent
+                            {t["dashboard.approved"]}
                           </span>
                         ) : m.type === MessageType.REJECT ? (
                           <span
@@ -320,7 +322,7 @@ export function OrderMessages({
                                 : "bg-red-100 text-red-800"
                             )}
                           >
-                            Avvist
+                            {t["dashboard.rejected"]}
                           </span>
                         ) : null}
                       </div>
