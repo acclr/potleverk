@@ -9,6 +9,8 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Switch } from "@/components/ui/switch"
 import { Upload, Package, MapPin, FileText, X, File, Image as ImageIcon } from "lucide-react"
+import { useLocale } from "@/features/translations/translations-context";
+
 
 interface OrderFormProps {
   subject: string;
@@ -34,30 +36,31 @@ interface OrderFormProps {
   setInstructions?: (value: string) => void;
 }
 
-export function OrderForm({ 
-  subject, 
-  setSubject, 
-  description, 
-  setDescription, 
-  isPickup, 
-  setIsPickup, 
-  files, 
-  setFiles, 
-  onSubmit, 
+export function OrderForm({
+  subject,
+  setSubject,
+  description,
+  setDescription,
+  isPickup,
+  setIsPickup,
+  files,
+  setFiles,
+  onSubmit,
   uploading = false,
   address = "",
-  setAddress = () => {},
+  setAddress = () => { },
   postalCode = "",
-  setPostalCode = () => {},
+  setPostalCode = () => { },
   city = "",
-  setCity = () => {},
+  setCity = () => { },
   country = "",
-  setCountry = () => {},
+  setCountry = () => { },
   instructions = "",
-  setInstructions = () => {}
+  setInstructions = () => { }
 }: OrderFormProps) {
   const [isDragging, setIsDragging] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const t = useLocale();
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newFiles = Array.from(e.target.files || [])
@@ -70,7 +73,7 @@ export function OrderForm({
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault()
     setIsDragging(false)
-    
+
     const droppedFiles = Array.from(e.dataTransfer.files)
     setFiles([...files, ...droppedFiles])
   }
@@ -108,8 +111,8 @@ export function OrderForm({
   return (
     <div className="w-full flex flex-col">
       <div className="flex flex-col gap-2 mb-6">
-        <h1 className="text-3xl lg:text-2xl font-semibold">Din beställning</h1>
-        <p>Fyll i dina önskemål så kontaktar vi dig inom kort</p>
+        <h1 className="text-3xl lg:text-2xl font-semibold">{t["order.yourOrder"]}</h1>
+        <p>{t["order.fillRequirements"]}</p>
       </div>
 
       <form onSubmit={onSubmit} className="space-y-6">
@@ -120,35 +123,35 @@ export function OrderForm({
                 <Package size={20} color="white" />
               </div>
               <CardTitle className="font-[600] text-[18px] md:text-[16px]">
-                Beställningsdetaljer
+                {t["order.orderDetails"]}
               </CardTitle>
             </div>
           </CardHeader>
           <CardContent className="!p-4 !pt-0 space-y-4">
-            <p className="md:text-[13px] text-gray-600">Beskriv vad du önskar beställa</p>
+            <p className="md:text-[13px] text-gray-600">{t["order.requestDesc"]}</p>
             <div className="space-y-2">
               <Label htmlFor="order-title" className="text-sm font-medium">
-                Hva ønsker du?
+                {t["order.wish"]}
               </Label>
-              <Input 
-                id="order-title" 
+              <Input
+                id="order-title"
                 value={subject}
                 onChange={(e) => setSubject(e.target.value)}
                 required
-                placeholder="Hva ønsker du?" 
-                className="text-base" 
+                placeholder={t["order.wish"]}
+                className="text-base"
               />
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="order-description" className="text-sm font-medium">
-                Beskriv bestillingen
+                {t["order.describeOrder"]}
               </Label>
               <Textarea
                 id="order-description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                placeholder="Beskriv bestillingen"
+                placeholder={t["order.describeOrder"]}
                 className="min-h-[120px] text-base resize-none"
                 rows={5}
               />
@@ -164,12 +167,12 @@ export function OrderForm({
                 <FileText size={20} color="white" />
               </div>
               <CardTitle className="font-[600] text-[18px] md:text-[16px]">
-                Vedlegg
+                {t["dashboard.attachments"]}
               </CardTitle>
             </div>
           </CardHeader>
           <CardContent className="!p-4 !pt-0 space-y-4">
-            <p className="md:text-[13px] text-gray-600">Ladda upp filer som kan hjälpa oss förstå ditt projekt</p>
+            <p className="md:text-[13px] text-gray-600">{t["order.uploadFiles"]}</p>
             {/* Drag and Drop Area */}
             <div
               onDrop={handleDrop}
@@ -177,8 +180,8 @@ export function OrderForm({
               onDragLeave={handleDragLeave}
               className={`
                 relative border-2 border-dashed rounded-lg p-8 text-center transition-all
-                ${isDragging 
-                  ? 'border-primary bg-primary/5 scale-[1.02]' 
+                ${isDragging
+                  ? 'border-primary bg-primary/5 scale-[1.02]'
                   : 'border-gray-300 hover:border-gray-400 bg-gray-50/50'
                 }
               `}
@@ -208,10 +211,10 @@ export function OrderForm({
                   </div>
                   <div className="space-y-1">
                     <p className="text-sm font-medium text-gray-700">
-                      {isDragging ? 'Släpp filerna här' : 'Klicka eller dra filer hit'}
+                      {isDragging ? t["order.dropFiles"] : t["order.clickOrDrag"]}
                     </p>
                     <p className="text-xs text-gray-500">
-                      PNG, JPG, PDF, DOC upp till 10MB
+                      {t["order.allowedFormats"]}
                     </p>
                   </div>
                 </div>
@@ -221,7 +224,7 @@ export function OrderForm({
             {/* Files List */}
             {files.length > 0 && (
               <div className="space-y-2">
-                <Label className="text-sm font-medium">Uppladdade filer ({files.length})</Label>
+                <Label className="text-sm font-medium">{t["order.uploadedFiles"]} ({files.length})</Label>
                 <div className="space-y-2 max-h-48 overflow-y-auto">
                   {files.map((file, index) => (
                     <div
@@ -261,16 +264,16 @@ export function OrderForm({
         <Card className="cursor-default rounded-xl">
           <CardContent className="!p-4">
             <div className="flex items-center gap-3">
-              <Switch 
-                id="pickup-self" 
-                checked={isPickup} 
-                onCheckedChange={setIsPickup} 
+              <Switch
+                id="pickup-self"
+                checked={isPickup}
+                onCheckedChange={setIsPickup}
               />
               <div className="space-y-0.5">
                 <Label htmlFor="pickup-self" className="text-base font-medium cursor-pointer">
-                  Henter selv
+                  {t["order.pickupLabel"]}
                 </Label>
-                <p className="md:text-[13px] text-muted-foreground">Jag hämtar beställningen själv</p>
+                <p className="md:text-[13px] text-muted-foreground">{t["order.pickupText"]}</p>
               </div>
             </div>
           </CardContent>
@@ -285,74 +288,74 @@ export function OrderForm({
                   <MapPin size={20} color="white" />
                 </div>
                 <CardTitle className="font-[600] text-[18px] md:text-[16px]">
-                  Leveransadresse
+                  {t["order.deliveryAddressLabel"]}
                 </CardTitle>
               </div>
             </CardHeader>
             <CardContent className="!p-4 !pt-0 space-y-4">
-              <p className="md:text-[13px] text-gray-600">Var ska vi leverera din beställning?</p>
+              <p className="md:text-[13px] text-gray-600">{t["order.deliveryAddressText"]}</p>
               <div className="space-y-2">
                 <Label htmlFor="address" className="text-sm font-medium">
-                  Adresse
+                  {t["order.address"]}
                 </Label>
-                <Input 
-                  id="address" 
+                <Input
+                  id="address"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
-                  placeholder="Adresse" 
-                  className="text-base" 
+                  placeholder="Adresse"
+                  className="text-base"
                 />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="postal-code" className="text-sm font-medium">
-                    Postnummer
+                    {t["order.postalCode"]}
                   </Label>
-                  <Input 
-                    id="postal-code" 
+                  <Input
+                    id="postal-code"
                     value={postalCode}
                     onChange={(e) => setPostalCode(e.target.value)}
-                    placeholder="Postnummer" 
-                    className="text-base" 
+                    placeholder="Postnummer"
+                    className="text-base"
                   />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="city" className="text-sm font-medium">
-                    Stad
+                    {t["order.city"]}
                   </Label>
-                  <Input 
-                    id="city" 
+                  <Input
+                    id="city"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
-                    placeholder="Stad" 
-                    className="text-base" 
+                    placeholder={t["order.city"]}
+                    className="text-base"
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="country" className="text-sm font-medium">
-                  Land
+                  {t["order.country"]}
                 </Label>
-                <Input 
-                  id="country" 
+                <Input
+                  id="country"
                   value={country}
                   onChange={(e) => setCountry(e.target.value)}
-                  placeholder="Land" 
-                  className="text-base" 
+                  placeholder={t["order.country"]}
+                  className="text-base"
                 />
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="instructions" className="text-sm font-medium">
-                  Övrig instruktion
+                  {t["order.instructionsLabel"]}
                 </Label>
                 <Textarea
                   id="instructions"
                   value={instructions}
                   onChange={(e) => setInstructions(e.target.value)}
-                  placeholder="Övrig instruktion t.ex. c/o, etc."
+                  placeholder={t["order.instructionsPlaceholder"]}
                   className="min-h-20 text-base resize-none"
                 />
               </div>
@@ -362,13 +365,13 @@ export function OrderForm({
 
         {/* Submit Button */}
         <div className="pt-2">
-          <Button 
-            type="submit" 
-            size="lg" 
-            className="w-full text-lg" 
+          <Button
+            type="submit"
+            size="lg"
+            className="w-full text-lg"
             disabled={uploading}
           >
-            {uploading ? "Sender…" : "Send bestilling"}
+            {uploading ? t["order.sending"] : t["order.sendOrder"]}
           </Button>
         </div>
       </form>

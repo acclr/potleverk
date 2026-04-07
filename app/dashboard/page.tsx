@@ -14,11 +14,12 @@ import {
 } from "@/components/ui/card";
 import { UserHeader } from "./components";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/features/translations/translations-context";
 
 export default function DashboardPage() {
   const { user } = useAuth();
   const router = useRouter();
-
+  const t = useLocale();
   useEffect(() => {
     if (!user?.uid) {
       router.push("/account");
@@ -42,17 +43,17 @@ export default function DashboardPage() {
         <div className="grid grid-cols-1 mdup:grid-cols-2 gap-6 mb-8">
           {[
             {
-              title: "Mine bestillinger",
+              title: t["dashboard.myOrders"],
               href: "/dashboard/orders",
               icon: ShoppingBag,
               description:
-                "Spor status, se detaljer og kommuniser om dine bestillinger.",
+                t["dashboard.trackStatus"],
             },
             {
-              title: "Rediger profil",
+              title: t["dashboard.editProfile"],
               href: "/dashboard/edit-profile",
               icon: User,
-              description: "Endre navn, kontaktinformasjon og adresse.",
+              description: t["dashboard.updateInformation"],
             },
           ].map((item) => (
             <Link href={item.href}>

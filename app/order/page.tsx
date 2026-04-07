@@ -10,13 +10,14 @@ import Section from "@/components/ui/section";
 import { useNotify } from "@/features/notifications";
 import Link from "next/link";
 import { OrderForm } from "./components/order-form";
+import { useLocale } from "@/features/translations/translations-context";
 
 export default function PlaceOrderPage() {
   const router = useRouter();
   const { user } = useAuth();
   const { notify } = useNotify();
   const { placeOrder, uploading } = usePlaceOrder();
-
+  const t = useLocale();
   const [subject, setSubject] = useState("");
   const [description, setDescription] = useState("");
   const [isPickup, setIsPickup] = useState(false);
@@ -33,13 +34,13 @@ export default function PlaceOrderPage() {
   if (!user?.uid) {
     return (
       <div className="max-w-2xl mx-auto px-4 md:px-6 lg:px-8 py-10">
-        <h1 className="text-2xl font-semibold">Bestilling</h1>
+        <h1 className="text-2xl font-semibold">{t["order.order"]}</h1>
         <p className="text-gray-600 mt-2">
-          Du må være innlogget for å legge inn bestilling.
+          {t["order.notLoggedInMsg"]}
         </p>
         <div className="mt-6">
           <Button onClick={() => router.push("/account?tab=login")}>
-            Logg inn
+            {t["order.login"]}
           </Button>
         </div>
       </div>
@@ -55,7 +56,7 @@ export default function PlaceOrderPage() {
       attachments: files,
     })
       .then(() => {
-        notify("success", "Bestilling sendt");
+        notify("success", t["order.orderSent"]);
         setIsSubmitted(true);
       })
       .catch((e) => {
@@ -82,17 +83,17 @@ export default function PlaceOrderPage() {
       {isSubmitted ? (
         <div className="flex flex-col w-full rounded-xl bg-white/50 p-6 py-12 items-center justify-center text-center gap-4">
           <h3 className="text-3xl lg:text-2xl font-semibold">
-            Bestilling sendt
+            {t["order.orderSent"]}
           </h3>
           <p>
-            Tack för din beställning. Vi kommer att kontakta dig så fort vi kan.
+            {t["order.orderSentMsg"]}
           </p>
           <div className="flex flex-row gap-4">
             <Link href="/dashboard">
-              <Button>Mine bestillinger</Button>
+              <Button>{t["order.myOrders"]}</Button>
             </Link>
             <Button variant="outline" onClick={resetForm}>
-              Ny bestilling
+              {t["order.newOrder"]}
             </Button>
           </div>
         </div>
