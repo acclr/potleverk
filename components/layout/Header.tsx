@@ -12,10 +12,13 @@ import { Drawer, DrawerContent, DrawerTrigger } from "../ui/drawer";
 import SidebarHeader from "./SidebarHeader";
 import SidebarMenu from "./SidebarMenu";
 import SidebarFooter from "./SidebarFooter";
+import { useLocale } from "@/features/translations/translations-context";
+import { NavigationDocumentDataItemsItem } from "@/prismicio-types"
 
-export default function Header() {
+export default function Header({ navigation }: { navigation: NavigationDocumentDataItemsItem[] }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const { user } = useAuth();
+  const t = useLocale();
 
   useEffect(() => {
     const update = () => {
@@ -41,20 +44,20 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const navigation = [
-    {
-      label: "Produkter og tjenester",
-      href: "/our-products",
-    },
-    {
-      label: "Kontakt",
-      href: "/contact",
-    },
-    {
-      label: "Bestill her",
-      href: "/order",
-    },
-  ];
+  /*  const navigation = [
+     {
+       label: "Produkter og tjenester",
+       href: "/our-products",
+     },
+     {
+       label: "Kontakt",
+       href: "/contact",
+     },
+     {
+       label: "Bestill her",
+       href: "/order",
+     },
+   ]; */
 
   return (
     <header
@@ -98,11 +101,11 @@ export default function Header() {
         <div className="lg:hidden flex items-center gap-8">
           {navigation.map((item) => (
             <Link
-              key={item.label}
-              href={item.href}
+              key={item.text}
+              href={(item.link as any).url ?? '/'}
               className="relative text-secondary-950 border-b-2 border-transparent -mt-0.5 hover:border-secondary-800 hover:text-secondary-800  text-[16px] font-semibold"
             >
-              {item.label}
+              {item.text}
             </Link>
           ))}
 
@@ -110,7 +113,7 @@ export default function Header() {
             <Link href={user?.uid ? "/dashboard" : "/account"}>
               <Button variant="default" size="sm">
                 <UserIcon className="w-4 h-4" />
-                <span>Min konto</span>
+                <span>{t["header.myAccount"]}</span>
               </Button>
             </Link>
           </div>

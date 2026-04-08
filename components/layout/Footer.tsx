@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { FacebookIcon } from "../icons/facebook";
 import { LinkedinIcon } from "../icons/linkedin";
@@ -5,8 +6,11 @@ import { InstagramIcon } from "../icons/insta";
 import { MailIcon, PhoneIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { useLocale } from "@/features/translations/translations-context";
 
 export default function Footer() {
+  const t = useLocale();
+
   return (
     <footer>
       <div className="mx-auto container overflow-hidden px-6 py-20 sm:py-24 lg:px-8 md:px-6">
@@ -27,13 +31,13 @@ export default function Footer() {
               <div className="flex items-center gap-2">
                 <PhoneIcon />
                 <p className="text-sm/6 text-gray-600 dark:text-gray-400 lg:text-black lg:text-lg lg:font-medium">
-                  855 49 350
+                  {t["footer.phone"]}
                 </p>
               </div>
               <div className="flex items-center gap-2">
                 <MailIcon />
                 <p className="text-sm/6 text-gray-600 dark:text-gray-400 lg:text-black lg:text-lg lg:font-medium">
-                  bestilling@potleverk.no
+                  {t["footer.email"]}
                 </p>
               </div>
             </div>
@@ -45,7 +49,7 @@ export default function Footer() {
             <LinkedinIcon size={50} />
           </div>
           <p className="justify-end lg:justify-start w-full flex items-center lg:text-left text-sm/6 text-gray-600 dark:text-gray-400">
-            &copy; 2025 Potleverk AS. Alle rettigheter reservert.
+            &copy; {t["footer.copyright"]}
           </p>
         </div>
       </div>

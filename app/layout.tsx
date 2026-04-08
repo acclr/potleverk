@@ -1,3 +1,4 @@
+import { createClient } from "@/features/prismic";
 import { getStringResources } from "@/features/prismic/actions/getStringResources";
 import { Metadata } from "next";
 import { Poppins } from "next/font/google";
@@ -9,7 +10,7 @@ import { cn } from "@/components/utils";
 import Footer from "../components/layout/Footer";
 import Header from "../components/layout/Header";
 import { SettingsDocument } from "../prismicio-types";
-import "./globals.css";
+import "@/app/globals.css";
 
 const primary = Poppins({
   subsets: ["latin-ext"],
@@ -33,6 +34,10 @@ export default async function RootLayout({ children }) {
   const headerMenu = [];
   const resources = await getStringResources();
   const settings = {};
+
+  const client = createClient();
+  const menu = await client.getByUID("navigation", "main-menu");
+  const navigation = menu.data.items;
   return (
     <html lang="no" className={cn(primary.variable, "overflow-y-scroll")}>
       <head>
@@ -94,7 +99,7 @@ export default async function RootLayout({ children }) {
             color="#000"
             template='<div class="bar" role="bar"><div class="peg"></div></div>'
           />
-          <Header />
+          <Header navigation={navigation} />
           {children}
           <Footer />
         </Providers>
