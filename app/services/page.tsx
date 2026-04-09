@@ -1,15 +1,18 @@
+'use client';
 import Image from "next/image"
+import { useLocale } from "@/features/translations/translations-context";
 
 export default function Services() {
+  const t = useLocale();
   const services = [
-    { id: 1, name: "Service 1", description: "Description of Service 1" },
-    { id: 2, name: "Service 2", description: "Description of Service 2" },
-    { id: 3, name: "Service 3", description: "Description of Service 3" },
+    { id: 1, name: t["services.service1Name"], description: t["services.service1Description"] },
+    { id: 2, name: t["services.service2Name"], description: t["services.service2Description"] },
+    { id: 3, name: t["services.service3Name"], description: t["services.service3Description"] },
   ]
 
   return (
     <div className="max-w-4xl mx-auto">
-      <h1 className="text-4xl font-bold mb-6">Our Services</h1>
+      <h1 className="text-4xl font-bold mb-6">{t["services.title"]}</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((service) => (
           <div key={service.id} className="border rounded-lg p-4">

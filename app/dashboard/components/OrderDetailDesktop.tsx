@@ -91,7 +91,7 @@ export function OrderDetailDesktop({ orders, selected }: OrderDetailDesktopProps
                   <div className="relative aspect-[4/3]">
                     <Image
                       src={src}
-                      alt="Vedlegg"
+                      alt={t["dashboard.attachments"]}
                       fill
                       className="object-cover"
                     />

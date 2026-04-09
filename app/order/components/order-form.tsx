@@ -248,7 +248,7 @@ export function OrderForm({
                         type="button"
                         onClick={() => removeFile(index)}
                         className="flex-shrink-0 p-1 rounded-md text-gray-400 hover:text-red-600 hover:bg-red-50 transition-colors opacity-0 group-hover:opacity-100"
-                        aria-label="Remove file"
+                        aria-label={t["order.removeFile"]}
                       >
                         <X className="h-4 w-4" />
                       </button>
@@ -302,7 +302,7 @@ export function OrderForm({
                   id="address"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
-                  placeholder="Adresse"
+                  placeholder={t["order.address"]}
                   className="text-base"
                 />
               </div>
@@ -316,7 +316,7 @@ export function OrderForm({
                     id="postal-code"
                     value={postalCode}
                     onChange={(e) => setPostalCode(e.target.value)}
-                    placeholder="Postnummer"
+                    placeholder={t["order.postalCode"]}
                     className="text-base"
                   />
                 </div>

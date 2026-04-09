@@ -81,7 +81,7 @@ export function OrderDetailMobile({ selected }: OrderDetailMobileProps) {
                       <div className="relative aspect-[4/3]">
                         <Image
                           src={src}
-                          alt="Vedlegg"
+                          alt={t["dashboard.attachments"]}
                           fill
                           className="object-cover"
                         />

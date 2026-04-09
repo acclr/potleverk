@@ -85,7 +85,7 @@ export function OrderMessages({
       <div className="fixed bottom-0 left-0 right-0 bg-white p-4 z-50">
         <div className="relative">
           <Textarea
-            placeholder="Skriv en melding..."
+            placeholder={t["dashboard.writeMessage"]}
             className="w-full p-3 bg-gray-100 border-none pr-24 resize-none"
             rows={3}
             value={message}
@@ -216,7 +216,7 @@ export function OrderMessages({
             size="xs"
             variant="destructive"
             className="md:text-[13px]"
-            onClick={() => sendMessage("Avvist", MessageType.REJECT)}
+            onClick={() => sendMessage(t["dashboard.reject"], MessageType.REJECT)}
           >
             {t["dashboard.reject"]}
           </Button>
@@ -224,7 +224,7 @@ export function OrderMessages({
             size="xs"
             variant="default"
             className="md:text-[13px]"
-            onClick={() => sendMessage("Godkjent", MessageType.APPROVE)}
+            onClick={() => sendMessage(t["dashboard.approve"], MessageType.APPROVE)}
           >
             {t["dashboard.approve"]}
           </Button>
@@ -311,7 +311,7 @@ export function OrderMessages({
                                 : "bg-emerald-100 text-emerald-800"
                             )}
                           >
-                            Godkjent
+                            {t["dashboard.approved"]}
                           </span>
                         ) : m.type === MessageType.REJECT ? (
                           <span
@@ -322,7 +322,7 @@ export function OrderMessages({
                                 : "bg-red-100 text-red-800"
                             )}
                           >
-                            Avvist
+                            {t["dashboard.rejected"]}
                           </span>
                         ) : null}
                       </div>
