@@ -26,6 +26,7 @@ const TextBlockGrid = ({ slice, context }: TextBlockGridProps): JSX.Element => {
           title: item.title,
           text: item.text,
           vectorHtml: item.vector_html,
+
           link: {
             label: item?.link?.text,
             href: getPrismicLink(item.link, resolver)
