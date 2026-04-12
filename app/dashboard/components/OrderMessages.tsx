@@ -26,11 +26,11 @@ interface OrderMessagesProps {
   onlyInput?: boolean;
 }
 
-export function OrderMessages({ 
-  orderId, 
+export function OrderMessages({
+  orderId,
   isMobile = false,
   showInput = true,
-  onlyInput = false 
+  onlyInput = false
 }: OrderMessagesProps) {
   const { user } = useAuth();
   const [message, setMessage] = useState("");
@@ -51,7 +51,7 @@ export function OrderMessages({
     const payload = {
       senderId: user?.uid ?? "",
       senderName,
-      senderRole: isAdmin ? "admin" : "client",
+      senderRole: isAdmin ? UserRole.ADMIN : UserRole.CLIENT,
       message: msg,
       is_quote: isAdmin ? isQuote : false,
       intent: isAdmin ? null : (intent ?? null),
@@ -333,7 +333,7 @@ export function OrderMessages({
               );
               const canRespondToQuote =
                 !isAdmin && m.is_quote && !isFromCurrentUser && !quoteResponse;
-              
+
               // Check if we should show a timestamp divider
               const showTimestamp = shouldShowTimestamp(
                 m.sentAt,

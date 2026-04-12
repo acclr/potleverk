@@ -92,9 +92,21 @@ const Banner: React.FC<BannerProps> = ({
     <div className="absolute left-0 top-0 h-full w-full bg-primary-700 opacity-70" />
   ) : null;
 
+  const {
+    imageUrl,
+    altTitle,
+    eyebrowText,
+    richText,
+    centered,
+    buttons,
+    children,
+    overlay,
+    ...domProps
+  } = props;
+
   const aspectProps = {
     className: "w-full flex",
-    ...props,
+    ...domProps,
   };
 
   return (

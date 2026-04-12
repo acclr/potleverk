@@ -1,5 +1,5 @@
 import * as prismic from "@prismicio/client";
-// import * as prismicNext from "@prismicio/next";
+import { enableAutoPreviews } from "@prismicio/next";
 import sm from "../../slicemachine.config.json";
 
 /**
@@ -38,7 +38,7 @@ export const createClient = (config?: any) => {
     ...config
   });
 
-  // prismicNext.enableAutoPreviews({ client });
+  enableAutoPreviews({ client });
 
   return client;
 };

@@ -11,6 +11,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getHrefFromDoc } from "@/features/prismic/utils/get-href-from-doc";
 import { getBgFromSlice, getSpaceFromSlice } from "../utils";
+import { cn } from "@/components/utils"
 
 /**
  * Props for `BlogPosts`.
