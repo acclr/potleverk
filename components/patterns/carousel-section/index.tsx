@@ -1,5 +1,5 @@
 import Section from "../../ui/section";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../../ui/carousel";
+import { Carousel, CarouselContent, CarouselNext, CarouselPrevious } from "../../ui/carousel";
 
 type CarouselProps = {
   eyebrowText?: string;

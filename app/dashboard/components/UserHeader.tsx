@@ -1,9 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { useAuth, logout } from "@/features/firebase/auth";
-import { User, LogOut, ArrowLeft } from "lucide-react";
+import { User, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface UserHeaderProps {
@@ -28,7 +27,6 @@ export function UserHeader({
   };
 
   const userName = user?.userDetails?.name || user?.orgDetails?.orgName || "Bruker";
-  const userEmail = user?.userDetails?.email || "Ingen e-post";
 
   return (
     <div className="border-black/10 border bg-white p-5 md:px-0 md:py-3">
@@ -47,6 +45,11 @@ export function UserHeader({
                     <h1 className="text-2xl md:leading-none md:!text-base font-bold text-gray-900">
                       {title}
                     </h1>
+                    {subtitle ? (
+                      <p className="text-xs text-gray-500">
+                        {subtitle}
+                      </p>
+                    ) : null}
                   </>
                 ) : (
                   <>

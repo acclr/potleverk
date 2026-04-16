@@ -11,10 +11,12 @@ import { Textarea } from "./textarea";
 const CAPTCHA_PUBLIC_KEY = process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_PUBLIC_KEY;
 
 function send(formData: FormData) {
+  void formData;
   return Promise.resolve({ ok: true });
 }
 
-export const PrismicFormComponent = ({ formType, fields, title, preamble, submitText, submittingText, submittedText }: { formType: string; fields: { type: string; text?: string; label: string; name: string; required: boolean; options: { value: string; label: string; image: { url: string; alt: string } }[] }[]; title: string; preamble: string; submitText: string; submittingText: string; submittedText: string }) => {
+export const PrismicFormComponent = ({ formType: _formType, fields, title, preamble, submitText, submittingText, submittedText }: { formType: string; fields: { type: string; text?: string; label: string; name: string; required: boolean; options: { value: string; label: string; image: { url: string; alt: string } }[] }[]; title: string; preamble: string; submitText: string; submittingText: string; submittedText: string }) => {
+  void _formType;
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { executeRecaptcha } = useGoogleReCaptcha();
@@ -112,7 +114,7 @@ export const PrismicFormComponent = ({ formType, fields, title, preamble, submit
         })}
 
         <Button className="mt-2" color="primary" variant="default" size="lg" type="submit" disabled={isSubmitted}>
-          {isSubmitted ? "Skickat!" : isSubmitting ? "Skickar..." : submitText ?? "Skicka förfrågan"}
+          {isSubmitted ? submittedText : isSubmitting ? submittingText : submitText ?? "Skicka förfrågan"}
         </Button>
       </form>
     </div>

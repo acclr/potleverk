@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { FacebookIcon } from "../icons/facebook";
 import { LinkedinIcon } from "../icons/linkedin";
 import { InstagramIcon } from "../icons/insta";

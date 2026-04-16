@@ -1,11 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { Order } from "@/features/firebase/firestore/types/order";
 import { OrderMessages } from "./OrderMessages";
-import { statusLabel, statusStyles } from "./constants";
 import { formatDate } from "./utils";
 import { useState } from "react";
 

@@ -6,6 +6,7 @@ import { useAuth } from "@/features/firebase/auth";
 import { usePaginatedOrdersByClient } from "@/features/firebase/firestore/queries/orders.query";
 import { useMarkOrderMessagesRead } from "@/features/firebase/firestore/queries/user.query";
 import { UserRole } from "@/features/firebase/firestore/types";
+import type { Order } from "@/features/firebase/firestore/types/order";
 import { LoaderIcon } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { OrdersList, OrderDetail, OrderDetailModal, UserHeader } from "../components";
@@ -23,7 +24,6 @@ export default function OrdersPage() {
     nextPage,
     prevPage,
     goToPage,
-    pageSize 
   } = usePaginatedOrdersByClient(
     user?.uid,
     user?.role === UserRole.ADMIN,
@@ -37,9 +37,18 @@ export default function OrdersPage() {
   const isAdmin = user?.role === UserRole.ADMIN;
 
   const sortedOrders = useMemo(() => {
-    const getUnreadCount = (order: any) =>
+    type OrderTimestampValue =
+      | Date
+      | string
+      | {
+          toDate?: () => Date;
+          seconds?: number;
+        }
+      | null
+      | undefined;
+    const getUnreadCount = (order: Order) =>
       isAdmin ? (order?.unreadForAdmin ?? 0) : (order?.unreadForClient ?? 0);
-    const toTimestampMs = (value: any): number => {
+    const toTimestampMs = (value: OrderTimestampValue): number => {
       if (!value) return 0;
       if (typeof value === "string") {
         const parsed = Date.parse(value);
@@ -48,18 +57,18 @@ export default function OrdersPage() {
       if (value instanceof Date) {
         return value.getTime();
       }
-      if (typeof value?.toDate === "function") {
+      if (typeof value === "object" && value !== null && "toDate" in value && typeof value.toDate === "function") {
         const date = value.toDate();
         return date instanceof Date ? date.getTime() : 0;
       }
-      if (typeof value?.seconds === "number") {
+      if (typeof value === "object" && value !== null && "seconds" in value && typeof value.seconds === "number") {
         return value.seconds * 1000;
       }
       return 0;
     };
-    const getLastActivity = (order: any) => toTimestampMs(order?.lastMessageAt ?? order?.createdAt);
+    const getLastActivity = (order: Order) => toTimestampMs(order?.lastMessageAt ?? order?.createdAt);
 
-    return [...orders].sort((a: any, b: any) => {
+    return [...orders].sort((a: Order, b: Order) => {
       const aUnread = getUnreadCount(a);
       const bUnread = getUnreadCount(b);
       if (aUnread !== bUnread) return bUnread - aUnread;
