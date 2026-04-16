@@ -1,6 +1,7 @@
 import Contained from "@/components/ui/contained";
-import { PrismicRichText, type PrismicRichTextProps } from "@/components/ui/prismic-rich-text";
+import { PrismicRichText } from "@/components/ui/prismic-rich-text";
 import DefaultSection from "@/components/ui/section";
+import type { PrismicRichTextProps } from "@prismicio/react";
 
 type TitleWithTextBelowProps = {
   eyebrowText?: string;

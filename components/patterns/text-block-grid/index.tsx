@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Section from "@/components/ui/section";
+import Image from "next/image";
 
 const defaultItems = [
   {
@@ -51,6 +52,7 @@ type TextBlockItem = {
   title: string;
   text: string;
   vectorHtml?: string;
+  image?: { url: string; alt: string };
   eyebrowText?: string;
   link?: {
     label: string;
@@ -91,6 +93,15 @@ export default function TextBlockGrid({
       <div className="grid grid-cols-3 gap-12 gap-y-4 lg:grid-cols-2 lg:gap-8 md:grid-cols-2 md:gap-6">
         {items.map((item) => (
           <div key={item.title} className="flex flex-col">
+            {item.image?.url && (
+              <Image
+                src={item.image.url}
+                alt={item.image.alt}
+                width={400}
+                height={300}
+                className="rounded-lg w-full object-cover mb-3"
+              />
+            )}
             {item.vectorHtml && (
               <div
                 className="mb-1 h-8 w-8 fill-primary-600 text-primary-600 [&>svg]:h-8 [&>svg]:w-8"

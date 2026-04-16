@@ -93,7 +93,6 @@ const Banner: React.FC<BannerProps> = ({
 
   const aspectProps = {
     className: "w-full flex",
-    ...props,
   };
 
   return (

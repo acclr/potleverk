@@ -18,8 +18,8 @@
 				"type": "Text"
 			},
 			"show_all_link": {
-				"__TYPE__": "LinkContent",
 				"key": "c6b840df-1b48-4301-80ad-09dab2e4037e",
+				"__TYPE__": "LinkContent",
 				"value": {
 					"__TYPE__": "ExternalLink",
 					"url": "https://prismic.io",

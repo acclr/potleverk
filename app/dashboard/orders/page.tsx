@@ -5,8 +5,7 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/features/firebase/auth";
 import { usePaginatedOrdersByClient } from "@/features/firebase/firestore/queries/orders.query";
 import { useMarkOrderMessagesRead } from "@/features/firebase/firestore/queries/user.query";
-import { UserRole } from "@/features/firebase/firestore/types";
-import type { Order } from "@/features/firebase/firestore/types/order";
+import { type Order, UserRole } from "@/features/firebase/firestore/types";
 import { LoaderIcon } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { OrdersList, OrderDetail, OrderDetailModal, UserHeader } from "../components";
@@ -35,17 +34,17 @@ export default function OrdersPage() {
   const isMobile = useIsMobile();
   const markOrderMessagesRead = useMarkOrderMessagesRead();
   const isAdmin = user?.role === UserRole.ADMIN;
+  type OrderTimestampValue =
+    | Date
+    | string
+    | {
+        toDate?: () => Date;
+        seconds?: number;
+      }
+    | null
+    | undefined;
 
   const sortedOrders = useMemo(() => {
-    type OrderTimestampValue =
-      | Date
-      | string
-      | {
-          toDate?: () => Date;
-          seconds?: number;
-        }
-      | null
-      | undefined;
     const getUnreadCount = (order: Order) =>
       isAdmin ? (order?.unreadForAdmin ?? 0) : (order?.unreadForClient ?? 0);
     const toTimestampMs = (value: OrderTimestampValue): number => {

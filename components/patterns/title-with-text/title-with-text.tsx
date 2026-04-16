@@ -4,8 +4,8 @@ import Contained from "@/components/ui/contained";
 
 export default function TitleWithText({
   title,
-  text,
   eyebrowText,
+  text,
   buttons,
   className,
 }) {

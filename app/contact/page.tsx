@@ -6,7 +6,6 @@ import {
 import Section from "@/components/ui/section";
 import { createStylesForSlice } from "@/features/prismic/slices/utils";
 import { MailIcon, MapIcon, PhoneIcon } from "lucide-react";
-import type { ForwardRefExoticComponent, RefAttributes } from "react";
 
 export default function Contact() {
   const employees: TeamMember[] = [
@@ -63,7 +62,7 @@ export default function Contact() {
         {
           type: "linkedin",
           value: "https://linkedin.com/in/jostein-hanssen",
-          icon: LinkedInStrokeIcon as ForwardRefExoticComponent<RefAttributes<SVGSVGElement>>,
+          icon: LinkedInStrokeIcon as unknown as TeamMember["contactPoints"][number]["icon"],
         },
       ],
     },
@@ -120,7 +119,7 @@ export default function Contact() {
         classNames={{
           container: createStylesForSlice({
             primary: {
-              background: "Background",
+              background: "White",
               spacing_top: "None",
               spacing_bottom: "None",
             },
