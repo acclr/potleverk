@@ -159,7 +159,7 @@ export const PrismicFormComponent = ({
                     {(field.options ?? []).map((option, optIndex) => (
                       <div
                         className={cn(
-                          "ui-border flex flex-row items-center justify-center p-2",
+                          "ui-border flex flex-row items-center justify-center p-2 space-x-1.5",
                           option.value === "payment" ? "border-black" : "border-gray-200"
                         )}
                         key={optIndex}>
