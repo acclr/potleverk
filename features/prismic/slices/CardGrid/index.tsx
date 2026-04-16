@@ -33,7 +33,7 @@ const CardGrid = ({ slice }: SliceComponentProps<Content.CardGridSlice>) => {
         </div>
       )}
 
-      <div className="grid w-full grid-cols-3 gap-4">
+      <div className="grid w-full gap-4 lgup:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 msdown:grid-cols-1">
         {slice.items.map((item, index) => (
           <div
             key={index}
