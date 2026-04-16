@@ -1,4 +1,3 @@
-import { LucideIcon } from "lucide-react";
 import Section from "../../ui/section";
 
 export type MotivationalItem = {
@@ -13,7 +12,7 @@ export type MotivationalSectionProps = {
   items: MotivationalItem[];
 };
 
-const MotivationalItem = ({ vectorIcon, imageIcon, title, text }: MotivationalItem) => (
+const MotivationalItem = ({ vectorIcon, title, text }: MotivationalItem) => (
   <div className="flex items-center space-x-3">
     {vectorIcon && (
       <div data-testid="icon" className="h-8 w-8 flex-shrink-0 text-primary" dangerouslySetInnerHTML={{ __html: vectorIcon }} />

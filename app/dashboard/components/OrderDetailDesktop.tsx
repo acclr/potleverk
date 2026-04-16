@@ -2,11 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { Order } from "@/features/firebase/firestore/types/order";
 import { OrderMessages } from "./OrderMessages";
-import { statusLabel, statusStyles } from "./constants";
 import { formatDate } from "./utils";
 
 interface OrderDetailDesktopProps {

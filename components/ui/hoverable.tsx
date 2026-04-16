@@ -42,12 +42,6 @@ const overlayVariants = cva("absolute inset-0 transition-colors duration-200 poi
   }
 });
 
-// Map for initial background if the initialBg prop is true.
-const initialBgMap: Record<"lighten" | "darken", string> = {
-  lighten: "rgba(255,255,255,0.06)",
-  darken: "rgba(0,0,0,0.04)"
-};
-
 export interface HoverableProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof containerVariants>,

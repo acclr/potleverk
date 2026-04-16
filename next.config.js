@@ -11,19 +11,28 @@ const advancedHeaders = [
     key: "X-XSS-Protection",
     value: "1; mode=block"
   },
-  {
-    key: "X-Frame-Options",
-    value: "SAMEORIGIN"
-  },
-  {
+ {
     key: "X-Content-Type-Options",
     value: "nosniff"
   },
   {
     key: "Referrer-Policy",
     value: "origin-when-cross-origin"
+  },
+  {
+    key: "Content-Security-Policy",
+    value: "frame-ancestors 'self' https://prismic.io https://*.prismic.io http://localhost:9999;"
   }
 ];
+
+const sliceSimulatorHeaders = advancedHeaders
+  .filter((h) => h.key !== "X-Frame-Options")
+  .concat([
+    {
+      key: "Content-Security-Policy",
+      value: "frame-ancestors 'self' http://localhost:9999;"
+    }
+  ]);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -52,15 +61,18 @@ const nextConfig = {
     ]
   },
 
-  async headers() {
-    return [
-      {
-        // Apply these headers to all routes in your application.
-        source: "/:path*",
-        headers: advancedHeaders
-      }
-    ];
-  }
+async headers() {
+  return [
+    {
+      source: "/slice-simulator",
+      headers: sliceSimulatorHeaders
+    },
+    {
+      source: "/:path*",
+      headers: advancedHeaders
+    }
+  ];
+}
 };
 
 module.exports = nextConfig;

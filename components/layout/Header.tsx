@@ -5,9 +5,7 @@ import { Button } from "@/components/ui/button"
 import { useEffect, useState } from "react";
 import { cn } from "../utils";
 import { useAuth } from "@/hooks/useAuth";
-import { UserIcon, LogInIcon, LogOutIcon, MenuIcon } from "lucide-react";
-import { signOut } from "firebase/auth";
-import { auth } from "@/features/firebase/client";
+import { UserIcon, MenuIcon } from "lucide-react";
 import { Drawer, DrawerContent, DrawerTrigger } from "../ui/drawer";
 import SidebarHeader from "./SidebarHeader";
 import SidebarMenu from "./SidebarMenu";
