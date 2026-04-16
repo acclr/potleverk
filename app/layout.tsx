@@ -28,8 +28,6 @@ export const metadata: Metadata = {
  * @param {{ children: React.ReactNode }}
  */
 export default async function RootLayout({ children }) {
-  const drawerMenu = [];
-  const headerMenu = [];
   const resources = {};
   const settings = {};
   return (

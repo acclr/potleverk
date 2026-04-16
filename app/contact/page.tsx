@@ -1,7 +1,5 @@
-import { FacebookIcon } from "@/components/icons/facebook";
-import { LinkedinIcon, LinkedInStrokeIcon } from "@/components/icons/linkedin";
+import { LinkedInStrokeIcon } from "@/components/icons/linkedin";
 import {
-  TeamContactPoint,
   TeamMember,
   TeamSection,
 } from "@/components/patterns/team-section";
@@ -64,8 +62,7 @@ export default function Contact() {
         {
           type: "linkedin",
           value: "https://linkedin.com/in/jostein-hanssen",
-          // @ts-ignore Fix this type
-          icon: LinkedInStrokeIcon as React.ForwardRefExoticComponent<any>,
+          icon: LinkedInStrokeIcon as unknown as TeamMember["contactPoints"][number]["icon"],
         },
       ],
     },
@@ -122,9 +119,9 @@ export default function Contact() {
         classNames={{
           container: createStylesForSlice({
             primary: {
-              // @ts-ignore
-              background: "",
+              background: "White",
               spacing_top: "None",
+              spacing_bottom: "None",
             },
           }),
         }}

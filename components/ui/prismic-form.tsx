@@ -12,6 +12,7 @@ import { Switch } from "@/components/ui/switch";
 const CAPTCHA_PUBLIC_KEY = process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_PUBLIC_KEY;
 
 function send(formData: FormData) {
+  void formData;
   return Promise.resolve({ ok: true });
 }
 
@@ -41,21 +42,15 @@ function FormSwitchField({ label, name }: { label?: string; name: string }) {
 }
 
 export const PrismicFormComponent = ({
-  formType,
   fields,
   title,
   preamble,
   submitText,
-  submittingText,
-  submittedText,
 }: {
-  formType: string;
   fields: FormField[];
   title: string;
   preamble: string;
   submitText: string;
-  submittingText: string;
-  submittedText: string;
 }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -155,11 +150,11 @@ export const PrismicFormComponent = ({
                 <div key={index}>
                   {field.label && <label className="font-semibold">{field.label}</label>}
                   {field.text && <p>{field.text}</p>}
-                  <div className="flex w-full flex-col">
+                  <div className="grid w-full grid-cols-1 gap-2 mdup:grid-cols-2 lgup:grid-cols-3">
                     {(field.options ?? []).map((option, optIndex) => (
                       <div
                         className={cn(
-                          "ui-border flex flex-row items-center justify-center p-2 space-x-1.5",
+                          "ui-border flex flex-row items-center justify-center gap-1.5 p-2",
                           option.value === "payment" ? "border-black" : "border-gray-200"
                         )}
                         key={optIndex}>

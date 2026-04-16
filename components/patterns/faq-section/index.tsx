@@ -1,7 +1,5 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
-import { Badge } from "../../ui/badge";
-
 import Contained from "../../ui/contained";
 import Section from "../../ui/section";
 import { FAQPage } from "schema-dts";
@@ -32,7 +30,7 @@ export default function FaqSection({
         item={{
           "@context": "https://schema.org",
           "@type": "FAQPage",
-          "mainEntity": items.map((item, i) => ({
+          "mainEntity": items.map((item) => ({
             "@type": "Question",
             "name": item.question,
             "acceptedAnswer": {

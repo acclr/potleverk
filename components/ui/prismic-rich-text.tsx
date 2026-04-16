@@ -49,7 +49,7 @@ export const defaultComponents = {
       {children}
     </PrismicNextLink>
   ),
-  image: ({ children, node, image }: PropsWithChildren<{ node: { data: ImageField }; image: string }>) => (
+  image: ({ node, image }: { node: { data: ImageField }; image: string }) => (
     <div className={cn("aspect-16/9 relative", image)}>
       <Image
         layout="fill"

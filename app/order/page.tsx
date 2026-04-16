@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { usePlaceOrder } from "@/hooks/usePlaceOrder";
 import { useAuth } from "@/features/firebase/auth";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import Section from "@/components/ui/section";
 import { useNotify } from "@/features/notifications";
 import Link from "next/link";

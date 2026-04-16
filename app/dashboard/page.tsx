@@ -4,16 +4,14 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/features/firebase/auth";
-import { ArrowLeft, LoaderIcon, ShoppingBag, User } from "lucide-react";
+import { LoaderIcon, ShoppingBag, User } from "lucide-react";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { UserHeader } from "./components";
-import { Button } from "@/components/ui/button";
 
 export default function DashboardPage() {
   const { user } = useAuth();

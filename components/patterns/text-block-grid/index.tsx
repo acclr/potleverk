@@ -3,7 +3,6 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Section from "@/components/ui/section";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import Image from "next/image";
 
 const defaultItems = [
@@ -76,7 +75,6 @@ export default function TextBlockGrid({
   title,
   className,
   eyebrowText,
-  preamble = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   items = defaultItems,
   buttonUrl,
   buttonText

@@ -18,7 +18,7 @@ interface OrdersListProps {
   onNextPage: () => void;
   onPrevPage: () => void;
   onGoToPage?: (page: number) => void;
-  totalDisplayed: number;
+  totalDisplayed?: number;
 }
 
 export function OrdersList({
@@ -33,12 +33,10 @@ export function OrdersList({
   onNextPage,
   onPrevPage,
   onGoToPage,
-  totalDisplayed,
 }: OrdersListProps) {
   // Generate page numbers to show (current page and a few around it)
   const generatePageNumbers = () => {
     const pages: number[] = [];
-    const maxPagesToShow = 3;
     
     // Always show page 0
     if (currentPage > 1) {

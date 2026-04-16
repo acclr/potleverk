@@ -2,14 +2,13 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { login, register, resetPassword } from "@/features/firebase/auth";
+import { login, register } from "@/features/firebase/auth";
 import { useAuth } from "@/features/firebase/auth";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import Link from "next/link";
 import { Loader } from "lucide-react";
 
 function Section({
@@ -45,7 +44,7 @@ export default function AccountPage() {
     if (user?.uid) {
       // If logged in, show simple account summary
     }
-  }, [user]);
+  }, [user, router]);
 
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
@@ -96,7 +95,7 @@ export default function AccountPage() {
     if (user?.uid) {
       router.push("/dashboard");
     }
-  }, [user]);
+  }, [user, router]);
 
   if (user?.uid) {
     return (

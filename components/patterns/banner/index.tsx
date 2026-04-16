@@ -32,7 +32,6 @@ export type BannerProps = VariantProps<typeof bannerVariants> &
   };
 
 const Banner: React.FC<BannerProps> = ({
-  boxed = false,
   backgroundOverlay = false,
   className,
   ...props
@@ -92,25 +91,12 @@ const Banner: React.FC<BannerProps> = ({
     <div className="absolute left-0 top-0 h-full w-full bg-primary-700 opacity-70" />
   ) : null;
 
-  const {
-    imageUrl,
-    altTitle,
-    eyebrowText,
-    richText,
-    centered,
-    buttons,
-    children,
-    overlay,
-    ...domProps
-  } = props;
-
   const aspectProps = {
     className: "w-full flex",
-    ...domProps,
   };
 
   return (
-    <div className={className}>
+    <div className={cn(bannerVariants({ overlay: props.overlay }), className)}>
       <div className="flex flex-col lg:hidden">
         <AspectRatio ratio={21 / 9} {...aspectProps}>
           {Content}

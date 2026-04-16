@@ -47,7 +47,6 @@ const Section: React.FC<SectionProps> = ({
   background = "default",
   direction,
   boxed = false,
-  className,
   classNames,
   children,
   ...props
