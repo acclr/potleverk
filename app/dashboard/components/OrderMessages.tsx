@@ -159,7 +159,7 @@ export function OrderMessages({
     }
 
     return (
-      <div className="space-y-4 p-4">
+      <div className="space-y-4 p-4 pb-32">
         {messages
           .sort((a, b) => a?.sentAt?.localeCompare(b?.sentAt))
           .map((m, i, sortedMessages) => {
