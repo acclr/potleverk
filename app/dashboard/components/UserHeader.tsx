@@ -54,7 +54,7 @@ export function UserHeader({
                 ) : (
                   <>
                     <h1 className="text-2xl md:text-base md:leading-snug font-semibold text-gray-900">
-                      Velkommen, {userName} {user?.uid}
+                      Velkommen, {userName}
                     </h1>
 
                     {user?.meta?.createdAt && (

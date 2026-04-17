@@ -83,7 +83,7 @@ export function OrderMessages({
       {
         senderId: user?.uid ?? "",
         senderName,
-        senderRole: "client",
+        senderRole: "client" as const,
         message: responseText,
         is_quote: false,
         intent,

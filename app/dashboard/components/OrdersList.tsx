@@ -37,6 +37,7 @@ export function OrdersList({
   // Generate page numbers to show (current page and a few around it)
   const generatePageNumbers = () => {
     const pages: number[] = [];
+    
     // Always show page 0
     if (currentPage > 1) {
       pages.push(0);
