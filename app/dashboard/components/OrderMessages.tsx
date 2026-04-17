@@ -51,7 +51,7 @@ export function OrderMessages({
     const payload = {
       senderId: user?.uid ?? "",
       senderName,
-      senderRole: isAdmin ? "admin" : "client",
+      senderRole: isAdmin ? ("admin" as const) : ("client" as const),
       message: msg,
       is_quote: isAdmin ? isQuote : false,
       intent: isAdmin ? null : (intent ?? null),
@@ -83,7 +83,7 @@ export function OrderMessages({
       {
         senderId: user?.uid ?? "",
         senderName,
-        senderRole: "client",
+        senderRole: "client" as const,
         message: responseText,
         is_quote: false,
         intent,

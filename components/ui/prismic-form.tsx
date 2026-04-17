@@ -7,14 +7,61 @@ import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recapt
 import { Button } from "@/components/ui/button";
 import { cn } from "@/components/utils";
 import { Textarea } from "./textarea";
+import { Switch } from "@/components/ui/switch";
 
 const CAPTCHA_PUBLIC_KEY = process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_PUBLIC_KEY;
 
 function send(formData: FormData) {
+  void formData;
   return Promise.resolve({ ok: true });
 }
 
-export const PrismicFormComponent = ({ formType, fields, title, preamble, submitText, submittingText, submittedText }: { formType: string; fields: { type: string; text?: string; label: string; name: string; required: boolean; options: { value: string; label: string; image: { url: string; alt: string } }[] }[]; title: string; preamble: string; submitText: string; submittingText: string; submittedText: string }) => {
+type FormField = {
+  type: string;
+  text?: string;
+  label?: string;
+  name: string;
+  required?: boolean;
+  placeholder?: string;
+  options?: { value: string; label: string; image?: { url: string; alt: string } }[];
+};
+
+function FormSwitchField({ label, name }: { label?: string; name: string }) {
+  const [checked, setChecked] = useState(false);
+  return (
+    <div className="flex flex-row items-center justify-between gap-4 rounded-md border border-input p-3">
+      {label ? (
+        <label className="font-semibold" htmlFor={name}>
+          {label}
+        </label>
+      ) : null}
+      <input type="hidden" name={name} value={checked ? "true" : "false"} readOnly />
+      <Switch id={name} checked={checked} onCheckedChange={setChecked} />
+    </div>
+  );
+}
+
+export const PrismicFormComponent = ({
+  formType,
+  type,
+  fields,
+  title,
+  preamble,
+  submitText,
+  submittingText,
+  submittedText,
+}: {
+  formType?: string;
+  type?: string;
+  fields: FormField[];
+  title: string;
+  preamble: string;
+  submitText: string;
+  submittingText?: string;
+  submittedText?: string;
+}) => {
+  void formType;
+  void type;
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { executeRecaptcha } = useGoogleReCaptcha();
@@ -52,11 +99,11 @@ export const PrismicFormComponent = ({ formType, fields, title, preamble, submit
 
   return (
     <div className="mx-auto flex w-[768px] max-w-full flex-col">
-      {title && <h2 className="mb-2 text-4xl font-[550] font-semibold lg:text-3xl">{title}</h2>}
+      {title && <h2 className="mb-2 text-4xl font-semibold lg:text-3xl">{title}</h2>}
       {preamble && <p className="mb-4 text-base">{preamble}</p>}
 
       <form action={handleSubmit} className="mx-auto flex w-[768px] max-w-full flex-col space-y-3">
-        {fields.map((field: { type: string; text?: string; label: string; name: string; required: boolean; options: { value: string; label: string; image: { url: string; alt: string } }[] }, index: number) => {
+        {fields.map((field, index) => {
           switch (field.type) {
             case "form_input":
               return (
@@ -66,7 +113,12 @@ export const PrismicFormComponent = ({ formType, fields, title, preamble, submit
                       {field.label}
                     </label>
                   )}
-                  <Input {...field} id={field.name} name={field.name} required={!!field.required} />
+                  <Input
+                    id={field.name}
+                    name={field.name}
+                    placeholder={field.placeholder}
+                    required={!!field.required}
+                  />
                 </div>
               );
 
@@ -78,26 +130,47 @@ export const PrismicFormComponent = ({ formType, fields, title, preamble, submit
                       {field.label}
                     </label>
                   )}
-                  <Textarea {...field} id={field.name} name={field.name} />
+                  <Textarea id={field.name} name={field.name} />
                 </div>
               );
+
+            case "form_number":
+              return (
+                <div key={index}>
+                  {field.label && (
+                    <label className="font-semibold" htmlFor={field.name}>
+                      {field.label}
+                    </label>
+                  )}
+                  <Input
+                    id={field.name}
+                    name={field.name}
+                    type="number"
+                    placeholder={field.placeholder}
+                    required={!!field.required}
+                  />
+                </div>
+              );
+
+            case "form_switch":
+              return <FormSwitchField key={index} label={field.label} name={field.name} />;
 
             case "form_options":
               return (
                 <div key={index}>
                   {field.label && <label className="font-semibold">{field.label}</label>}
                   {field.text && <p>{field.text}</p>}
-                  <div className="flex w-full flex-col">
-                    {field.options.map((option, optIndex) => (
+                  <div className="grid w-full grid-cols-1 gap-2 mdup:grid-cols-2 lgup:grid-cols-3">
+                    {(field.options ?? []).map((option, optIndex) => (
                       <div
                         className={cn(
-                          "ui-border flex flex-row items-center justify-center p-2",
+                          "ui-border flex flex-row items-center justify-center gap-1.5 p-2",
                           option.value === "payment" ? "border-black" : "border-gray-200"
                         )}
                         key={optIndex}>
                         <Input className="hidden" type="radio" id={option.value} name={field.name} value={option.value} />
-                        {option.image && (
-                          <Image src={option.image.url} alt={option.image.alt} className="h-8 w-8" width={50} height={50} />
+                        {option.image?.url && (
+                          <Image src={option.image.url} alt={option.image.alt ?? ""} className="h-8 w-8" width={50} height={50} />
                         )}
                         <span>{option.label}</span>
                       </div>
@@ -112,7 +185,7 @@ export const PrismicFormComponent = ({ formType, fields, title, preamble, submit
         })}
 
         <Button className="mt-2" color="primary" variant="default" size="lg" type="submit" disabled={isSubmitted}>
-          {isSubmitted ? "Skickat!" : isSubmitting ? "Skickar..." : submitText ?? "Skicka förfrågan"}
+          {isSubmitted ? submittedText : isSubmitting ? submittingText : submitText ?? "Skicka förfrågan"}
         </Button>
       </form>
     </div>

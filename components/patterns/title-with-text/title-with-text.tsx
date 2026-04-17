@@ -4,8 +4,8 @@ import Contained from "@/components/ui/contained";
 
 export default function TitleWithText({
   title,
-  text,
   eyebrowText,
+  text,
   buttons,
   className,
 }) {
@@ -18,6 +18,7 @@ export default function TitleWithText({
       }}
     >
       <Contained width="lg" className="space-y-6">
+        {eyebrowText ? <span className="ui-eyebrow">{eyebrowText}</span> : null}
         <h2 className="text-3xl font-[550]">{title}</h2>
         {text && text}
         {buttons && renderButtons(buttons)}

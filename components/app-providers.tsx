@@ -6,7 +6,6 @@ import { LocaleProvider } from "@/features/translations/translations-context";
 import { LazyMotion, domAnimation as features } from "framer-motion";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
-import { ThemeProvider } from "./theme-provider";
 import { SettingsProvider } from "@/features/settings/settings-provider";
 import { defaultQueryClient } from "./default-query-client";
 import { LocalizationDocument, SettingsDocument } from "../prismicio-types";
