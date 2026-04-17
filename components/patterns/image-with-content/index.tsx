@@ -42,7 +42,7 @@ export const ImageWithContent = ({
         inner: cn(
           "items-stretch lg:!flex-col lg:items-start",
           reversed ? "lgup:flex-row-reverse" : "",
-          isVertical ? "gap-8" : "gap-24"
+          isVertical ? "gap-8" : "gap-24 lg:gap-6"
         ),
       }}
     >

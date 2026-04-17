@@ -4,6 +4,7 @@ import VerticalCard from "@/components/patterns/carousel-section/vertical-card";
 import { createStylesForSlice } from "../utils";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
+import Section from "@/components/ui/section";
 
 const transformCard = (card) => ({
   ...card,
@@ -25,14 +26,17 @@ const CarouselSection = ({ slice }: CarouselSectionProps): JSX.Element => {
 
   return (
     // @ts-ignore
-    <CarouselSectionComponent
-      className={className}
-      eyebrowText={slice.primary.eyebrow_text ?? ''}
-      title={slice.primary.title ?? ''}
-      text={slice.primary.text ?? ''}
-      cards={slice.primary.cards?.map(transformCard)}
-      component={slice.primary.card_type === "Horizontal" ? HorizontalCard : VerticalCard}
-    />
+    <Section boxed classNames={{ container: className }}>
+      <CarouselSectionComponent
+        className={className}
+        eyebrowText={slice.primary.eyebrow_text ?? ''}
+        title={slice.primary.title ?? ''}
+        text={slice.primary.text ?? ''}
+        cards={slice.primary.cards?.map(transformCard)}
+        component={slice.primary.card_type === "Horizontal" ? HorizontalCard : VerticalCard}
+      /></Section>
+
+
   );
 };
 

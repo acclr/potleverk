@@ -54,8 +54,8 @@
 							[
 								"link",
 								{
-									"__TYPE__": "LinkContent",
 									"key": "0b5f5dde-1060-4814-976f-8d671d4a9082",
+									"__TYPE__": "LinkContent",
 									"value": {
 										"__TYPE__": "ExternalLink",
 										"url": "https://prismic.io",
@@ -113,8 +113,8 @@
 							[
 								"link",
 								{
-									"__TYPE__": "LinkContent",
 									"key": "2d0e3004-5d19-49da-a8f1-664e5eb6a57f",
+									"__TYPE__": "LinkContent",
 									"value": {
 										"__TYPE__": "ExternalLink",
 										"url": "http://twitter.com",

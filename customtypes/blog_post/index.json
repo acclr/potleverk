@@ -86,9 +86,6 @@
             "text_content": {
               "type": "SharedSlice"
             },
-            "newsletter": {
-              "type": "SharedSlice"
-            },
             "blog_posts": {
               "type": "SharedSlice"
             }

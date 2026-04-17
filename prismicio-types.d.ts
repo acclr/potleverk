@@ -79,7 +79,6 @@ type BlogPostDocumentDataSlicesSlice =
   | BannerSlice
   | FormSectionSlice
   | TextContentSlice
-  | NewsletterSlice
   | BlogPostsSlice;
 
 /**
